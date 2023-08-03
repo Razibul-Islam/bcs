@@ -1,70 +1,50 @@
 import React from 'react';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import EditIcon from '@mui/icons-material/Edit';
-import TextSnippetIcon from '@mui/icons-material/TextSnippet';
-import DescriptionIcon from '@mui/icons-material/Description';
-import DrawIcon from '@mui/icons-material/Draw';
-import BatchPredictionIcon from '@mui/icons-material/BatchPrediction';
+import { Link } from 'react-router-dom';
 
 const ExamSection = () => {
     return (
-        <div className='bg-[#000000] pt-20'>
-            <section className='max-w-7xl mx-auto   pt-10 rounded-md '>
-                <h1 className='text-center my-5 text-[#9f9e9e] text-xl mt-20'>Exam Section</h1>
+        <div className='text-teal-500 md:pt-20'>
+            <section className='max-w-6xl mx-auto   md:pt-10 rounded-md '>
+                <h1 className='text-center  text-teal-500 uppercase font-bold md:text-2xl  my-5 md:mt-20'><span className='border border-dashed px-5 border-teal-600'>Exam Segment</span></h1>
+                <section className='flex justify-between mx-w-6xl mx-auto items-center'>
+                    <div className='grid grid-cols-2 gap-2  md:gap-10 px-2 text-sm md:text-lg'>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:gap-5 md:pr-3'>
+                                <MenuBookIcon className='bg-teal-500 text-white p-1 md:ml-1 md:scale-150' />
+                            <Link to='/free-weakly-model-test' ><span>ফ্রি সাপ্তাহিক মডেল টেস্ট </span></Link>
+                        </div>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:gap-5 md:pr-3 pr-3'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1 md:ml-1 md:scale-150' />
+                            <Link to='/bcs-for-new' class="info_item_content"><span>নতুনদের বিসিএস প্রস্তুতি</span></Link>
+                        </div>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1' />
+                            <Link to='/free-weakly-model-test' ><span>বিষয় ভিত্তিক প্রস্তুতি</span></Link>
+                        </div>
 
-                <section className='flex justify-between items-center'>
-                    <div>
-                        <img className='w-96 ' src="https://cdni.iconscout.com/illustration/premium/thumb/online-learning-2245537-1889500.png" alt="" />
-                    </div>
 
-                    <div className=' grid grid-cols-2 w-1/2 mt-5 py-10 px-5 gap-5'>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                            <MenuBookIcon/>
-                            </span>
-                            <span class="info_item_content"><span>ফ্রি সাপ্তাহিক মডেল টেস্ট</span></span>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1 md:ml-1 md:scale-150' />
+                            <Link to='/free-weakly-model-test' ><span>জব সল্যুশন</span></Link>
                         </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                               <MenuBookIcon/>
-                            </span>
-                            <span class="info_item_content"><span>নতুনদের জন্য বিসিএস প্রস্তুতি</span></span>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1 md:ml-1 md:scale-150' />
+                            <Link to='/free-weakly-model-test' ><span>ব্যাংক নিয়োগ প্রস্তুতি</span></Link>
                         </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                                <EditIcon/>
-                            </span>
-                            <span class="info_item_content"><span>অভিজ্ঞদের বিসিএস প্রস্তুতি</span></span>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1 md:ml-1 md:scale-150' />
+                            <Link to='/bcs-for-exprienced' class=""><span>অভিজ্ঞদের বিসিএস প্রস্তুতি</span></Link>
                         </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                                <TextSnippetIcon/>
-                            </span>
-                            <span class="info_item_content"><span>Subject Care</span></span>
+
+
+
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1  md:ml-1 md:scale-150' />
+                            <Link to='/free-weakly-model-test' ><span>শিক্ষক নিয়োগ ও নিবন্ধন</span></Link>
                         </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                                <DescriptionIcon/>
-                            </span>
-                            <span class="info_item_content"><span>জব সল্যুশন</span></span>
-                        </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                               <DrawIcon/>
-                            </span>
-                            <span class="info_item_content"><span>ব্যাংক নিয়োগ প্রস্তুতি</span></span>
-                        </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                                <BatchPredictionIcon/>
-                            </span>
-                            <span class="info_item_content"><span>শিক্ষক নিয়োগ ও নিবন্ধন</span></span>
-                        </div>
-                        <div class="info_item">
-                            <span class="info_item_img">
-                            <MenuBookIcon/>
-                            </span>
-                            <span class="info_item_content"><span>৯ম - ২০ তম গ্রেডের প্রস্তুতি</span></span>
+                        <div className='flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1'>
+                            <MenuBookIcon className='bg-teal-500 text-white p-1  md:ml-1 md:scale-150' />
+                            <Link to='/free-weakly-model-test' ><span>৯ম - ২০ তম গ্রেডের প্রস্তুতি</span></Link>
                         </div>
                     </div>
                 </section>
