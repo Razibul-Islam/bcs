@@ -1,21 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SubjectWise = () => {
+const Job = () => {
   return (
     <div className="p-5">
       <h1 className="text-center my-4 text-lg text-teal-500">
-        বিষয়ভিত্তিক প্রশ্ন
+        বিগত জব সল্যুশন প্রশ্ন
       </h1>
       <div className="my-20  max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="text-center h-40 p-5 text-white  flex justify-center flex-col items-center rounded shadow-lg bg-teal-500">
           <p className="mt-3 text-xl">বাংলা সাহিত্য</p>
+          <p className="flex justify-between text-sm w-4/6 my-2">
+            <span>SubTopics: 57</span>
+            <span>Questions: 1253</span>
+          </p>
           <div className="flex space-x-3 items-center text-xs">
             <Link className="px-2 py-1 bg-teal-800/90 rounded-full">
               View All Questions
             </Link>
             <Link
-              to="/jobsulationtopi/bengaliliterature"
+              to="/jobsulationtopic/bengaliliterature"
               className="px-2 py-1 bg-teal-800/70 rounded-full"
             >
               All Topics
@@ -87,7 +91,7 @@ const SubjectWise = () => {
               View All Questions
             </Link>
             <Link
-              to="/subjectwise/banglaMetter"
+              to="/jobsulationtopic/bangladeshiMatters"
               className="px-2 py-1 bg-teal-800/70 rounded-full"
             >
               All Topics
@@ -351,4 +355,4 @@ const SubjectWise = () => {
   );
 };
 
-export default SubjectWise;
+export default Job;

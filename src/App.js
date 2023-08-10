@@ -14,7 +14,7 @@ import JobSulationTopic from './Dashboard/JobSulationTopic/JobSulationTopic';
 import PastJobsQuestion from './Dashboard/PastJobsQuestion/PastJobsQuestion';
 import ReadTopicaly from './Dashboard/ReadTopicaly/ReadTopicaly';
 import BCSPastQuestion from './Dashboard/BCSPastQuestion/BCSPastQuestion';
-// import Navbar from "./Pages/Global/Navbar";
+import Navbar from "./Pages/Global/Navbar";
 import FreeModelTest from "./Pages/FrontEnd/FreeModelTest";
 import BCSForNew from "./Pages/FrontEnd/BCSForNew";
 import DalyQuiz from "./Pages/FrontEnd/DalyQuiz";
@@ -89,6 +89,7 @@ import MentalSkillsInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic
 import BankMathInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic/BankMath/BankMathInner";
 import BankenglishInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic/Bankenglish/BankenglishInner";
 import Contact from './Pages/FrontEnd/Contact';
+import SubBanglaMetters from "./Pages/FrontEnd/Home/Home/Study/SubjectWise/Bangladeshimatters/SubBangladeshiMatters";
 
 function App() {
 
@@ -293,6 +294,10 @@ function App() {
 
         {/* Subject Wise */}
         <Route path="/subjectwise" element={<SubjectWise />} />
+        <Route
+          path="/subjectwise/banglaMetter"
+          element={<SubBanglaMetters />}
+        />
 
         {/* <=====================================Preminum Section ========================================> */}
         {/* Search */}
