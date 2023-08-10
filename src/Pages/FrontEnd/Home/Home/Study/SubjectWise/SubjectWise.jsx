@@ -19,7 +19,7 @@ const SubjectWise = () => {
               View All Questions
             </Link>
             <Link
-              to="/jobsulationtopic/bengaliliterature"
+              to="/jobsulationtopi/bengaliliterature"
               className="px-2 py-1 bg-teal-800/70 rounded-full"
             >
               All Topics
