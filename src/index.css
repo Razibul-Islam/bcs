@@ -2,43 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-body {
- 
-}
-
-
-.exam-section{
-  background: url('./assets/bg (2).jpeg');
+.exam-section {
+  background: url("./assets/bg (2).jpeg");
   width: 100%;
   height: 100vh;
   background-size: cover;
   /* margin-top: -88px; */
 }
 
-
-.banner-bg{
-  background: url('./assets/bg.svg');
+.banner-bg {
+  background: url("./assets/bg.svg");
   width: 100%;
   height: 100vh;
   background-size: cover;
   margin-top: -88px;
 }
 
-
 .nav-bg {
   backdrop-filter: blur(50px);
 }
 
-
 body {
-  font-family: 'Hind Siliguri', sans-serif;
-  background: #000;
+  font-family: "Hind Siliguri", sans-serif;
+  background: #fff;
 }
-
-
-
 
 .info_item {
   /* width: 350px; */
@@ -66,27 +53,35 @@ body {
   left: 0%;
   border-radius: 100%;
   border-top-left-radius: 0%;
-  background-color: #FFC000;
+  background-color: #ffc000;
   backdrop-filter: blur(50px);
   color: #ffffff;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
-.info_item{
+.info_item {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-
-.form-bg{
+.form-bg {
   backdrop-filter: blur(5px);
 }
 
-
-
-body{
+body {
   scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
