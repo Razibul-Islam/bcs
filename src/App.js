@@ -79,6 +79,7 @@ import BasicmathInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic/Ba
 import MentalSkillsInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic/MentalSkills/MentalSkillsInner";
 import BankMathInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic/BankMath/BankMathInner";
 import BankenglishInner from "./Pages/FrontEnd/Home/Home/Study/JobSulationTopic/Bankenglish/BankenglishInner";
+import SubBanglaMetters from "./Pages/FrontEnd/Home/Home/Study/SubjectWise/Bangladeshimatters/SubBangladeshiMatters";
 
 function App() {
   return (
@@ -268,6 +269,10 @@ function App() {
 
         {/* Subject Wise */}
         <Route path="/subjectwise" element={<SubjectWise />} />
+        <Route
+          path="/subjectwise/banglaMetter"
+          element={<SubBanglaMetters />}
+        />
 
         {/* <=====================================Preminum Section ========================================> */}
         {/* Search */}
