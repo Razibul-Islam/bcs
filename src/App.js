@@ -1,40 +1,40 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './Pages/Global/Navbar';
-import Home from './Pages/Home';
 import Login from './Auth/Login';
 import SignUP from './Auth/SignUp';
 import Reset from './Auth/Reset';
-import Contact from './Pages/FrontEnd/Contact';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FreeModelTest from './Pages/FrontEnd/FreeModelTest';
-import BCSForNew from './Pages/FrontEnd/BCSForNew';
-import DalyQuiz from './Pages/FrontEnd/DalyQuiz';
-import BCSForNewAllSyllbus from './Pages/FrontEnd/BCSForNewAllSyllbus';
-import BcsForExprienced from './Pages/BcsForExprienced/BcsForExprienced';
-import FreeWeaklyModelTestForExprienced from './Pages/BcsForExprienced/FreeWeaklyModelTestForExprienced';
-import ExpriencedSubjectMixPrepratioinOneFourty from './Pages/BcsForExprienced/ExpriencedSubjectMixPrepratioinOneFourty';
+import Dashboard from './Dashboard/Dashboard';
+import VideoSection from './Dashboard/VideoSection.jsx/VideoSection';
+import VideoDRutin from './Dashboard/VideoSection.jsx/Rutin';
+import PDFDPDFSection from './Dashboard/PDFSection/PDFSection';
+import PDFDPDFRutine from './Dashboard/PDFSection/PDFRutine';
+import JobSulationTopic from './Dashboard/JobSulationTopic/JobSulationTopic';
+import PastJobsQuestion from './Dashboard/PastJobsQuestion/PastJobsQuestion';
+import ReadTopicaly from './Dashboard/ReadTopicaly/ReadTopicaly';
+import BCSPastQuestion from './Dashboard/BCSPastQuestion/BCSPastQuestion';
 
 function App() {
+
   return (
     <div className='bg-banner '>
-      <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/sign-up' element={<SignUP/>}></Route>
-        <Route path='/reset' element={<Reset/>}></Route>
-        <Route path='/contact' element={<Contact/>}></Route>
-        <Route path='/free-weakly-model-test' element={<FreeModelTest/>}></Route>
-        <Route path='/bcs-for-new' element={<BCSForNew/>}></Route>
-        <Route path='/daily-quiz' element={<DalyQuiz/>}></Route>
-        <Route path='/BCS-For-New-All-Syllbus' element={<BCSForNewAllSyllbus/>}></Route>
-        <Route path='/bcs-for-exprienced' element={<BcsForExprienced/>}></Route>
-        <Route path='/FreeWeaklyModelTestForExprienced' element={<FreeWeaklyModelTestForExprienced/>}></Route>
-        <Route path='/ExpriencedSubjectMixPrepratioinOneFourty' element={<ExpriencedSubjectMixPrepratioinOneFourty/>}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/sign-up' element={<SignUP />}></Route>
+        <Route path='/reset' element={<Reset />}></Route>
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route path='/dashboard/video-section' element={<VideoSection />}></Route>
+          <Route path='/dashboard/video-section/rutin' element={<VideoDRutin />}></Route>
+          <Route path='/dashboard/pdf-section' element={<PDFDPDFSection />}></Route>
+          <Route path='/dashboard/pdf-section/rutin' element={<PDFDPDFRutine />}></Route>
+          <Route path='/dashboard/job-solution-topically' element={<JobSulationTopic />}></Route>
+          <Route path='/dashboard/past-jobs-question' element={<PastJobsQuestion />}></Route>
+          <Route path='/dashboard/read-topicaly' element={<ReadTopicaly />}></Route>
+          <Route path='/dashboard/past-bcs-question' element={<BCSPastQuestion />}></Route>
+        </Route>
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }
