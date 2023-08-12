@@ -3,7 +3,6 @@ import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import Loading from '../../Loader/Loading';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 const VideoSection = () => {
 

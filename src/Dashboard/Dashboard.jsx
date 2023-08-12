@@ -33,6 +33,7 @@ const Dashboard = () => {
                         <Link to='/dashboard/job-solution-topically' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 '><CreditScoreIcon />Job Solution Topically</Link>
                         <Link to='/dashboard/past-jobs-question' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900'><HelpIcon />Past Jobs Questions</Link>
                         <Link to='/dashboard/read-topicaly' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900'><CreditScoreIcon />Read Topically</Link>
+                        
                         <Link to='/dashboard/past-bcs-question' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 '><CreditScoreIcon />BCS Past Questions</Link>
                     </div>
                 </div>

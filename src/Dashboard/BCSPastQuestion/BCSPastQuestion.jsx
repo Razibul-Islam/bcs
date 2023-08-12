@@ -47,6 +47,7 @@ const BCSPastQuestion = () => {
     };
 
 
+ 
 
 
 
@@ -97,12 +98,12 @@ const BCSPastQuestion = () => {
                             return (
                                 <div className='p-5 rounded shadow-lg '>
                                     <h4>{index++})  {questions.question}</h4>
-                                    <div>
+                                    <div className=''>
                                         <p className={`${'a' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ক) {questions.opA}</p>
                                         <p className={`${'b' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>খ) {questions.opB}</p>
                                         <p className={`${'c' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>গ) {questions.opC}</p>
                                         <p className={`${'d' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ঘ) {questions.opD}</p>
-                                        <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>ব্যাখ্যা</button> <button onClick={()=> handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button> 
+                                        <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white '>ব্যাখ্যা</button> <button onClick={()=> handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button> 
                                         <p className='hidden' id={questions._id}>{questions.explain}</p>
                                         
                                     </div>

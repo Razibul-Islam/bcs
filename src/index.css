@@ -68,6 +68,7 @@ body {
 
 body {
   scroll-behavior: smooth;
+  /* background-color: #000000; */
 }
 
 ::-webkit-scrollbar {
@@ -132,4 +133,30 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+
+
+
+
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.item {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
 }
