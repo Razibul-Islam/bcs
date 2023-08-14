@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Select from "react-select";
+import Select from "react-select";
 
 const QuizMaster = () => {
   const [data, setData] = useState([]);
@@ -9,47 +9,49 @@ const QuizMaster = () => {
   const [modal, setModal] = useState("hidden");
   const [liDisable, setLiDisable] = useState(false);
   const [answer, setAnswer] = useState(false);
+  const [time, setTime] = useState("");
 
-  // const options = [
-  //   { value: "All Subject", label: "সকল বিষয়" },
-  //   { value: "Bengali literature", label: "বাংলা সাহিত্য" },
-  //   { value: "Bengali Language and Grammar", label: "বাংলা ভাষা ও ব্যাকরণ" },
-  //   { value: "English Literature", label: "English Literature" },
-  //   { value: "English Language", label: "English Language" },
-  //   { value: "Bangladesh affairs", label: "বাংলাদেশ বিষয়াবলি" },
-  //   { value: "International Affairs", label: "আন্তর্জাতিক বিষয়াবলি" },
-  //   {
-  //     value: "Geography and Disaster Management",
-  //     label: "ভূগোল ও দুর্যোগ ব্যবস্থাপনা",
-  //   },
-  //   {
-  //     value: "Ethics, values and good governance",
-  //     label: "নৈতিকতা ,মূল্যবোধ ও সুশাসন",
-  //   },
-  //   { value: "General Science", label: "সাধারণ বিজ্ঞান" },
-  //   {
-  //     value: "Computers and Information Technology",
-  //     label: "কম্পিউটার ও তথ্যপ্রযুক্তি",
-  //   },
-  //   { value: "General Mathematics", label: "সাধারণ গণিত" },
-  //   { value: "Mental skills", label: "মানসিক দক্ষতা" },
-  //   { value: "Bank Math", label: "Bank Math" },
-  //   { value: "Bank English", label: "Bank English" },
-  //   { value: "Bank Science and ICT", label: "Bank Science and ICT" },
-  //   { value: "Bank BD Affairs", label: "Bank BD Affairs" },
-  //   {
-  //     value: "Bank International Affairs",
-  //     label: "Bank International Affairs",
-  //   },
-  //   {
-  //     value: "National and International Days and Themes",
-  //     label: "জাতীয় ও আন্তর্জাতিক দিবস ও প্রতিপাদ্য",
-  //   },
-  //   { value: "variable data", label: "পরিবর্তনশীল তথ্য" },
-  // ];
+  const options = [
+    { value: "বাংলা সাহিত্য", label: "বাংলা সাহিত্য" },
+    { value: "বাংলা ভাষা ও ব্যাকরণ", label: "বাংলা ভাষা ও ব্যাকরণ" },
+    { value: "English Literature", label: "English Literature" },
+    { value: "English Language", label: "English Language" },
+    { value: "বাংলাদেশ বিষয়াবলি", label: "বাংলাদেশ বিষয়াবলি" },
+    { value: "আন্তর্জাতিক বিষয়াবলি", label: "আন্তর্জাতিক বিষয়াবলি" },
+    {
+      value: "ভূগোল ও দুর্যোগ ব্যবস্থাপনা",
+      label: "ভূগোল ও দুর্যোগ ব্যবস্থাপনা",
+    },
+    {
+      value: "নৈতিকতা ,মূল্যবোধ ও সুশাসন",
+      label: "নৈতিকতা ,মূল্যবোধ ও সুশাসন",
+    },
+    { value: "সাধারণ বিজ্ঞান", label: "সাধারণ বিজ্ঞান" },
+    {
+      value: "কম্পিউটার ও তথ্যপ্রযুক্তি",
+      label: "কম্পিউটার ও তথ্যপ্রযুক্তি",
+    },
+    { value: "সাধারণ গণিত", label: "সাধারণ গণিত" },
+    { value: "মানসিক দক্ষতা", label: "মানসিক দক্ষতা" },
+    { value: "Bank Math", label: "Bank Math" },
+    { value: "Bank English", label: "Bank English" },
+    { value: "Bank Science and ICT", label: "Bank Science and ICT" },
+    { value: "Bank BD Affairs", label: "Bank BD Affairs" },
+    {
+      value: "Bank International Affairs",
+      label: "Bank International Affairs",
+    },
+    {
+      value: "জাতীয় ও আন্তর্জাতিক দিবস ও প্রতিপাদ্য",
+      label: "জাতীয় ও আন্তর্জাতিক দিবস ও প্রতিপাদ্য",
+    },
+    { value: "পরিবর্তনশীল তথ্য", label: "পরিবর্তনশীল তথ্য" },
+  ];
 
   const initialRemainingTime = 5 * 60;
+
   const [remainingTime, setRemainingTime] = useState(initialRemainingTime);
+  console.log(remainingTime);
   const handleCountDown = () => {
     const interval = setInterval(() => {
       setRemainingTime((prevRemainingTime) => {
@@ -70,6 +72,7 @@ const QuizMaster = () => {
     };
   };
   const minutes = Math.floor(remainingTime / 60);
+  // console.log(minutes);
   const seconds = remainingTime % 60;
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
     seconds
@@ -78,9 +81,10 @@ const QuizMaster = () => {
   const handleQuestion = (e) => {
     e.preventDefault();
     const number = e.target.numberOfQuiz.value;
+    const subject = e.target.subject.value;
     setTotalQuestion(number);
 
-    fetch(`http://localhost:5000/quiz-master?size=${number}`)
+    fetch(`http://localhost:5000/quiz-master?size=${number}&subject=${subject}`)
       .then((res) => res.json())
       .then((data) => setData(data));
     document.getElementById("numberBox").style.display = "none";
@@ -108,27 +112,68 @@ const QuizMaster = () => {
     console.log("disabled");
   }
 
-  // console.log(allAnswer);
+  // console.log(data);
 
   return (
     <div className="max-w-6xl mx-auto">
       <form
         id="numberBox"
         onSubmit={handleQuestion}
-        className="flex gap-5 mt-20 px-5 md:px-0"
+        className="px-5 md:px-0 mt-5"
       >
-        <select
-          className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none"
-          name="numberOfQuiz"
-        >
-          <option value={null}>--Select Quiz Number--</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="40">40</option>
-        </select>
-        <button className="w-full bg-teal-300 px-4 rounded-md py-2">
-          Start Quiz
-        </button>
+        <div className="flex gap-5 flex-wrap md:flex-nowrap">
+          <select
+            name="quiz"
+            className="w-full border border-teal-500 rounded-md py-1"
+          >
+            <option value="Random Quiz">Random Quiz [Total Database]</option>
+          </select>
+          <Select
+            isMulti
+            name="subject"
+            options={options}
+            className="w-full border border-teal-500 rounded-md"
+          />
+        </div>
+        <div className="flex flex-wrap md:flex-nowrap mt-3 gap-5">
+          <select
+            className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none"
+            name="numberOfQuiz"
+            onChange={(e) => setTime(e.target.value)}
+          >
+            <option value={null}>--Select Quiz Number--</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+          </select>
+          <select
+            className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none"
+            name="ExamTime"
+          >
+            <option
+              value={
+                time === "20"
+                  ? "5"
+                  : time === "30"
+                  ? "7:30"
+                  : time === "40"
+                  ? "10"
+                  : `${null}`
+              }
+            >
+              {time === "20"
+                ? "5"
+                : time === "30"
+                ? "7:30"
+                : time === "40"
+                ? "10"
+                : "Select an option"}
+            </option>
+          </select>
+          <button className="w-full bg-teal-300 px-4 rounded-md py-2">
+            Start Quiz
+          </button>
+        </div>
       </form>
 
       <div className="flex justify-end">
