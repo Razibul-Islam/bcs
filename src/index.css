@@ -23,7 +23,7 @@
 }
 
 body {
-  font-family: 'Hind Siliguri', sans-serif;
+  font-family: "Hind Siliguri", sans-serif;
 }
 
 .info_item {
@@ -75,18 +75,13 @@ body {
   display: none;
 }
 
-
-
-
-
-
 /* loader  */
 .loader {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   display: block;
-  margin:15px auto;
+  margin: 15px auto;
   position: relative;
   color: #099b72;
   left: -100px;
@@ -96,31 +91,40 @@ body {
 
 @keyframes shadowRolling {
   0% {
-    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
   }
   12% {
-    box-shadow: 100px 0 #099b72, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    box-shadow: 100px 0 #099b72, 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
   }
   25% {
-    box-shadow: 110px 0 #099b72, 100px 0 #099b72, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    box-shadow: 110px 0 #099b72, 100px 0 #099b72, 0px 0 rgba(255, 255, 255, 0),
+      0px 0 rgba(255, 255, 255, 0);
   }
   36% {
-    box-shadow: 120px 0 #099b72, 110px 0 #099b72, 100px 0 #099b72, 0px 0 rgba(255, 255, 255, 0);
+    box-shadow: 120px 0 #099b72, 110px 0 #099b72, 100px 0 #099b72,
+      0px 0 rgba(255, 255, 255, 0);
   }
   50% {
-    box-shadow: 130px 0 #099b72, 120px 0 #099b72, 110px 0 #099b72, 100px 0 #099b72;
+    box-shadow: 130px 0 #099b72, 120px 0 #099b72, 110px 0 #099b72,
+      100px 0 #099b72;
   }
   62% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #099b72, 120px 0 #099b72, 110px 0 #099b72;
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 #099b72, 120px 0 #099b72,
+      110px 0 #099b72;
   }
   75% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #099b72, 120px 0 #099b72;
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      130px 0 #099b72, 120px 0 #099b72;
   }
   87% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 #099b72;
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      200px 0 rgba(255, 255, 255, 0), 130px 0 #099b72;
   }
   100% {
-    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0),
+      200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
   }
 }
 /* Chrome, Safari, Edge, Opera */
@@ -134,10 +138,6 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-
-
-
 
 .app {
   text-align: center;

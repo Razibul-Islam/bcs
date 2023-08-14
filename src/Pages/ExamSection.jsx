@@ -34,7 +34,7 @@ const ExamSection = () => {
 
             <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3">
               <MenuBookIcon className="bg-teal-500 text-white p-1 md:ml-1 md:scale-150" />
-              <Link to="/free-weakly-model-test">
+              <Link to="/job-solution">
                 <span>জব সল্যুশন</span>
               </Link>
             </div>
@@ -59,7 +59,7 @@ const ExamSection = () => {
             </div>
             <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1">
               <MenuBookIcon className="bg-teal-500 text-white p-1  md:ml-1 md:scale-150" />
-              <Link to="/free-weakly-model-test">
+              <Link to="/preparation-for-gread">
                 <span>৯ম - ২০ তম গ্রেডের প্রস্তুতি</span>
               </Link>
             </div>

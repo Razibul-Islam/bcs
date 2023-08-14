@@ -3,7 +3,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-
 const Jobsutationpast = () => {
   const [eyeOn, setEyeOn] = useState(true);
   const [data, setData] = useState([]);
