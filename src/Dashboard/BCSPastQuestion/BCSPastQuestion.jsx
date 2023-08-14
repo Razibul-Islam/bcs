@@ -4,9 +4,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const BCSPastQuestion = () => {
     const [modal, setModal] = useState('hidden');
+    const [category , setCategory] = useState([])
     const [ans, setAns] = useState('');
     const [question, setQuestion] = useState([])
     let index = 1;
+    let indexTwo = 1;
 
 
     const handleShowExplain = (id) => {
@@ -18,18 +20,19 @@ const BCSPastQuestion = () => {
         }
     };
 
-  
+
 
     const handleAddQuestion = (e) => {
         e.preventDefault();
         const question = e.target.question.value;
+        const category = e.target.category.value;
         const opA = e.target.opA.value;
         const opB = e.target.opB.value;
         const opC = e.target.opC.value;
         const opD = e.target.opD.value;
         const explain = e.target.explain.value;
         const question_id = 'pastbcsquestion101'
-        const data = {question, opA, opB, opC, opD, explain, ans, question_id }
+        const data = { question, opA, opB, opC, opD, explain, ans, question_id , category}
         console.log(data);
         fetch('http://localhost:5000/add-question', {
             method: "POST",
@@ -47,25 +50,67 @@ const BCSPastQuestion = () => {
     };
 
 
- 
 
 
 
 
 
-    const handleDeleteQuestion = (_id)=>{
+
+    const handleDeleteQuestion = (_id) => {
         const url = `http://localhost:5000/delete-question?_id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    toast.success('মুছে ফেলা হয়েছে');
+                }
+            });
+
+    }
+
+
+    const handleAddCategory = (e)=>{
+        e.preventDefault();
+        const category = e.target.category.value;
+        const data = {category};
+        fetch('http://localhost:5000/bcs-past-category-add', {
+            method: "POST",
+            headers :{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(data)
+        })
         .then(res => res.json())
         .then(data => {
             if(data){
-                toast.success('মুছে ফেলা হয়েছে');
+                toast.success('Added Successfull');
+                e.target.reset();
             }
-        });
+        })
+    };
 
+
+    const handleDeletecategory =(_id)=>{
+        const url = `http://localhost:5000/bcs-past-category-delete?_id=${_id}`;
+        fetch(url, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                toast.success('Delete Successfull')
+            }
+        })
     }
+
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/bcs-past-category-get')
+        .then(res => res.json())
+        .then(data => setCategory(data))
+    }, [])
 
     useEffect(() => {
         const url = `http://localhost:5000/get-question?question_id=pastbcsquestion101`;
@@ -92,26 +137,41 @@ const BCSPastQuestion = () => {
             <section>
                 <p>মোট প্রশ্নঃ {question.length} টি</p>
 
-                <div className='grid grid-cols-3 gap-5'>
-                    {
-                        question.map(questions => {
-                            return (
-                                <div className='p-5 rounded shadow-lg '>
-                                    <h4>{index++})  {questions.question}</h4>
-                                    <div className=''>
-                                        <p className={`${'a' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ক) {questions.opA}</p>
-                                        <p className={`${'b' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>খ) {questions.opB}</p>
-                                        <p className={`${'c' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>গ) {questions.opC}</p>
-                                        <p className={`${'d' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ঘ) {questions.opD}</p>
-                                        <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white '>ব্যাখ্যা</button> <button onClick={()=> handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button> 
-                                        <p className='hidden' id={questions._id}>{questions.explain}</p>
-                                        
+                <section className='flex justify-between gap-5'>
+                    <div className='w-2/3'>
+                        {
+                            question.map(questions => {
+                                return (
+                                    <div className='p-5 rounded shadow-lg '>
+                                        <h4>{index++})  {questions.question}</h4>
+                                        <div className=''>
+                                            <p className={`${'a' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ক) {questions.opA}</p>
+                                            <p className={`${'b' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>খ) {questions.opB}</p>
+                                            <p className={`${'c' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>গ) {questions.opC}</p>
+                                            <p className={`${'d' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ঘ) {questions.opD}</p>
+                                            <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white '>ব্যাখ্যা</button> <button onClick={() => handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button>
+                                            <p className='hidden' id={questions._id}>{questions.explain}</p>
+
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div  className='w-1/3 shadow-lg p-3'>
+                        <h1 className='text-center '>Question Category</h1>
+                        <div className='mt-5'>
+                            {
+                                category.map(cate => <div className='py-2 px-4 flex justify-between border-b'><p>{indexTwo++} {cate.category}</p> <button onClick={()=> handleDeletecategory(cate._id)} className='bg-red-400 px-2 rounded-xl text-white'>Delete</button></div>)
+                            }
+                        </div>
+                        <form onSubmit={handleAddCategory} className='mt-5 flex'>
+                            <input name='category' type="text"  placeholder='Category Name' className='p-2 block w-full border focus:outline-none '/>
+                            <button className='px-5 text-white font-bold py-2 bg-teal-500'>Add</button>
+                        </form>
+                    </div>
+                </section>
+
             </section>
 
 
@@ -126,6 +186,12 @@ const BCSPastQuestion = () => {
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>বিগত বিসিএস প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleAddQuestion} className='my-5'>
+                                        <select name="category" className='p-2 border  block focus:outline-none w-full'>
+                                            <option>--Select Category--</option>
+                                            {
+                                                category.map(cate => <option>{cate.category}</option>)
+                                            }
+                                        </select>
                                         <input type="text" name='question' placeholder='প্রশ্ন প্রবেশ করান' className='p-2 border  block focus:outline-none w-full' />
                                         <div className='my-4 grid grid-cols-2 gap-4'>
                                             <label className='flex items-center mt-2'>
