@@ -5,7 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const PastJobsQuestion = () => {
     const [modal, setModal] = useState('hidden');
     const [ans, setAns] = useState('');
-    const [question, setQuestion] = useState([])
+    const [question, setQuestion] = useState([]);
+    const [category, setcategory] = useState([]);
     let index = 1;
 
 
@@ -20,6 +21,7 @@ const PastJobsQuestion = () => {
 
     const handleAddQuestion = (e) => {
         e.preventDefault();
+        const category = e.target.category.value;
         const question = e.target.question.value;
         const opA = e.target.opA.value;
         const opB = e.target.opB.value;
@@ -27,7 +29,7 @@ const PastJobsQuestion = () => {
         const opD = e.target.opD.value;
         const explain = e.target.explain.value;
         const question_id = 'pastQ101'
-        const data = { question, opA, opB, opC, opD, explain, ans, question_id }
+        const data = { question, opA, opB, opC, opD, explain, ans, question_id , category}
         console.log(data);
         fetch('http://localhost:5000/add-question', {
             method: "POST",
@@ -74,7 +76,46 @@ const PastJobsQuestion = () => {
 
     const handleAddCategory = (e) =>{
         e.preventDefault();
+        const category = e.target.category.value;
+
+        fetch('http://localhost:5000/jobs-past-category-add', {
+            method: "POST",
+            headers: {
+                'content-type':'application/json'
+            },
+            body : JSON.stringify({category})
+        })
+        .then(res=> res.json())
+        .then(data => {
+            if(data){
+                toast.success('Delete Successfull');
+                e.target.reset();
+            }
+        })
+    };
+
+
+    const handleDeletecategory = (_id) =>{
+        const url = `http://localhost:5000/jobs-past-category-delete?_id=${_id}`;
+        fetch(url,{
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                toast.success('Delete SuccessFull')
+            }
+        })
     }
+
+
+
+    useEffect(()=>{
+        const url = `http://localhost:5000/jobs-past-category-get`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setcategory(data))
+    }, [])
 
 
     useEffect(() => {
@@ -90,6 +131,7 @@ const PastJobsQuestion = () => {
             <h1 className='text-center my-5'>বিগত জব সলিউশন</h1>
             <div className='flex justify-between items-center mt-10'>
                 <button onClick={() => setModal('')} className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</button>
+
                 <div className='flex gap-3'>
                     <input type="text" placeholder='প্রশ্ন খুঁজুন' className='border rounded-full px-5 py-2 focus:outline-none' />
                 </div>
@@ -128,7 +170,9 @@ const PastJobsQuestion = () => {
                 <div  className='w-1/3 shadow-lg p-3'>
                         <h1 className='text-center '>Question Category</h1>
                         <div className='mt-5'>
-                            
+                            {
+                                category?.map(cate => <div className='flex justify-between py-3'><p>{cate.category}</p>  <button onClick={()=> handleDeletecategory(cate._id)} className='bg-red-500 text-sm text-white px-3 rounded-full'>Delete</button></div>)
+                            }
                         </div>
                         <form onSubmit={handleAddCategory} className='mt-5 flex'>
                             <input name='category' type="text"  placeholder='Category Name' className='p-2 block w-full border focus:outline-none '/>
@@ -150,6 +194,12 @@ const PastJobsQuestion = () => {
                                     <p className='flex justify-start items-center gap-4'>বিগত জব সলিউশন প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleAddQuestion} className='my-5'>
                                         <input type="text" name='question' placeholder='প্রশ্ন প্রবেশ করান' className='p-2 border  block focus:outline-none w-full' />
+                                        <select name="category" className='p-2 border  block focus:outline-none w-full mt-2'>
+                                            <option>--Select Category --</option>
+                                            {
+                                                category?.map(cate => <option>{cate.category}</option>)
+                                            }
+                                        </select>
                                         <div className='my-4 grid grid-cols-2 gap-4'>
                                             <label className='flex items-center mt-2'>
                                                 <p className='p-2 border  block focus:outline-none w-10'><span className='bg-black w-6 h-6  flex items-center justify-center rounded-full text-white'>ক</span></p> <input type="text" name='opA' className='p-2 border  block focus:outline-none w-full' placeholder='অপশন' />  <label onClick={() => setAns('a')} htmlFor='a' className='p-2 border  block focus:outline-none w-10 cursor-pointer'><input type="radio" name="ans" id='a' /></label>

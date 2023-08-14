@@ -59,6 +59,7 @@ import JobsTopicQuestion from './Pages/Study/JobSulationTopic/JobsTopicQuestion'
 import JobsSubQuestion from './Pages/Study/JobSulationTopic/JobsSubQuestion';
 import LastBCS from './Pages/Study/LastBCS/LastBCS';
 import LastBCSQuestion from './Pages/Study/LastBCS/LastBCSQuestion';
+import Jobsulationpast from './Pages/Study/JobsulationPast/Jobsulationpast';
 
 function App() {
 
@@ -150,6 +151,9 @@ function App() {
         {/* LastBCS */}
         <Route path="/lastbcs" element={<LastBCS />} />
         <Route path="/lastbcs/:category" element={<LastBCSQuestion />} />
+
+        {/* job sulation past  */}
+        <Route path="/jobsulationpast" element={<Jobsulationpast />} />
 
       </Routes>
       <ToastContainer />
