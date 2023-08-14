@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const TopicForReadTopic = () => {
+const JobsAddTopic = () => {
 
 
     const [modalOne, setModalOne] = useState(false);
@@ -19,7 +19,7 @@ const TopicForReadTopic = () => {
         const order = e.target.order.value;
         const data = { subject, order };
 
-        fetch('http://localhost:5000/add-subject-read-topiclly', {
+        fetch('http://localhost:5000/add-subject-read-jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const TopicForReadTopic = () => {
         const topic = e.target.topic.value;
         const data = { subject, topic };
 
-        fetch('http://localhost:5000/add-topic-read-topiclly', {
+        fetch('http://localhost:5000/add-topic-read-jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -66,7 +66,7 @@ const TopicForReadTopic = () => {
         const subtopic = e.target.subtopic.value;
         const data = { subject, topic , subtopic};
 
-        fetch('http://localhost:5000/add-subtopic-read-topiclly', {
+        fetch('http://localhost:5000/add-subtopic-read-jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -85,7 +85,7 @@ const TopicForReadTopic = () => {
 
 
     const handleDeleteSubject = (_id) =>{
-        const url = `http://localhost:5000/delete-subject-read-topiclly?_id=${_id}`;
+        const url = `http://localhost:5000/delete-subject-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -95,7 +95,7 @@ const TopicForReadTopic = () => {
         })
     };
     const handleDeleteTopic = (_id) =>{
-        const url = `http://localhost:5000/delete-topic-read-topiclly?_id=${_id}`;
+        const url = `http://localhost:5000/delete-topic-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -105,7 +105,7 @@ const TopicForReadTopic = () => {
         })
     };
     const handleDeleteSubTopic = (_id) =>{
-        const url = `http://localhost:5000/delete-subtopic-read-topiclly?_id=${_id}`;
+        const url = `http://localhost:5000/delete-subtopic-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -118,19 +118,19 @@ const TopicForReadTopic = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-subject-read-topiclly`;
+        const url = `http://localhost:5000/get-subject-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubject(data))
     }, [])
     useEffect(() => {
-        const url = `http://localhost:5000/get-topic-read-topiclly`;
+        const url = `http://localhost:5000/get-topic-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setTopic(data))
     }, [])
     useEffect(() => {
-        const url = `http://localhost:5000/get-subtopic-read-topiclly`;
+        const url = `http://localhost:5000/get-subtopic-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubTopic(data))
@@ -260,4 +260,4 @@ const TopicForReadTopic = () => {
     );
 };
 
-export default TopicForReadTopic;
+export default JobsAddTopic;

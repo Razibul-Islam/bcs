@@ -27,7 +27,7 @@ const SubjectWise = () => {
                   <h3 className="my-3">{subjects.subject}</h3>
                   <div>
                       <Link to={`${subjects.subject}`} className="px-2 py-1 bg-teal-500 text-sm mx-2 rounded-full text-white">View Question</Link>
-                      <button className="px-2 py-1 bg-teal-500 text-sm mx-2 rounded-full text-white">View Topic</button>
+                      <Link to={`/subjectwise/topic/${subjects.subject}`} className="px-2 py-1 bg-teal-500 text-sm mx-2 rounded-full text-white">View Topic</Link>
                   </div>
               </div>
             )

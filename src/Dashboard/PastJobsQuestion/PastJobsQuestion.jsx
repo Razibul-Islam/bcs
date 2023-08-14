@@ -71,6 +71,12 @@ const PastJobsQuestion = () => {
         console.log(option);
     }
 
+
+    const handleAddCategory = (e) =>{
+        e.preventDefault();
+    }
+
+
     useEffect(() => {
         const url = `http://localhost:5000/get-question?question_id=pastQ101`;
         fetch(url)
@@ -93,38 +99,42 @@ const PastJobsQuestion = () => {
 
             <hr className='my-5' />
 
-            <section>
-                <p>মোট প্রশ্নঃ {question.length} টি</p>
+            <p>মোট প্রশ্নঃ {question.length} টি</p>
 
-                <div className='grid grid-cols-3 gap-5'>
+
+            <section className='flex gap-5'>
+
+                <div className='w-2/3'>
                     {
                         question.map(questions => {
                             return (
                                 <div className='p-5 rounded shadow-lg '>
                                     <h4>{index++})  {questions.question}</h4>
                                     <div id={questions._id}>
-                                        <p id={`${questions._id+'a'}`}>ক) {questions.opA}</p>
-                                        <p id={`${questions._id+'b'}`}>খ) {questions.opB}</p>
-                                        <p id={`${questions._id+"c"}`}>গ) {questions.opC}</p>
-                                        <p id={`${questions._id+'d'}`}>ঘ) {questions.opD}</p>
+                                        <p id={`${questions._id + 'a'}`}>ক) {questions.opA}</p>
+                                        <p id={`${questions._id + 'b'}`}>খ) {questions.opB}</p>
+                                        <p id={`${questions._id + "c"}`}>গ) {questions.opC}</p>
+                                        <p id={`${questions._id + 'd'}`}>ঘ) {questions.opD}</p>
                                         <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>ব্যাখ্যা</button> <button onClick={() => handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button>
                                         <p className='hidden' id={questions._id}>{questions.explain}</p>
-                                        <button onClick={() => handleShowQuestion(questions._id+questions.ans)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>Ans</button>
+                                        <button onClick={() => handleShowQuestion(questions._id + questions.ans)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>Ans</button>
                                     </div>
-                                    {/* <div id={questions._id}>
-                                        <p  className={`${'a' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ক) {questions.opA}</p>
-                                        <p  className={`${'b' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>খ) {questions.opB}</p>
-                                        <p  className={`${'c' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>গ) {questions.opC}</p>
-                                        <p  className={`${'d' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ঘ) {questions.opD}</p>
-                                        <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>ব্যাখ্যা</button> <button onClick={()=> handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button> 
-                                        <p className='hidden' id={questions._id}>{questions.explain}</p>
-                                        <button >Ans</button>
-                                    </div> */}
                                 </div>
                             )
                         })
                     }
                 </div>
+
+                <div  className='w-1/3 shadow-lg p-3'>
+                        <h1 className='text-center '>Question Category</h1>
+                        <div className='mt-5'>
+                            
+                        </div>
+                        <form onSubmit={handleAddCategory} className='mt-5 flex'>
+                            <input name='category' type="text"  placeholder='Category Name' className='p-2 block w-full border focus:outline-none '/>
+                            <button className='px-5 text-white font-bold py-2 bg-teal-500'>Add</button>
+                        </form>
+                    </div>
             </section>
 
 

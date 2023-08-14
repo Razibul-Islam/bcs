@@ -46,6 +46,19 @@ import CentralResult from './Pages/CentralResult/CentralResult';
 import QuizMaster from './Pages/QuizMaster/QuizMaster';
 import WrongAndUnanswered from './Pages/WrongAndUnanswered/WrongAndUnanswered';
 import SubjectWiseQuestion from './Pages/Study/SubjectWise/SubjectWiseQuestion';
+import AllTopic from './Pages/Study/SubjectWise/AllTopic';
+import TopicWiseReadQuestion from './Pages/Study/SubjectWise/TopicWiseReadQuestion';
+import AllSubTopic from './Pages/Study/SubjectWise/AllSubTopic';
+import SubTopicWiseQuestion from './Pages/Study/SubjectWise/SubTopicWiseQuestion';
+import JobsAddTopic from './Pages/Study/JobSulationTopic/JobsAddTopic';
+import JobSulation from './Pages/Study/JobSulationTopic/Job';
+import JobsSubjectWiseQuestion from './Pages/Study/JobSulationTopic/SubjectWiseQuestion';
+import JobsTopic from './Pages/Study/JobSulationTopic/JobsTopic';
+import JobsSubtopics from './Pages/Study/JobSulationTopic/JobsSubtopics';
+import JobsTopicQuestion from './Pages/Study/JobSulationTopic/JobsTopicQuestion';
+import JobsSubQuestion from './Pages/Study/JobSulationTopic/JobsSubQuestion';
+import LastBCS from './Pages/Study/LastBCS/LastBCS';
+import LastBCSQuestion from './Pages/Study/LastBCS/LastBCSQuestion';
 
 function App() {
 
@@ -62,6 +75,7 @@ function App() {
           <Route path='/dashboard/pdf-section' element={<PDFDPDFSection />}></Route>
           <Route path='/dashboard/pdf-section/rutin' element={<PDFDPDFRutine />}></Route>
           <Route path='/dashboard/job-solution-topically' element={<JobSulationTopic />}></Route>
+          <Route path='/dashboard/add-jobs-topic' element={<JobsAddTopic />}></Route>
           <Route path='/dashboard/past-jobs-question' element={<PastJobsQuestion />}></Route>
           <Route path='/dashboard/read-topicaly' element={<ReadTopicaly />}></Route>
           <Route path='/dashboard/past-bcs-question' element={<BCSPastQuestion />}></Route>
@@ -82,7 +96,7 @@ function App() {
         <Route path="/video/videomath" element={<VideoMath />} />
         <Route path="/video/videoscience" element={<VideoScience />} />
         <Route path="/video/videoict" element={<VideoIct />} />
-        <Route path="/video/videointernational" element={<VideoInternational />}/>
+        <Route path="/video/videointernational" element={<VideoInternational />} />
         <Route path="/video/videobangladesh" element={<VideoBangladesh />} />
         <Route path="/video/videosuggestion" element={<VideoSuggetion />} />
 
@@ -101,7 +115,7 @@ function App() {
 
         {/* Topic Job Solution segment Route */}
 
-       
+
         <Route path="/subjectwise" element={<SubjectWise />} />
 
         {/* <=====================================Preminum Section ========================================> */}
@@ -113,8 +127,30 @@ function App() {
         <Route path="/wrongandunanswered" element={<WrongAndUnanswered />} />
 
 
-      {/* read Topicaly  */}
-      <Route path="/subjectwise/:subject" element={<SubjectWiseQuestion />} />
+        {/* read Topicaly  */}
+        <Route path="/subjectwise/:subject" element={<SubjectWiseQuestion />} />
+        <Route path="/subjectwise/topic/:subject" element={<AllTopic />} />
+        <Route path="/TopicWiseReadQuestion/:topic" element={<TopicWiseReadQuestion />} />
+        <Route path="/Topicread-topically/subtopic/:topic" element={<AllSubTopic />} />
+        <Route path="/sub-topics-wise-question/:subtopic" element={<SubTopicWiseQuestion />} />
+
+
+        {/* <=====================================job sulation topic ========================================> */}
+        {/* /jobsulationtopic */}
+        <Route path="/jobsulationtopic" element={<JobSulation />} />
+        <Route path="/jobs-question-subject/:subject" element={<JobsSubjectWiseQuestion />} />
+        <Route path="/jobs-topic/:subject" element={<JobsTopic />} />
+        <Route path="/jobs-subtopic/:topic" element={<JobsSubtopics />} />
+        <Route path="/jobs-question-topic/:topic" element={<JobsTopicQuestion />} />
+        <Route path="/jobs-question-subtopic/:subtopic" element={<JobsSubQuestion />} />
+
+
+
+        {/* privuse bcs  */}
+        {/* LastBCS */}
+        <Route path="/lastbcs" element={<LastBCS />} />
+        <Route path="/lastbcs/:category" element={<LastBCSQuestion />} />
+
       </Routes>
       <ToastContainer />
     </div>
