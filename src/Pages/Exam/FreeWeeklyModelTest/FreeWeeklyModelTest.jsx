@@ -1,15 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+// to='/free-weakly-model-test/rutin'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const FreeWeeklyModelTest = () => {
   return (
     <div>
+      <h1 className='my-5 text-center '> ফ্রি সাপ্তাহিক মডেল টেস্ট</h1>
+
+
+      <div>
       <div className="w-full h-[400px]">
         <div className="w-[300px] md:w-[400px] h-[200px] md:h-[300px] mx-auto mt-10 relative flex items-center justify-center">
-          <Link className="text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10">
+
+          <Link to='/free-weally-start-exam' className="text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10">
             Start Exam
           </Link>
-          <Link className="absolute text-white w-24 text-center py-2 bg-[#e74c3c] rounded-sm shadow-md top-0 left-0">
+          <Link  to='/free-weakly-model-test/rutin' className="absolute text-white w-24 text-center py-2 bg-[#e74c3c] rounded-sm shadow-md top-0 left-0">
+
             রুটিন
           </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-blue-400 rotate-45 top-16 md:top-24 left-14 "></span>
@@ -35,6 +44,9 @@ const FreeWeeklyModelTest = () => {
         <p>-পরীক্ষার টপিক জানতে রুটিনে ক্লিক করুন।</p>
         <p>-পূর্বে অনুষ্ঠিত পরীক্ষা গুলোর প্রশ্ন দেখতে আর্কাইভ এ ক্লিক করুন।</p>
       </div>
+    </div>
+
+
     </div>
   );
 };

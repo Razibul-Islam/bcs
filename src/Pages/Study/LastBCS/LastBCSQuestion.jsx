@@ -29,6 +29,7 @@ const LastBCSQuestion = () => {
     }
   };
 
+
   const handleShowQuestion = (ans) => {
     const option = document.getElementById(ans);
     option.style.color = "green";
@@ -47,6 +48,7 @@ const LastBCSQuestion = () => {
           )}
         </p>
       </div>
+
 
       <div className="my-20  max-w-6xl mx-auto">
         {question.map((qs) => {

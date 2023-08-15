@@ -7,10 +7,13 @@ import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import HelpIcon from '@mui/icons-material/Help';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 const Dashboard = () => {
 
     const [study, setStudy] = useState(false)
+    const [exam, setExam] = useState(false)
 
 
 
@@ -33,12 +36,15 @@ const Dashboard = () => {
                         <Link to='/dashboard/job-solution-topically' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 '><CreditScoreIcon />Job Solution Topically</Link>
                         <Link to='/dashboard/past-jobs-question' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900'><HelpIcon />Past Jobs Questions</Link>
                         <Link to='/dashboard/read-topicaly' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900'><CreditScoreIcon />Read Topically</Link>
-                        
                         <Link to='/dashboard/past-bcs-question' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 '><CreditScoreIcon />BCS Past Questions</Link>
+                    </div>
+                    <button onClick={() => setExam(!exam)} to='/dashboard' className='text-slate-100  w-full px-8 py-2 flex items-center gap-4 hover:bg-slate-900'><RateReviewIcon /> Exam Section</button>
+                    <div className={`${exam ? 'text-sm' : 'hidden'}`}>
+                        <Link to='/dashboard/free-weakly-modeltest' className='text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 '><EditCalendarIcon/> Free Weakly Test</Link>
                     </div>
                 </div>
                 <div className='w-[calc(100%-250px)]'>
-                    <Outlet/>
+                    <Outlet />
                 </div>
             </section>
 
