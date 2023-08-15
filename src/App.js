@@ -1,18 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
-import Login from './Auth/Login';
-import SignUP from './Auth/SignUp';
-import Reset from './Auth/Reset';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Dashboard from './Dashboard/Dashboard';
-import VideoSection from './Dashboard/VideoSection.jsx/VideoSection';
-import VideoDRutin from './Dashboard/VideoSection.jsx/Rutin';
-import PDFDPDFSection from './Dashboard/PDFSection/PDFSection';
-import PDFDPDFRutine from './Dashboard/PDFSection/PDFRutine';
-import JobSulationTopic from './Dashboard/JobSulationTopic/JobSulationTopic';
-import PastJobsQuestion from './Dashboard/PastJobsQuestion/PastJobsQuestion';
-import ReadTopicaly from './Dashboard/ReadTopicaly/ReadTopicaly';
-import BCSPastQuestion from './Dashboard/BCSPastQuestion/BCSPastQuestion';
+import { Route, Routes } from "react-router-dom";
+import Login from "./Auth/Login";
+import SignUP from "./Auth/SignUp";
+import Reset from "./Auth/Reset";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "./Dashboard/Dashboard";
+import VideoSection from "./Dashboard/VideoSection.jsx/VideoSection";
+import VideoDRutin from "./Dashboard/VideoSection.jsx/Rutin";
+import PDFDPDFSection from "./Dashboard/PDFSection/PDFSection";
+import PDFDPDFRutine from "./Dashboard/PDFSection/PDFRutine";
+import JobSulationTopic from "./Dashboard/JobSulationTopic/JobSulationTopic";
+import PastJobsQuestion from "./Dashboard/PastJobsQuestion/PastJobsQuestion";
+import ReadTopicaly from "./Dashboard/ReadTopicaly/ReadTopicaly";
+import BCSPastQuestion from "./Dashboard/BCSPastQuestion/BCSPastQuestion";
 import Navbar from "./Pages/Global/Navbar";
 import TopicForReadTopic from './Pages/Study/SubjectWise/TopicForReadTopic';
 import Home from './Pages/Home';
@@ -67,12 +67,13 @@ import FreeWeeklyModelTest from './Pages/Exam/FreeWeeklyModelTest/FreeWeeklyMode
 import FreeWeaklyRutin from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyRutin';
 import FreeWeaklyStartExam from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyStartExam';
 
-function App() {
 
+function App() {
   return (
-    <div className='bg-banner '>
+    <div className="bg-banner ">
       <Navbar />
       <Routes>
+
         <Route path='/login' element={<Login />}></Route>
         <Route path='/sign-up' element={<SignUP />}></Route>
         <Route path='/reset' element={<Reset />}></Route>
@@ -91,9 +92,6 @@ function App() {
           {/* free weakly model test  */}
           <Route path='/dashboard/free-weakly-modeltest' element={<DFreeWeaklyModelTest />}></Route>
           <Route path='/dashboard/free-weakly-modeltest/rutin' element={<FreeModelRutin />}></Route>
-
-
-
         </Route>
 
         {/* Normal Route */}
@@ -110,7 +108,10 @@ function App() {
         <Route path="/video/videomath" element={<VideoMath />} />
         <Route path="/video/videoscience" element={<VideoScience />} />
         <Route path="/video/videoict" element={<VideoIct />} />
-        <Route path="/video/videointernational" element={<VideoInternational />} />
+        <Route
+          path="/video/videointernational"
+          element={<VideoInternational />}
+        />
         <Route path="/video/videobangladesh" element={<VideoBangladesh />} />
         <Route path="/video/videosuggestion" element={<VideoSuggetion />} />
 
@@ -129,7 +130,6 @@ function App() {
 
         {/* Topic Job Solution segment Route */}
 
-
         <Route path="/subjectwise" element={<SubjectWise />} />
 
         {/* <=====================================Preminum Section ========================================> */}
@@ -140,25 +140,39 @@ function App() {
         <Route path="/quizmaster" element={<QuizMaster />} />
         <Route path="/wrongandunanswered" element={<WrongAndUnanswered />} />
 
-
         {/* read Topicaly  */}
         <Route path="/subjectwise/:subject" element={<SubjectWiseQuestion />} />
         <Route path="/subjectwise/topic/:subject" element={<AllTopic />} />
-        <Route path="/TopicWiseReadQuestion/:topic" element={<TopicWiseReadQuestion />} />
-        <Route path="/Topicread-topically/subtopic/:topic" element={<AllSubTopic />} />
-        <Route path="/sub-topics-wise-question/:subtopic" element={<SubTopicWiseQuestion />} />
-
+        <Route
+          path="/TopicWiseReadQuestion/:topic"
+          element={<TopicWiseReadQuestion />}
+        />
+        <Route
+          path="/Topicread-topically/subtopic/:topic"
+          element={<AllSubTopic />}
+        />
+        <Route
+          path="/sub-topics-wise-question/:subtopic"
+          element={<SubTopicWiseQuestion />}
+        />
 
         {/* <=====================================job sulation topic ========================================> */}
         {/* /jobsulationtopic */}
         <Route path="/jobsulationtopic" element={<JobSulation />} />
-        <Route path="/jobs-question-subject/:subject" element={<JobsSubjectWiseQuestion />} />
+        <Route
+          path="/jobs-question-subject/:subject"
+          element={<JobsSubjectWiseQuestion />}
+        />
         <Route path="/jobs-topic/:subject" element={<JobsTopic />} />
         <Route path="/jobs-subtopic/:topic" element={<JobsSubtopics />} />
-        <Route path="/jobs-question-topic/:topic" element={<JobsTopicQuestion />} />
-        <Route path="/jobs-question-subtopic/:subtopic" element={<JobsSubQuestion />} />
-
-
+        <Route
+          path="/jobs-question-topic/:topic"
+          element={<JobsTopicQuestion />}
+        />
+        <Route
+          path="/jobs-question-subtopic/:subtopic"
+          element={<JobsSubQuestion />}
+        />
 
         {/* privuse bcs  */}
         {/* LastBCS */}
@@ -167,6 +181,16 @@ function App() {
 
         {/* job sulation past  */}
         <Route path="/jobsulationpast" element={<Jobsulationpast />} />
+
+        {/* Exam Section */}
+        <Route
+          path="/free-weakly-model-test"
+          element={<FreeWeeklyModelTest />}
+        />
+        <Route path="/preparationforgread" element={<PreparationForGread />} />
+        <Route path="/jobsolution" element={<JobSolution />} />
+        <Route path="/bcsfornew" element={<BCSForNew />} />
+
         <Route path="/past-jobs-question/:category" element={<JobSulationPastQuestion />} />
 
 
@@ -175,7 +199,6 @@ function App() {
         <Route path="/free-weakly-model-test" element={<FreeWeeklyModelTest />} />
         <Route path="/free-weakly-model-test/rutin" element={<FreeWeaklyRutin />} />
         <Route path="/free-weally-start-exam" element={<FreeWeaklyStartExam />} />
-
 
 
       </Routes>

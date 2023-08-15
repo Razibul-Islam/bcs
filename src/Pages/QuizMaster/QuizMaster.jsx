@@ -5,7 +5,6 @@ const QuizMaster = () => {
   const [data, setData] = useState([]);
   const [currect, setCurrect] = useState(0);
   const [wrong, setWrong] = useState(0);
-  const [totalQuestion, setTotalQuestion] = useState(0);
   const [modal, setModal] = useState("hidden");
   const [liDisable, setLiDisable] = useState(false);
   const [answer, setAnswer] = useState(false);
@@ -72,7 +71,6 @@ const QuizMaster = () => {
     };
   };
   const minutes = Math.floor(remainingTime / 60);
-  // console.log(minutes);
   const seconds = remainingTime % 60;
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
     seconds
@@ -82,11 +80,11 @@ const QuizMaster = () => {
     e.preventDefault();
     const number = e.target.numberOfQuiz.value;
     const subject = e.target.subject.value;
-    setTotalQuestion(number);
 
     fetch(`http://localhost:5000/quiz-master?size=${number}&subject=${subject}`)
       .then((res) => res.json())
       .then((data) => setData(data));
+
     document.getElementById("numberBox").style.display = "none";
     handleCountDown();
   };
@@ -107,12 +105,6 @@ const QuizMaster = () => {
       setWrong(wrong + 1);
     }
   };
-
-  if (liDisable) {
-    console.log("disabled");
-  }
-
-  // console.log(data);
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -192,7 +184,11 @@ const QuizMaster = () => {
                 <li
                   className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
                     liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "a" === singleData.ans ? "bg-green-500" : ""}`}
+                  } ${
+                    answer && "a" === singleData.ans
+                      ? "bg-green-500 pointer-events-none"
+                      : ""
+                  }`}
                   id={singleData._id + "a"}
                   onClick={() =>
                     currectAnswer("a", singleData.ans, singleData._id)
@@ -203,7 +199,11 @@ const QuizMaster = () => {
                 <li
                   className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
                     liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "b" === singleData.ans ? "bg-green-500" : ""}`}
+                  } ${
+                    answer && "b" === singleData.ans
+                      ? "bg-green-500 pointer-events-none"
+                      : ""
+                  }`}
                   id={singleData._id + "b"}
                   onClick={() =>
                     currectAnswer("b", singleData.ans, singleData._id)
@@ -214,7 +214,11 @@ const QuizMaster = () => {
                 <li
                   className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
                     liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "c" === singleData.ans ? "bg-green-500" : ""}`}
+                  } ${
+                    answer && "c" === singleData.ans
+                      ? "bg-green-500 pointer-events-none"
+                      : ""
+                  }`}
                   id={singleData._id + "c"}
                   onClick={() =>
                     currectAnswer("c", singleData.ans, singleData._id)
@@ -225,7 +229,11 @@ const QuizMaster = () => {
                 <li
                   className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
                     liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "d" === singleData.ans ? "bg-green-500" : ""}`}
+                  } ${
+                    answer && "d" === singleData.ans
+                      ? "bg-green-500 pointer-events-none"
+                      : ""
+                  }`}
                   id={singleData._id + "d"}
                   onClick={() =>
                     currectAnswer("d", singleData.ans, singleData._id)
@@ -242,7 +250,7 @@ const QuizMaster = () => {
         <button
           className="bg-teal-500 px-4 py-2 rounded-sm text-white mb-10"
           onClick={() => setModal("block")}
-          disabled={totalQuestion == wrong + currect ? false : true}
+          disabled={data.length === wrong + currect ? false : true}
         >
           Submit
         </button>
@@ -264,7 +272,7 @@ const QuizMaster = () => {
                   <h1 className="flex justify-center text-xl items-center gap-4">
                     Your Result
                   </h1>
-                  <p>Total Question : {totalQuestion}</p>
+                  <p>Total Question : {data.length}</p>
                   <p>Correct Answer : {currect}</p>
                   <p>Wrong Answer : {wrong}</p>
                   <div className="flex justify-end items-center gap-5 mt-5">
@@ -275,7 +283,10 @@ const QuizMaster = () => {
                       Cancel
                     </label>
                     <label
-                      onClick={() => setAnswer(!answer)}
+                      onClick={() => {
+                        setAnswer(true);
+                        setModal("hidden");
+                      }}
                       className="px-4 py-1 text-white uppercase rounded-sm bg-green-500 cursor-pointer"
                     >
                       All Answer
