@@ -60,6 +60,12 @@ import JobsSubQuestion from './Pages/Study/JobSulationTopic/JobsSubQuestion';
 import LastBCS from './Pages/Study/LastBCS/LastBCS';
 import LastBCSQuestion from './Pages/Study/LastBCS/LastBCSQuestion';
 import Jobsulationpast from './Pages/Study/JobsulationPast/Jobsulationpast';
+import JobSulationPastQuestion from './Pages/Study/JobsulationPast/JobSulationPastQuestion';
+import DFreeWeaklyModelTest from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyModelTest';
+import FreeModelRutin from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeModelRutin';
+import FreeWeeklyModelTest from './Pages/Exam/FreeWeeklyModelTest/FreeWeeklyModelTest';
+import FreeWeaklyRutin from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyRutin';
+import FreeWeaklyStartExam from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyStartExam';
 
 function App() {
 
@@ -81,6 +87,13 @@ function App() {
           <Route path='/dashboard/read-topicaly' element={<ReadTopicaly />}></Route>
           <Route path='/dashboard/past-bcs-question' element={<BCSPastQuestion />}></Route>
           <Route path='/dashboard/read-topic-add' element={<TopicForReadTopic />}></Route>
+
+          {/* free weakly model test  */}
+          <Route path='/dashboard/free-weakly-modeltest' element={<DFreeWeaklyModelTest />}></Route>
+          <Route path='/dashboard/free-weakly-modeltest/rutin' element={<FreeModelRutin />}></Route>
+
+
+
         </Route>
 
         {/* Normal Route */}
@@ -154,6 +167,16 @@ function App() {
 
         {/* job sulation past  */}
         <Route path="/jobsulationpast" element={<Jobsulationpast />} />
+        <Route path="/past-jobs-question/:category" element={<JobSulationPastQuestion />} />
+
+
+        {/* FreeWeaklyModelTest */}
+
+        <Route path="/free-weakly-model-test" element={<FreeWeeklyModelTest />} />
+        <Route path="/free-weakly-model-test/rutin" element={<FreeWeaklyRutin />} />
+        <Route path="/free-weally-start-exam" element={<FreeWeaklyStartExam />} />
+
+
 
       </Routes>
       <ToastContainer />

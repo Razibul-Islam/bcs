@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const LastBCSQuestion = () => {
-let index = 1;
-    const {category} = useParams();
+const JobSulationPastQuestion = () => {
+
     const [question, setQuestion] = useState([]);
-
-
+    const {category} = useParams();
+    let index =1;
 
 
     useEffect(()=>{
-        const url = `http://localhost:5000/bcs-past-question?category=${category}&question_id=pastbcsquestion101`;
+        const url = `http://localhost:5000/jobs-past-question?category=${category}&question_id=pastQ101`;
         fetch(url)
         .then(res=> res.json())
         .then(data => setQuestion(data));
+        console.log(url);
     },[])
 
 
@@ -21,7 +21,7 @@ let index = 1;
 
     return (
         <div>
-            <h1 className='text-center my-5 '>{category}</h1>
+            <h1 className='text-center my-5'>{category}</h1>
 
             <div className="my-20  max-w-6xl mx-auto">
             {
@@ -44,4 +44,4 @@ let index = 1;
     );
 };
 
-export default LastBCSQuestion;
+export default JobSulationPastQuestion;
