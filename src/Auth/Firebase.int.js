@@ -1,10 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth"
 
-
-
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyC69rAbI5N1M0rvmeY_RIMCb34FV78HUZc",
     authDomain: "bcspioneer.firebaseapp.com",
@@ -14,11 +10,6 @@ const firebaseConfig = {
     appId: "1:151124891862:web:30f16e637c4fb1339fd177"
 };
 
-
 const app = initializeApp(firebaseConfig);
-
-
 const auth = getAuth(app);
-
-
 export default auth;

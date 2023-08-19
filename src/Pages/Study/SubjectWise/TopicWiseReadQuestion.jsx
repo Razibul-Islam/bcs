@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../Auth/Firebase.int";
 
 const TopicWiseReadQuestion = () => {
   const { topic } = useParams();
@@ -10,6 +13,7 @@ const TopicWiseReadQuestion = () => {
   const [eyeOn, setEyeOn] = useState(false);
   const [on, setOn] = useState(false);
   let index = 1;
+  const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
     const url = `http://localhost:5000/get-read-topically-question-by-topic?topic=${topic}&question_id=readtopicaly101`;
@@ -30,6 +34,25 @@ const TopicWiseReadQuestion = () => {
     const option = document.getElementById(ans);
     option.style.color = "green";
     console.log(option);
+  };
+
+  const handleFavorite = (question) => {
+    const email = user.email;
+    question.email = email;
+
+    fetch("http://localhost:5000/add-favorite", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(question),
+    }).then((data) => {
+      console.log(data);
+      if (data.status === 409) {
+        toast("Already Exist");
+      } else {
+        // console.log(data);
+        toast("Favorite added Successfully");
+      }
+    });
   };
 
   return (
@@ -113,7 +136,10 @@ const TopicWiseReadQuestion = () => {
                 >
                   উত্তর
                 </p>
-                <p className="border border-teal-600 py-1 px-4 rounded-full inline cursor-pointer">
+                <p
+                  onClick={() => handleFavorite(qs)}
+                  className="border border-teal-600 py-1 px-4 rounded-full inline cursor-pointer"
+                >
                   <FavoriteIcon />
                 </p>
                 <p

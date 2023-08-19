@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../Auth/Firebase.int";
+import { toast } from "react-toastify";
 
 const LastBCSQuestion = () => {
   let index = 1;
@@ -10,6 +13,7 @@ const LastBCSQuestion = () => {
   const [question, setQuestion] = useState([]);
   const [eyeOn, setEyeOn] = useState(false);
   const [on, setOn] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
     const url = `http://localhost:5000/bcs-past-question?category=${category}&question_id=pastbcsquestion101`;
@@ -17,7 +21,7 @@ const LastBCSQuestion = () => {
       .then((res) => res.json())
       .then((data) => setQuestion(data));
 
-    console.log(url);
+    // console.log(url);
   }, []);
 
   const handleShowExplain = (id) => {
@@ -29,11 +33,29 @@ const LastBCSQuestion = () => {
     }
   };
 
-
   const handleShowQuestion = (ans) => {
     const option = document.getElementById(ans);
     option.style.color = "green";
     console.log(option);
+  };
+
+  const handleFavorite = (question) => {
+    const email = user.email;
+    question.email = email;
+
+    fetch("http://localhost:5000/add-favorite", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(question),
+    }).then((data) => {
+      console.log(data);
+      if (data.status === 409) {
+        toast("Already Exist");
+      } else {
+        // console.log(data);
+        toast("Favorite added Successfully");
+      }
+    });
   };
 
   return (
@@ -48,7 +70,6 @@ const LastBCSQuestion = () => {
           )}
         </p>
       </div>
-
 
       <div className="my-20  max-w-6xl mx-auto">
         {question.map((qs) => {
@@ -118,7 +139,10 @@ const LastBCSQuestion = () => {
                 >
                   উত্তর
                 </p>
-                <p className="border border-teal-600 py-1 px-4 rounded-full inline cursor-pointer">
+                <p
+                  onClick={() => handleFavorite(qs)}
+                  className="border border-teal-600 py-1 px-4 rounded-full inline cursor-pointer"
+                >
                   <FavoriteIcon />
                 </p>
                 <p

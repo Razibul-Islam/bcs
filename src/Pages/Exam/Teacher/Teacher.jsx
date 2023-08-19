@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BCSForNew = () => {
+const Teacher = () => {
   return (
     <div>
       <div className="w-full h-[400px]">
@@ -13,7 +13,7 @@ const BCSForNew = () => {
             Start Exam
           </Link>
           <Link
-            to="/bcsfornew/bcsForNewRoutine"
+            to="/addteacher/addteacherRoutine"
             className="absolute text-white w-24 text-center py-2 bg-[#e74c3c] rounded-sm shadow-md top-0 left-0"
           >
             রুটিন
@@ -54,4 +54,4 @@ const BCSForNew = () => {
   );
 };
 
-export default BCSForNew;
+export default Teacher;
