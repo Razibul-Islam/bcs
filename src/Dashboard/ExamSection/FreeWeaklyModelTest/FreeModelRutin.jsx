@@ -29,12 +29,26 @@ const FreeModelRutin = () => {
     };
 
 
+    const handleDelete =(_id)=>{
+        const url = `http://localhost:5000/free-weakly-rutin-delete?_id=${_id}`
+        fetch(url, {
+            method: "DELETE"
+        })
+        .then(res=> res.json())
+        .then(data => {
+            if(data){
+                toast.success('Delete SuccrssFull')
+            }
+        })
+    }
+
+
     useEffect(()=>{
         const url = `http://localhost:5000/free-weakly-test-rutin`;
         fetch(url)
         .then(res => res.json())
         .then(data => setRutin(data))
-    },[])
+    },[handleDelete])
 
     return (
         <div>
@@ -50,9 +64,10 @@ const FreeModelRutin = () => {
                             <div className='text-center p-5 border border-dashed h-40 rounded'>
                                 <h5>{rutins.footer}</h5>
                                 <h4 className='text-sm'>{rutins.title}</h4>
-                                {rutins.descripetion.split('...').map(p=> <h4 className='text-sm'>{p}</h4> )}
+                                {rutins.descripetion?.split('...').map(p=> <h4 className='text-sm'>{p}</h4> )}
 
                                 <small>ফ্রি সাপ্তাহিক মডেল টেস্ট প্রতি শুক্রবার সকলের জন্য</small>
+                                <button onClick={()=>handleDelete(rutins._id)} className='px-4 bg-red-500 rounded-3xl text-white'>Delete</button>
                             </div>
                         )
                     })

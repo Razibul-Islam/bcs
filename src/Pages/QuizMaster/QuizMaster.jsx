@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
 const QuizMaster = () => {
@@ -9,7 +9,9 @@ const QuizMaster = () => {
   const [modal, setModal] = useState("hidden");
   const [liDisable, setLiDisable] = useState(false);
   const [answer, setAnswer] = useState(false);
-  const [time, setTime] = useState("");
+  const [selectedTime, setSelectedTime] = useState(5); // Default 5 minutes
+  const [timeRemaining, setTimeRemaining] = useState(selectedTime * 60);
+
 
   const options = [
     { value: "বাংলা সাহিত্য", label: "বাংলা সাহিত্য" },
@@ -48,35 +50,30 @@ const QuizMaster = () => {
     { value: "পরিবর্তনশীল তথ্য", label: "পরিবর্তনশীল তথ্য" },
   ];
 
-  const initialRemainingTime = 5 * 60;
 
-  const [remainingTime, setRemainingTime] = useState(initialRemainingTime);
-  console.log(remainingTime);
-  const handleCountDown = () => {
-    const interval = setInterval(() => {
-      setRemainingTime((prevRemainingTime) => {
-        if (prevRemainingTime > 0) {
-          return prevRemainingTime - 1;
-        } else {
-          setLiDisable(true);
-          clearInterval(interval);
-          setModal("block");
-          setAnswer(!answer);
-          return 0;
-        }
-      });
-    }, 1000);
+  useEffect(() => {
+    setTimeRemaining(selectedTime * 60);
+  }, [selectedTime]);
 
-    return () => {
-      clearInterval(interval);
-    };
+  
+  const handleCount = ()=>{
+    if (timeRemaining > 0) {
+      const interval = setInterval(() => {
+        setTimeRemaining(prevTime => prevTime - 1);
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  } 
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
-  const minutes = Math.floor(remainingTime / 60);
-  // console.log(minutes);
-  const seconds = remainingTime % 60;
-  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
-    seconds
-  ).padStart(2, "0")}`;
+
+
+
 
   const handleQuestion = (e) => {
     e.preventDefault();
@@ -88,8 +85,9 @@ const QuizMaster = () => {
       .then((res) => res.json())
       .then((data) => setData(data));
     document.getElementById("numberBox").style.display = "none";
-    handleCountDown();
+    handleCount();
   };
+
 
   const currectAnswer = (option, answer, id) => {
     var div = document.getElementById(id);
@@ -112,7 +110,7 @@ const QuizMaster = () => {
     console.log("disabled");
   }
 
-  // console.log(data);
+
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -136,17 +134,15 @@ const QuizMaster = () => {
           />
         </div>
         <div className="flex flex-wrap md:flex-nowrap mt-3 gap-5">
-          <select
-            className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none"
-            name="numberOfQuiz"
-            onChange={(e) => setTime(e.target.value)}
-          >
-            <option value={null}>--Select Quiz Number--</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
+          <select name="numberOfQuiz" value={selectedTime} className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none" onChange={e => setSelectedTime(Number(e.target.value))}>
+            <option value={5}>20</option>
+            <option value={7.3}>30</option>
+            <option value={10}>40</option>
+            {/* Add more options as needed */}
           </select>
-          <select
+          {/* <select
+            onChange={handleTime}
+            id="time-quiz"
             className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none"
             name="ExamTime"
           >
@@ -155,21 +151,21 @@ const QuizMaster = () => {
                 time === "20"
                   ? "5"
                   : time === "30"
-                  ? "7:30"
-                  : time === "40"
-                  ? "10"
-                  : `${null}`
+                    ? "7:30"
+                    : time === "40"
+                      ? "10"
+                      : `${null}`
               }
             >
               {time === "20"
                 ? "5"
                 : time === "30"
-                ? "7:30"
-                : time === "40"
-                ? "10"
-                : "Select an option"}
+                  ? "7:30"
+                  : time === "40"
+                    ? "10"
+                    : "Select an option"}
             </option>
-          </select>
+          </select> */}
           <button className="w-full bg-teal-300 px-4 rounded-md py-2">
             Start Quiz
           </button>
@@ -177,7 +173,7 @@ const QuizMaster = () => {
       </form>
 
       <div className="flex justify-end">
-        <div>{formattedTime}</div>
+        <div>{formatTime(timeRemaining)}</div>
       </div>
 
       <div className="mt-10">
@@ -190,9 +186,8 @@ const QuizMaster = () => {
               </h1>
               <ul id={singleData._id} className="space-y-2 text-base">
                 <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
-                    liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "a" === singleData.ans ? "bg-green-500" : ""}`}
+                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
+                    } ${answer && "a" === singleData.ans ? "bg-green-500" : ""}`}
                   id={singleData._id + "a"}
                   onClick={() =>
                     currectAnswer("a", singleData.ans, singleData._id)
@@ -201,9 +196,8 @@ const QuizMaster = () => {
                   ক) {singleData.opA}
                 </li>
                 <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
-                    liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "b" === singleData.ans ? "bg-green-500" : ""}`}
+                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
+                    } ${answer && "b" === singleData.ans ? "bg-green-500" : ""}`}
                   id={singleData._id + "b"}
                   onClick={() =>
                     currectAnswer("b", singleData.ans, singleData._id)
@@ -212,9 +206,8 @@ const QuizMaster = () => {
                   খ) {singleData.opB}
                 </li>
                 <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
-                    liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "c" === singleData.ans ? "bg-green-500" : ""}`}
+                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
+                    } ${answer && "c" === singleData.ans ? "bg-green-500" : ""}`}
                   id={singleData._id + "c"}
                   onClick={() =>
                     currectAnswer("c", singleData.ans, singleData._id)
@@ -223,9 +216,8 @@ const QuizMaster = () => {
                   গ) {singleData.opC}
                 </li>
                 <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${
-                    liDisable ? "pointer-events-none opacity-50" : ""
-                  } ${answer && "d" === singleData.ans ? "bg-green-500" : ""}`}
+                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
+                    } ${answer && "d" === singleData.ans ? "bg-green-500" : ""}`}
                   id={singleData._id + "d"}
                   onClick={() =>
                     currectAnswer("d", singleData.ans, singleData._id)

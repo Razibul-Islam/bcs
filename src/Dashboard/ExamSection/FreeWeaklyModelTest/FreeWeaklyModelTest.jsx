@@ -58,27 +58,24 @@ const FreeWeaklyModelTest = () => {
     };
 
 
-    const handleCreateExam = (e) =>{
+    const handleCreateExam = (e) => {
         e.preventDefault();
         const examQuestion = question;
         const time = e.target.time.value;
-        const startTime = e.target.startTime.value;
         const startDate = e.target.startDate.value;
-        const endTime = e.target.endTime.value;
-        const endDate = e.target.endDate.value;
         const participate = [];
 
-        const data = {examQuestion, time, startDate, startTime, endDate, endTime, participate};
+        const data = { examQuestion, time, startDate, participate };
         console.log(data);
         fetch('http://localhost:5000/free-weakly-text-exam', {
             method: "POST",
-            headers:{
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-        .then(res=> res.json())
-        .then(data => console.log(data));
+            .then(res => res.json())
+            .then(data => console.log(data));
     }
 
 
@@ -95,7 +92,8 @@ const FreeWeaklyModelTest = () => {
             <div className='flex justify-between items-center'>
                 <div className='flex gap-5'>
                     <Link to='/dashboard/free-weakly-modeltest/rutin' className='bg-orange-500 px-5 py-1 text-white rounded-sm shadow-lg'>Rutine</Link>
-                    <Link className='bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg'>Result</Link>
+                    <Link className='bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg'>Examinee</Link>
+                    <Link to='/dashboard/free-weakly-modeltest/exam-list' className='bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg'>Exam List</Link>
                     <button onClick={() => setModal(!modal)} className='bg-purple-600 text-white px-5 py-1 rounded-sm shadow-lg'>Add New Question</button>
                 </div>
                 <div className='flex gap-5'>
@@ -113,16 +111,9 @@ const FreeWeaklyModelTest = () => {
                         <hr className='my-5' />
                         <form onSubmit={handleCreateExam} className='my-5'>
                             <input type="text" placeholder='Enter Time (Minute)' name='time' className='p-2 border  block focus:outline-none w-full mb-3' />
-                            <small>Start Date And Time</small>
-                            <div className='flex gap-2'>
-                                <input type="date" name='startDate' className='p-2 border  block focus:outline-none w-full' />
-                                <input type="time" name='startTime' className='p-2 border  block focus:outline-none w-full' />
-                            </div>
-                            <small>End Date And Time</small>
-                            <div className='flex gap-2'>
-                                <input type="date" name='endDate' className='p-2 border  block focus:outline-none w-full' />
-                                <input type="time" name='endTime' className='p-2 border  block focus:outline-none w-full' />
-                            </div>
+                            <input type="text" placeholder='Cuts Mark' name='cutsMark' className='p-2 border  block focus:outline-none w-full mb-3' />
+                            <small>Exam Date</small>
+                            <input type="date" name='startDate' className='p-2 border  block focus:outline-none w-full' />
                             <button className='bg-green-500 px-5 py-1 shadow mt-5 rounded text-white'>Submit</button>
                         </form>
                     </div>
@@ -143,7 +134,7 @@ const FreeWeaklyModelTest = () => {
                             })
                         }
                     </div>
-                    
+
                 </div>
                 <div className='w-1/2 border-l mt-10 shadow-lg p-5'>
                     <div className='text-center'>

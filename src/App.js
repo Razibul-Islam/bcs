@@ -66,6 +66,11 @@ import FreeModelRutin from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeMode
 import FreeWeeklyModelTest from './Pages/Exam/FreeWeeklyModelTest/FreeWeeklyModelTest';
 import FreeWeaklyRutin from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyRutin';
 import FreeWeaklyStartExam from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyStartExam';
+import FreeWeaklyModelTestArchive from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyModelTestArchive';
+import FreeWeaklyArchive from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyArchive';
+import FreeWeaklyExamList from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyExamList';
+import FreeWeaklyResult from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResult';
+import FreeWeaklyResultSingleView from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResultSingleView';
 
 function App() {
 
@@ -91,8 +96,7 @@ function App() {
           {/* free weakly model test  */}
           <Route path='/dashboard/free-weakly-modeltest' element={<DFreeWeaklyModelTest />}></Route>
           <Route path='/dashboard/free-weakly-modeltest/rutin' element={<FreeModelRutin />}></Route>
-
-
+          <Route path='/dashboard/free-weakly-modeltest/exam-list' element={<FreeWeaklyExamList />}></Route>
 
         </Route>
 
@@ -175,9 +179,10 @@ function App() {
         <Route path="/free-weakly-model-test" element={<FreeWeeklyModelTest />} />
         <Route path="/free-weakly-model-test/rutin" element={<FreeWeaklyRutin />} />
         <Route path="/free-weally-start-exam" element={<FreeWeaklyStartExam />} />
-
-
-
+        <Route path="/free-weakly-model-test/archive" element={<FreeWeaklyModelTestArchive />} />
+        <Route path="/free-waekly-archive/:_id" element={<FreeWeaklyArchive />} />
+        <Route path="/free-weakly-result" element={<FreeWeaklyResult />} />
+        <Route path="/free-weakly-result/:_id" element={<FreeWeaklyResultSingleView />} />
       </Routes>
       <ToastContainer />
     </div>
