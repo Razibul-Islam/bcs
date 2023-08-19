@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const JobSolution = () => {
   return (
@@ -8,21 +9,24 @@ const JobSolution = () => {
           <p className="text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10">
             Start Exam
           </p>
-          <span className="absolute text-white w-24 text-center py-2 bg-[#e74c3c] rounded-sm shadow-md top-0 left-0">
+          <Link
+            to="/jobsolution/jobsolutionRoutine"
+            className="absolute text-white w-24 text-center py-2 bg-[#e74c3c] rounded-sm shadow-md top-0 left-0"
+          >
             রুটিন
-          </span>
+          </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-blue-400 rotate-45 top-16 md:top-24 left-14 "></span>
-          <span className="absolute text-white  w-24 text-center py-2 bg-[#2ecc71] rounded-sm shadow-md top-0 right-0">
+          <Link className="absolute text-white  w-24 text-center py-2 bg-[#2ecc71] rounded-sm shadow-md top-0 right-0">
             ফলাফল
-          </span>
+          </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-orange-400 -rotate-45 top-16 md:top-24 right-14"></span>
-          <span className="absolute text-white  w-24 text-center py-2 bg-[#f39c12] rounded-sm shadow-md bottom-0 left-0">
+          <Link className="absolute text-white  w-24 text-center py-2 bg-[#f39c12] rounded-sm shadow-md bottom-0 left-0">
             আর্কাইভ
-          </span>
+          </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-pink-400 -rotate-45 bottom-16 md:bottom-24 left-14"></span>
-          <span className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6] rounded-sm shadow-md bottom-0 right-0">
+          <Link className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6] rounded-sm shadow-md bottom-0 right-0">
             মেরিট লিস্ট
-          </span>
+          </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-teal-400 rotate-45 bottom-16 md:bottom-24 right-14 "></span>
         </div>
       </div>

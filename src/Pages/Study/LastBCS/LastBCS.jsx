@@ -28,7 +28,6 @@
 //     console.log(option);
 //   };
 
-
 //   const handleAddFavorite = (data) => {
 //     const ans = data.ans;
 //     const explain = data.explain;
@@ -51,7 +50,6 @@
 //     .then(res => res.json())
 //     .then(data => console.log(data))
 //   }
-
 
 //   return (
 //     <div className="max-w-6xl mx-auto mt-10 px-5">
@@ -137,28 +135,30 @@
 
 // export default LastBCS;
 
-
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const LastBCS = () => {
-  const [category, setCategory] = useState([])
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/bcs-past-category-get')
-      .then(res => res.json())
-      .then(data => setCategory(data))
-  }, [])
-
+    fetch("http://localhost:5000/bcs-past-category-get")
+      .then((res) => res.json())
+      .then((data) => setCategory(data));
+  }, []);
 
   return (
     <div>
-      <h1 className='text-center my-5 '>বিগত বিসিএস প্রশ্ন</h1>
-      <div className=''>
-        {
-          category.map(cate => <Link className=' bg-teal-500 w-72 block mx-auto my-3 text-center rounded-full py-1 text-white' to={`/lastbcs/${cate.category}`}>{cate.category}</Link>)
-        }
+      <h1 className="text-center my-5 ">বিগত বিসিএস প্রশ্ন</h1>
+      <div className="">
+        {category.map((cate) => (
+          <Link
+            className=" bg-teal-500 w-72 block mx-auto my-3 text-center rounded-full py-1 text-white"
+            to={`/lastbcs/${cate.category}`}
+          >
+            {cate.category}
+          </Link>
+        ))}
       </div>
     </div>
   );

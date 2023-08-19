@@ -111,7 +111,7 @@ const FreeWeaklyModelTest = () => {
                         <hr className='my-5' />
                         <form onSubmit={handleCreateExam} className='my-5'>
                             <input type="text" placeholder='Enter Time (Minute)' name='time' className='p-2 border  block focus:outline-none w-full mb-3' />
-                            <input type="text" placeholder='Cuts Mark' name='cutsMark' className='p-2 border  block focus:outline-none w-full mb-3' />
+                            <input type="text" placeholder='Cuts Mark' name='cutsark' className='p-2 border  block focus:outline-none w-full mb-3' />
                             <small>Exam Date</small>
                             <input type="date" name='startDate' className='p-2 border  block focus:outline-none w-full' />
                             <button className='bg-green-500 px-5 py-1 shadow mt-5 rounded text-white'>Submit</button>

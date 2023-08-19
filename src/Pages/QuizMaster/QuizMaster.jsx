@@ -5,7 +5,6 @@ const QuizMaster = () => {
   const [data, setData] = useState([]);
   const [currect, setCurrect] = useState(0);
   const [wrong, setWrong] = useState(0);
-  const [totalQuestion, setTotalQuestion] = useState(0);
   const [modal, setModal] = useState("hidden");
   const [liDisable, setLiDisable] = useState(false);
   const [answer, setAnswer] = useState(false);
@@ -79,11 +78,11 @@ const QuizMaster = () => {
     e.preventDefault();
     const number = e.target.numberOfQuiz.value;
     const subject = e.target.subject.value;
-    setTotalQuestion(number);
 
     fetch(`http://localhost:5000/quiz-master?size=${number}&subject=${subject}`)
       .then((res) => res.json())
       .then((data) => setData(data));
+
     document.getElementById("numberBox").style.display = "none";
     handleCount();
   };
@@ -234,7 +233,7 @@ const QuizMaster = () => {
         <button
           className="bg-teal-500 px-4 py-2 rounded-sm text-white mb-10"
           onClick={() => setModal("block")}
-          disabled={totalQuestion == wrong + currect ? false : true}
+          disabled={data.length === wrong + currect ? false : true}
         >
           Submit
         </button>
@@ -256,7 +255,7 @@ const QuizMaster = () => {
                   <h1 className="flex justify-center text-xl items-center gap-4">
                     Your Result
                   </h1>
-                  <p>Total Question : {totalQuestion}</p>
+                  <p>Total Question : {data.length}</p>
                   <p>Correct Answer : {currect}</p>
                   <p>Wrong Answer : {wrong}</p>
                   <div className="flex justify-end items-center gap-5 mt-5">
@@ -267,7 +266,10 @@ const QuizMaster = () => {
                       Cancel
                     </label>
                     <label
-                      onClick={() => setAnswer(!answer)}
+                      onClick={() => {
+                        setAnswer(true);
+                        setModal("hidden");
+                      }}
                       className="px-4 py-1 text-white uppercase rounded-sm bg-green-500 cursor-pointer"
                     >
                       All Answer
