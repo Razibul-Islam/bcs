@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const FreeWeaklyModelTest = () => {
+const BcsForNewRoutineModelTest = () => {
   const [alQuestionm, setAllQuestion] = useState([]);
   const [question, setQuestion] = useState([]);
   let index = 1;
@@ -56,23 +56,25 @@ const FreeWeaklyModelTest = () => {
     e.preventDefault();
     const examQuestion = question;
     const time = e.target.time.value;
-    const startTime = e.target.startTime.value;
+    // const startTime = e.target.startTime.value;
     const startDate = e.target.startDate.value;
-    const endTime = e.target.endTime.value;
-    const endDate = e.target.endDate.value;
+    // const endTime = e.target.endTime.value;
+    // const endDate = e.target.endDate.value;
+    const cut = e.target.cut.value;
     const participate = [];
 
     const data = {
       examQuestion,
       time,
       startDate,
-      startTime,
-      endDate,
-      endTime,
+      // startTime,
+      // endDate,
+      // endTime,
       participate,
+      cut,
     };
-    console.log(data);
-    fetch("http://localhost:5000/free-weakly-text-exam", {
+    // console.log(data);
+    fetch("http://localhost:5000/Bcs-For-New-exam", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -80,7 +82,9 @@ const FreeWeaklyModelTest = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        toast.success("Exam question added successful");
+      });
   };
 
   useEffect(() => {
@@ -89,14 +93,13 @@ const FreeWeaklyModelTest = () => {
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));
   }, []);
-
   return (
     <div className="p-5">
-      <h1 className="text-center my-5">Free Weakly Model Test</h1>
+      <h1 className="text-center my-5">BCS For New</h1>
       <div className="flex justify-between items-center">
         <div className="flex gap-5">
           <Link
-            to="/dashboard/free-weakly-modeltest/rutin"
+            to="/dashboard/bcsForNew/routine"
             className="bg-orange-500 px-5 py-1 text-white rounded-sm shadow-lg"
           >
             Rutine
@@ -131,7 +134,7 @@ const FreeWeaklyModelTest = () => {
       <section className="flex justify-between gap-5">
         <div className="w-1/2 border-r mt-10 shadow-lg p-5">
           <div>
-            <h2 className="text-center">Free Weakly Model Test Question</h2>
+            <h2 className="text-center">BCS For New Question</h2>
             <p className="text-center">Total Mcq : {question.length}</p>
             <hr className="my-5" />
             <form onSubmit={handleCreateExam} className="my-5">
@@ -141,21 +144,28 @@ const FreeWeaklyModelTest = () => {
                 name="time"
                 className="p-2 border  block focus:outline-none w-full mb-3"
               />
-              <small>Start Date And Time</small>
+
+              <small>Exam Date</small>
               <div className="flex gap-2">
                 <input
                   type="date"
                   name="startDate"
                   className="p-2 border  block focus:outline-none w-full"
                 />
-                <input
+                {/* <input
                   type="time"
                   name="startTime"
                   className="p-2 border  block focus:outline-none w-full"
+                /> */}
+                <input
+                  type="text"
+                  name="cut"
+                  className="p-2 border  block focus:outline-none w-full"
+                  placeholder="Cuts Mark"
                 />
               </div>
-              <small>End Date And Time</small>
-              <div className="flex gap-2">
+              {/* <small>End Date And Time</small> */}
+              {/* <div className="flex gap-2">
                 <input
                   type="date"
                   name="endDate"
@@ -166,7 +176,7 @@ const FreeWeaklyModelTest = () => {
                   name="endTime"
                   className="p-2 border  block focus:outline-none w-full"
                 />
-              </div>
+              </div> */}
               <button className="bg-green-500 px-5 py-1 shadow mt-5 rounded text-white">
                 Submit
               </button>
@@ -387,4 +397,4 @@ const FreeWeaklyModelTest = () => {
   );
 };
 
-export default FreeWeaklyModelTest;
+export default BcsForNewRoutineModelTest;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const FreeModelRutin = () => {
+const ExperienceRoutine = () => {
   const [rutin, setRutin] = useState([]);
   const handleAddRutine = (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ const FreeModelRutin = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("http://localhost:5000/free-weakly-test-rutin", {
+    fetch("http://localhost:5000/experience-bcs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const FreeModelRutin = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/free-weakly-test-routine-delete?_id=${_id}`, {
+    fetch(`http://localhost:5000/experience-bcs-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,24 +41,20 @@ const FreeModelRutin = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/free-weakly-test-rutin`;
+    const url = `http://localhost:5000/experience-bcs`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));
   }, []);
-
   return (
     <div>
-      <h1 className="text-center my-5 ">Free weakly Model Test Rutine</h1>
+      <h1 className="text-center my-5 ">Experience BCS Rutine</h1>
       <div className="my-10 p-5 "></div>
       <div className="flex justify-between gap-5 p-5">
         <div className="w-2/3 shadow-lg p-5 grid grid-cols-2 gap-5 ">
           {rutin.map((rutins) => {
             return (
-              <div
-                key={rutins._id}
-                className="text-center p-5 border border-dashed h-40 rounded"
-              >
+              <div className="text-center p-5 border border-dashed h-40 rounded">
                 <p
                   onClick={() => handleDelete(rutins._id)}
                   className="flex justify-end items-start "
@@ -107,4 +103,4 @@ const FreeModelRutin = () => {
   );
 };
 
-export default FreeModelRutin;
+export default ExperienceRoutine;
