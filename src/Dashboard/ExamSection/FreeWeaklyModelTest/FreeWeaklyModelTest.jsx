@@ -63,9 +63,10 @@ const FreeWeaklyModelTest = () => {
         const examQuestion = question;
         const time = e.target.time.value;
         const startDate = e.target.startDate.value;
+        const cutsark = e.target.cutsark.value;
         const participate = [];
 
-        const data = { examQuestion, time, startDate, participate };
+        const data = { examQuestion, time, startDate, participate, cutsark };
         console.log(data);
         fetch('http://localhost:5000/free-weakly-text-exam', {
             method: "POST",

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../Auth/Firebase.int';
+import { useNavigate } from 'react-router-dom';
 
 const FreeWeaklyStartExam = () => {
 
-    const [time, setTime] = useState("");
     const [question, setQuestion] = useState({});
     let index = 1;
     const [wrong, setWrong] = useState(0);
     const [correctAns, setCorrectAns] = useState(0);
     const [user, loading, error] = useAuthState(auth);
-    const [participate, setParticipate] = useState([])
+    const navigate = useNavigate()
 
 
     const [times, setTimes] = useState(0);
@@ -82,10 +82,9 @@ const FreeWeaklyStartExam = () => {
         const examDate = date;
         const userName = user.displayName;
         const userEmail = user.email;
+        const cutsark = question.cutsark;
         const totalQuestion = question.examQuestion.length;
-        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion };
-
-         setParticipate(prev => [...prev, userEmail]);
+        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark};
 
         fetch('http://localhost:5000/free-weakly-result', {
             method: "POST",
@@ -96,17 +95,28 @@ const FreeWeaklyStartExam = () => {
         })
             .then(res => res.json())
             .then(data => console.log(data))
-        // console.log(data);
 
+        let participate = question.participate;
+        participate.push(userEmail)
 
-
-        // fetch(`http://localhost:5000/free-weakly-exam-update?date=${date}$email=${userEmail}`, {
-        //     method: "PUT",
-        // })
-        //     .then(res => res.json())
-        //     .then(data => console.log(data))
+        fetch(`http://localhost:5000/updated-free-weakly-participet?_id=${question._id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ participate })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
 
+
+   
+    const found = question?.participate?.find(email => email === user?.email);
+
+    if (found) {
+        navigate('/already-attent-exam')
+    } 
 
 
 
@@ -134,7 +144,6 @@ const FreeWeaklyStartExam = () => {
             .then(res => res.json())
             .then(data => {
                 setQuestion(data)
-                setParticipate(data.participate)
             })
     }, [])
 
@@ -169,3 +178,7 @@ const FreeWeaklyStartExam = () => {
 };
 
 export default FreeWeaklyStartExam;
+
+
+
+
