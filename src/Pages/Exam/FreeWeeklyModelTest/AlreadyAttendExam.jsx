@@ -9,7 +9,7 @@ const AlreadyAttendExam = () => {
             <p className='my-3'>আপনার পরীক্ষার ফলাফল জানতে "ফলাফল" বাটনে ক্লিক করুন ।</p>
             <p className='mt-3 mb-10'>পরীক্ষায় আপনার অবস্থান জানতে "মেরিট লিস্ট" বাটনে ক্লিক করুন ।</p>
 
-            <Link to='/free-weakly-model-test' className='bg-pink-500 px-5 py-1 text-white'>Back</Link>
+            <Link to='/' className='bg-pink-500 px-5 py-1 text-white'>Back</Link>
         </div> 
     );
 };

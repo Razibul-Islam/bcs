@@ -22,6 +22,7 @@ const FreeWeaklyResultSingleView = () => {
             .then(res => res.json())
             .then(data => setPosition(data))
     }, [result])
+    
     useEffect(() => {
         fetch(`http://localhost:5000/free-weakly-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`)
             .then(res => res.json())

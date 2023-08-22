@@ -47,9 +47,9 @@ const FreeWeeklyModelTest = () => {
             আর্কাইভ
           </Link>
           <span className="absolute w-[70px]  h-[2px] bg-pink-400 -rotate-45 bottom-16  left-14"></span>
-          <span className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6]  rounded-3xl shadow-md bottom-0 right-0">
+          <Link to='/free-weakly-model-test/merit-list' className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6]  rounded-3xl shadow-md bottom-0 right-0">
             মেরিট লিস্ট
-          </span>
+          </Link>
           <span className="absolute w-[70px]  h-[2px] bg-teal-400 rotate-45 bottom-16 4 right-14 "></span>
         </div>
       </div>

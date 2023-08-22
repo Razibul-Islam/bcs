@@ -101,6 +101,8 @@ import TeacherRoutineD from "./Dashboard/ExamSection/Teacher/TeacherRoutineD";
 import PdfRutine from "./Pages/Study/PDF/PdfRutine";
 import UserList from "./Dashboard/UserList";
 import AlreadyAttendExam from "./Pages/Exam/FreeWeeklyModelTest/AlreadyAttendExam";
+import FreeWeaklyMeritList from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyMeritList";
+import FreeWeaklyMeritListSingleView from "./Pages/Exam/FreeWeeklyModelTest/MeitListSingleView";
 
 function App() {
   return (
@@ -353,6 +355,7 @@ function App() {
         <Route path="/free-weakly-result" element={<FreeWeaklyResult />} />
         <Route path="/free-weakly-result/:_id" element={<FreeWeaklyResultSingleView />} />
         <Route path='/already-attent-exam' element={<AlreadyAttendExam />}></Route>
+        <Route path='/free-weakly-meritlist-single/:date' element={<FreeWeaklyMeritListSingleView />}></Route>
         <Route
           path="/free-weakly-model-test"
           element={<FreeWeeklyModelTest />}
@@ -364,6 +367,10 @@ function App() {
         <Route
           path="/free-weally-start-exam"
           element={<FreeWeaklyStartExam />}
+        />
+        <Route
+          path="/free-weakly-model-test/merit-list"
+          element={<FreeWeaklyMeritList />}
         />
 
         {/* BCS For New */}
