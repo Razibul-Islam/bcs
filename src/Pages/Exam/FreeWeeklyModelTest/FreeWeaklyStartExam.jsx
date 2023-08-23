@@ -84,7 +84,8 @@ const FreeWeaklyStartExam = () => {
         const userEmail = user.email;
         const cutsark = question.cutsark;
         const totalQuestion = question.examQuestion.length;
-        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark};
+        const examName = 'ফ্রি সাপ্তাহিক মডেল টেস্ট'
+        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark, examName};
 
         fetch('http://localhost:5000/free-weakly-result', {
             method: "POST",
@@ -178,7 +179,3 @@ const FreeWeaklyStartExam = () => {
 };
 
 export default FreeWeaklyStartExam;
-
-
-
-

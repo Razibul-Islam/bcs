@@ -70,6 +70,7 @@ import FreeWeaklyArchive from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyArchiv
 import FreeWeaklyExamList from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyExamList';
 import FreeWeaklyResult from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResult';
 import FreeWeaklyResultSingleView from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResultSingleView';
+
 import BCSForNew from "./Pages/Exam/BCSForNew/BCSForNew";
 import JobSolution from "./Pages/Exam/JobSolution/JobSolution";
 import PreparationForGread from "./Pages/Exam/PreparationForGread/PreparationForGread";
@@ -100,9 +101,48 @@ import TeacherTestModel from "./Dashboard/ExamSection/Teacher/TeacherTestModel";
 import TeacherRoutineD from "./Dashboard/ExamSection/Teacher/TeacherRoutineD";
 import PdfRutine from "./Pages/Study/PDF/PdfRutine";
 import UserList from "./Dashboard/UserList";
+import BCSForNewStartExam from "./Pages/Exam/BCSForNew/BCSForNewStartExam";
+import JobSolutionExam from "./Pages/Exam/JobSolution/JobSolutionExam";
+import PreparationForGreadExam from "./Pages/Exam/PreparationForGread/PreparationForGreadExam";
+import BankExam from "./Pages/Exam/Bank/BankExam";
+import BCSForExperienceExam from "./Pages/Exam/BCSForExperience/BCSForExperienceExam";
+import SubjectWisePreparationExam from "./Pages/Exam/SubjectWisePreparation/SubjectWisePreparationExam";
+import TeacherExam from "./Pages/Exam/Teacher/TeacherExam";
+import BCSForNewArchive from "./Pages/Exam/BCSForNew/BCSForNewArchive";
+import BCSForNewModelTestArchive from "./Pages/Exam/BCSForNew/BCSForNewModelTestArchive";
+import AlreadyAttendExam from "./Pages/Exam/AlreadyAttendExam";
+import BCSForNewResult from "./Pages/Exam/BCSForNew/BCSForNewResult";
+import BcsForNewResultSingle from "./Pages/Exam/BCSForNew/BcsForNewResultSingle";
+import BCSForNewMaritList from "./Pages/Exam/BCSForNew/BCSForNewMaritList";
+import BankArchiveSingle from "./Pages/Exam/Bank/BankArchiveSingle";
+import BankArchive from "./Pages/Exam/Bank/BankArchive";
+import BankResult from "./Pages/Exam/Bank/BankResult";
+import BankResultSignle from "./Pages/Exam/Bank/BankResultSignle";
+import BCSForExperienceArchive from "./Pages/Exam/BCSForExperience/BCSForExperienceArchive";
+import BCSForExperienceArchiveSingle from "./Pages/Exam/BCSForExperience/BCSForExperienceArchiveSingle";
+import BCSForExperienceResult from "./Pages/Exam/BCSForExperience/BCSForExperienceResult";
+import BCSForExperienceResultSingle from "./Pages/Exam/BCSForExperience/BCSForExperienceResultSingle";
+import JobSolutionArchive from "./Pages/Exam/JobSolution/JobSolutionArchive";
+import JobSolutionArchiveSingle from "./Pages/Exam/JobSolution/JobSolutionArchiveSingle";
+import JobSolutionResult from "./Pages/Exam/JobSolution/JobSolutionResult";
+import JobSulationResultSingle from "./Pages/Exam/JobSolution/JobSulationResultSingle";
+import PreparationForGreadArchive from "./Pages/Exam/PreparationForGread/PreparationForGreadArchive";
+import PreparationForGreadArchiveSingle from "./Pages/Exam/PreparationForGread/PreparationForGreadArchiveSingle";
+import PreparationforgreadResult from "./Pages/Exam/PreparationForGread/PreparationforgreadResult";
+import PreparationforgreadResultSingle from "./Pages/Exam/PreparationForGread/PreparationforgreadResultSingle";
+import SubjectWisePreparationArchive from "./Pages/Exam/SubjectWisePreparation/SubjectWisePreparationArchive";
+import SubjectWisePreparationArchiveSingle from "./Pages/Exam/SubjectWisePreparation/SubjectWisePreparationArchiveSingle";
+import SubjectWisePreparationResult from "./Pages/Exam/SubjectWisePreparation/SubjectWisePreparationResult";
+import SubjectWisePreparationResultSingle from "./Pages/Exam/SubjectWisePreparation/SubjectWisePreparationResultSingle";
+import TeacherArchive from "./Pages/Exam/Teacher/TeacherArchive";
+import TeacherArchiveSingle from "./Pages/Exam/Teacher/TeacherArchiveSingle";
+import TeacherResult from "./Pages/Exam/Teacher/TeacherResult";
+import TeacherResultSingle from "./Pages/Exam/Teacher/TeacherResultSingle";
+
 import AlreadyAttendExam from "./Pages/Exam/FreeWeeklyModelTest/AlreadyAttendExam";
 import FreeWeaklyMeritList from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyMeritList";
 import FreeWeaklyMeritListSingleView from "./Pages/Exam/FreeWeeklyModelTest/MeitListSingleView";
+
 
 function App() {
   return (
@@ -156,10 +196,11 @@ function App() {
           ></Route>
 
           {/* free weakly model test  */}
+
           <Route path='/dashboard/free-weakly-modeltest' element={<DFreeWeaklyModelTest />}></Route>
           <Route path='/dashboard/free-weakly-modeltest/rutin' element={<FreeModelRutin />}></Route>
           <Route path='/dashboard/free-weakly-modeltest/exam-list' element={<FreeWeaklyExamList />}></Route>
-          
+
           <Route
             path="/dashboard/free-weakly-modeltest"
             element={<DFreeWeaklyModelTest />}
@@ -326,6 +367,10 @@ function App() {
 
         {/* Exam Section */}
         <Route
+          path="/already-attent-exam"
+          element={<AlreadyAttendExam />}
+        ></Route>
+        <Route
           path="/free-weakly-model-test"
           element={<FreeWeeklyModelTest />}
         />
@@ -347,15 +392,31 @@ function App() {
 
         {/* FreeWeaklyModelTest */}
 
-        <Route path="/free-weakly-model-test" element={<FreeWeeklyModelTest />} />
-        <Route path="/free-weakly-model-test/rutin" element={<FreeWeaklyRutin />} />
-        <Route path="/free-weally-start-exam" element={<FreeWeaklyStartExam />} />
-        <Route path="/free-weakly-model-test/archive" element={<FreeWeaklyModelTestArchive />} />
-        <Route path="/free-waekly-archive/:_id" element={<FreeWeaklyArchive />} />
+        <Route
+          path="/free-weakly-model-test"
+          element={<FreeWeeklyModelTest />}
+        />
+        <Route
+          path="/free-weakly-model-test/rutin"
+          element={<FreeWeaklyRutin />}
+        />
+        <Route
+          path="/free-weally-start-exam"
+          element={<FreeWeaklyStartExam />}
+        />
+        <Route
+          path="/free-weakly-model-test/archive"
+          element={<FreeWeaklyModelTestArchive />}
+        />
+        <Route
+          path="/free-waekly-archive/:_id"
+          element={<FreeWeaklyArchive />}
+        />
         <Route path="/free-weakly-result" element={<FreeWeaklyResult />} />
         <Route path="/free-weakly-result/:_id" element={<FreeWeaklyResultSingleView />} />
         <Route path='/already-attent-exam' element={<AlreadyAttendExam />}></Route>
         <Route path='/free-weakly-meritlist-single/:date' element={<FreeWeaklyMeritListSingleView />}></Route>
+
         <Route
           path="/free-weakly-model-test"
           element={<FreeWeeklyModelTest />}
@@ -378,32 +439,138 @@ function App() {
           path="/bcsfornew/bcsForNewRoutine"
           element={<BCSForNewRoutineF />}
         />
+        <Route path="/bcsfornewstartexam" element={<BCSForNewStartExam />} />
+
+        <Route path="/bcsfornew-archive/:_id" element={<BCSForNewArchive />} />
+
+        <Route
+          path="/bcsfornew/archive"
+          element={<BCSForNewModelTestArchive />}
+        />
+        <Route path="/bcsfornew/result" element={<BCSForNewResult />} />
+        <Route
+          path="/bcs-for-new-result/:_id"
+          element={<BcsForNewResultSingle />}
+        />
+        <Route
+          path="/bcs-for-new-merit-list"
+          element={<BCSForNewMaritList />}
+        />
+
         {/* Job Solution */}
         <Route
           path="/jobsolution/jobsolutionRoutine"
           element={<JobSolutionRoutine />}
+        />
+        <Route path="/jobsolutionstartexam" element={<JobSolutionExam />} />
+        <Route path="/jobsolution/Archive" element={<JobSolutionArchive />} />
+        <Route
+          path="/jobsolutionArchive/:_id"
+          element={<JobSolutionArchiveSingle />}
+        />
+        <Route path="/jobsolution/Result" element={<JobSolutionResult />} />
+        <Route
+          path="/jobsolutionResult/:_id"
+          element={<JobSulationResultSingle />}
         />
         {/* Preparation For Grad */}
         <Route
           path="/preparationforgread/preparationforgreadroutine"
           element={<PreparationForGreadRoutin />}
         />
+        <Route
+          path="/preparationforgreadstartexam"
+          element={<PreparationForGreadExam />}
+        />
+        <Route
+          path="/preparationforgread/Archive"
+          element={<PreparationForGreadArchive />}
+        />
+        <Route
+          path="/preparationforgreadArchive/:_id"
+          element={<PreparationForGreadArchiveSingle />}
+        />
+        <Route
+          path="/preparationforgread/Result"
+          element={<PreparationforgreadResult />}
+        />
+        <Route
+          path="/preparationforgreadResult/:_id"
+          element={<PreparationforgreadResultSingle />}
+        />
         {/* Bank */}
         <Route path="/addbank/addbankRoutine" element={<AddBankRoutine />} />
+        <Route path="/addbankstartexam" element={<BankExam />} />
+        <Route path="/bank/Result" element={<BankResult />} />
+        <Route path="/bankResult/:_id" element={<BankResultSignle />} />
+        <Route path="/bank/Archive" element={<BankArchive />} />
+        <Route path="/bankArchiveSingle/:_id" element={<BankArchiveSingle />} />
         {/* BCS For Expericnce */}
         <Route
           path="/bcsforexperience/bcsforexperienceroutine"
           element={<BCSForExperienceRoutine />}
         />
+        <Route
+          path="/bcsforexperiencestartexam"
+          element={<BCSForExperienceExam />}
+        />
+        <Route
+          path="/bcsforexperience/result"
+          element={<BCSForExperienceResult />}
+        />
+        <Route
+          path="/bcsforexperienceresult/:_id"
+          element={<BCSForExperienceResultSingle />}
+        />
+        <Route
+          path="/bcsforexperience/archive"
+          element={<BCSForExperienceArchive />}
+        />
+        <Route
+          path="/bcsforexperienceArchive/:_id"
+          element={<BCSForExperienceArchiveSingle />}
+        />
+
         {/* Subject Wise Preparation */}
         <Route
           path="/subjectwisepreparation/subjectwisepreparationRoutine"
           element={<SubjectWisePreparationRoutine />}
         />
+        <Route
+          path="/subjectwisepreparationstartexam"
+          element={<SubjectWisePreparationExam />}
+        />
+        <Route
+          path="/subjectwisepreparation/Archive"
+          element={<SubjectWisePreparationArchive />}
+        />
+        <Route
+          path="/subjectwisepreparationArchive/:_id"
+          element={<SubjectWisePreparationArchiveSingle />}
+        />
+        <Route
+          path="/subjectwisepreparation/Result"
+          element={<SubjectWisePreparationResult />}
+        />
+        <Route
+          path="/subjectwisepreparationResult/:_id"
+          element={<SubjectWisePreparationResultSingle />}
+        />
         {/* Teacher */}
         <Route
           path="/addteacher/addteacherRoutine"
           element={<TeacherAddRoutine />}
+        />
+        <Route path="/addteacherstartexam" element={<TeacherExam />} />
+        <Route path="/addteacher/Archive" element={<TeacherArchive />} />
+        <Route
+          path="/addteacherArchive/:_id"
+          element={<TeacherArchiveSingle />}
+        />
+        <Route path="/addteacher/Result" element={<TeacherResult />} />
+        <Route
+          path="/addteacherResult/:_id"
+          element={<TeacherResultSingle />}
         />
       </Routes>
       <ToastContainer />

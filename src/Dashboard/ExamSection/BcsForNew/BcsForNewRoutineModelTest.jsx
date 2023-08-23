@@ -56,22 +56,17 @@ const BcsForNewRoutineModelTest = () => {
     e.preventDefault();
     const examQuestion = question;
     const time = e.target.time.value;
-    // const startTime = e.target.startTime.value;
     const startDate = e.target.startDate.value;
-    // const endTime = e.target.endTime.value;
-    // const endDate = e.target.endDate.value;
-    const cut = e.target.cut.value;
+
+    const cutsark = e.target.cutsark.value;
     const participate = [];
 
     const data = {
       examQuestion,
       time,
       startDate,
-      // startTime,
-      // endDate,
-      // endTime,
       participate,
-      cut,
+      cutsark,
     };
     // console.log(data);
     fetch("http://localhost:5000/Bcs-For-New-exam", {
@@ -103,6 +98,9 @@ const BcsForNewRoutineModelTest = () => {
             className="bg-orange-500 px-5 py-1 text-white rounded-sm shadow-lg"
           >
             Rutine
+          </Link>
+          <Link className="bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg">
+            Examinee
           </Link>
           <Link className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg">
             Result
@@ -144,39 +142,18 @@ const BcsForNewRoutineModelTest = () => {
                 name="time"
                 className="p-2 border  block focus:outline-none w-full mb-3"
               />
-
+              <input
+                type="text"
+                placeholder="Cuts Mark"
+                name="cutsark"
+                className="p-2 border  block focus:outline-none w-full mb-3"
+              />
               <small>Exam Date</small>
-              <div className="flex gap-2">
-                <input
-                  type="date"
-                  name="startDate"
-                  className="p-2 border  block focus:outline-none w-full"
-                />
-                {/* <input
-                  type="time"
-                  name="startTime"
-                  className="p-2 border  block focus:outline-none w-full"
-                /> */}
-                <input
-                  type="text"
-                  name="cut"
-                  className="p-2 border  block focus:outline-none w-full"
-                  placeholder="Cuts Mark"
-                />
-              </div>
-              {/* <small>End Date And Time</small> */}
-              {/* <div className="flex gap-2">
-                <input
-                  type="date"
-                  name="endDate"
-                  className="p-2 border  block focus:outline-none w-full"
-                />
-                <input
-                  type="time"
-                  name="endTime"
-                  className="p-2 border  block focus:outline-none w-full"
-                />
-              </div> */}
+              <input
+                type="date"
+                name="startDate"
+                className="p-2 border  block focus:outline-none w-full"
+              />
               <button className="bg-green-500 px-5 py-1 shadow mt-5 rounded text-white">
                 Submit
               </button>

@@ -9,7 +9,7 @@ const BCSForExperienceRoutine = () => {
   }, []);
   return (
     <div className="p-5 max-w-6xl mx-auto">
-      <h1 className="text-center my-4 text-lg">Bank Preparation Routine</h1>
+      <h1 className="text-center my-4 text-lg">BCS For Experience Routine</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         {data.map((rd) => (
           <div

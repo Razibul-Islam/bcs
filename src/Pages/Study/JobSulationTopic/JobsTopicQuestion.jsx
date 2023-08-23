@@ -41,10 +41,22 @@ const JobsTopicQuestion = () => {
     const email = user.email;
     question.email = email;
 
-    fetch("http://localhost:5000/add-favorite", {
+    const data = {
+      question: question.question,
+      opA: question.opA,
+      opB: question.opB,
+      opC: question.opC,
+      opD: question.opD,
+      explain: question.explain,
+      ans: question.ans,
+      email: question.email,
+      id: question._id,
+    };
+
+    fetch(`http://localhost:5000/add-favorite?id=${question._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(question),
+      body: JSON.stringify(data),
     }).then((data) => {
       console.log(data);
       if (data.status === 409) {
