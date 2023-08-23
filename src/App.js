@@ -14,62 +14,63 @@ import PastJobsQuestion from "./Dashboard/PastJobsQuestion/PastJobsQuestion";
 import ReadTopicaly from "./Dashboard/ReadTopicaly/ReadTopicaly";
 import BCSPastQuestion from "./Dashboard/BCSPastQuestion/BCSPastQuestion";
 import Navbar from "./Pages/Global/Navbar";
-import TopicForReadTopic from "./Pages/Study/SubjectWise/TopicForReadTopic";
-import Home from "./Pages/Home";
-import VideoRutine from "./Pages/Study/Video/Rutine";
-import VideoWeekly from "./Pages/Study/Video/Weekly";
-import VideoVideo from "./Pages/Study/Video/Video";
-import VideoRecent from "./Pages/Study/Video/Recent";
-import VideoEnglish from "./Pages/Study/Video/English";
-import VideoMath from "./Pages/Study/Video/Math";
-import VideoScience from "./Pages/Study/Video/Science";
-import VideoIct from "./Pages/Study/Video/Ict";
-import VideoInternational from "./Pages/Study/Video/International";
-import VideoBangladesh from "./Pages/Study/Video/Bangladesh";
-import VideoSuggetion from "./Pages/Study/Video/Suggetion";
-import PdfWeekly from "./Pages/Study/PDF/PdfWeekly";
-import PdfRecent from "./Pages/Study/PDF/PdfRecent";
-import Pdf from "./Pages/Study/PDF/Pdf";
-import PdfEnglish from "./Pages/Study/PDF/PdfEnglish";
-import PdfMath from "./Pages/Study/PDF/PdfMath";
-import PdfScience from "./Pages/Study/PDF/PdfScience";
-import PdfIct from "./Pages/Study/PDF/PdfIct";
-import PdfInternational from "./Pages/Study/PDF/PdfInternational";
-import PdfBangladesh from "./Pages/Study/PDF/PdfBangladesh";
-import PdfSuggetion from "./Pages/Study/PDF/PdfSuggetion";
-import SubjectWise from "./Pages/Study/SubjectWise/SubjectWise";
-import Search from "./Pages/Search/Search";
-import CentralArchive from "./Pages/CentralArchive/CentralArchive";
-import CentralFavorite from "./Pages/CentralFavorite/CentralFavorite";
-import CentralResult from "./Pages/CentralResult/CentralResult";
-import QuizMaster from "./Pages/QuizMaster/QuizMaster";
-import WrongAndUnanswered from "./Pages/WrongAndUnanswered/WrongAndUnanswered";
-import SubjectWiseQuestion from "./Pages/Study/SubjectWise/SubjectWiseQuestion";
-import AllTopic from "./Pages/Study/SubjectWise/AllTopic";
-import TopicWiseReadQuestion from "./Pages/Study/SubjectWise/TopicWiseReadQuestion";
-import AllSubTopic from "./Pages/Study/SubjectWise/AllSubTopic";
-import SubTopicWiseQuestion from "./Pages/Study/SubjectWise/SubTopicWiseQuestion";
-import JobsAddTopic from "./Pages/Study/JobSulationTopic/JobsAddTopic";
-import JobSulation from "./Pages/Study/JobSulationTopic/Job";
-import JobsSubjectWiseQuestion from "./Pages/Study/JobSulationTopic/SubjectWiseQuestion";
-import JobsTopic from "./Pages/Study/JobSulationTopic/JobsTopic";
-import JobsSubtopics from "./Pages/Study/JobSulationTopic/JobsSubtopics";
-import JobsTopicQuestion from "./Pages/Study/JobSulationTopic/JobsTopicQuestion";
-import JobsSubQuestion from "./Pages/Study/JobSulationTopic/JobsSubQuestion";
-import LastBCS from "./Pages/Study/LastBCS/LastBCS";
-import LastBCSQuestion from "./Pages/Study/LastBCS/LastBCSQuestion";
-import Jobsulationpast from "./Pages/Study/JobsulationPast/Jobsulationpast";
-import JobSulationPastQuestion from "./Pages/Study/JobsulationPast/JobSulationPastQuestion";
-import DFreeWeaklyModelTest from "./Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyModelTest";
-import FreeModelRutin from "./Dashboard/ExamSection/FreeWeaklyModelTest/FreeModelRutin";
-import FreeWeeklyModelTest from "./Pages/Exam/FreeWeeklyModelTest/FreeWeeklyModelTest";
-import FreeWeaklyRutin from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyRutin";
-import FreeWeaklyStartExam from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyStartExam";
-import FreeWeaklyModelTestArchive from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyModelTestArchive";
-import FreeWeaklyArchive from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyArchive";
-import FreeWeaklyExamList from "./Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyExamList";
-import FreeWeaklyResult from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResult";
-import FreeWeaklyResultSingleView from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResultSingleView";
+import TopicForReadTopic from './Pages/Study/SubjectWise/TopicForReadTopic';
+import Home from './Pages/Home';
+import VideoRutine from './Pages/Study/Video/Rutine';
+import VideoWeekly from './Pages/Study/Video/Weekly';
+import VideoVideo from './Pages/Study/Video/Video';
+import VideoRecent from './Pages/Study/Video/Recent';
+import VideoEnglish from './Pages/Study/Video/English';
+import VideoMath from './Pages/Study/Video/Math';
+import VideoScience from './Pages/Study/Video/Science';
+import VideoIct from './Pages/Study/Video/Ict';
+import VideoInternational from './Pages/Study/Video/International';
+import VideoBangladesh from './Pages/Study/Video/Bangladesh';
+import VideoSuggetion from './Pages/Study/Video/Suggetion';
+import PdfWeekly from './Pages/Study/PDF/PdfWeekly';
+import PdfRecent from './Pages/Study/PDF/PdfRecent';
+import Pdf from './Pages/Study/PDF/Pdf';
+import PdfEnglish from './Pages/Study/PDF/PdfEnglish';
+import PdfMath from './Pages/Study/PDF/PdfMath';
+import PdfScience from './Pages/Study/PDF/PdfScience';
+import PdfIct from './Pages/Study/PDF/PdfIct';
+import PdfInternational from './Pages/Study/PDF/PdfInternational';
+import PdfBangladesh from './Pages/Study/PDF/PdfBangladesh';
+import PdfSuggetion from './Pages/Study/PDF/PdfSuggetion';
+import SubjectWise from './Pages/Study/SubjectWise/SubjectWise';
+import Search from './Pages/Search/Search';
+import CentralArchive from './Pages/CentralArchive/CentralArchive';
+import CentralFavorite from './Pages/CentralFavorite/CentralFavorite';
+import CentralResult from './Pages/CentralResult/CentralResult';
+import QuizMaster from './Pages/QuizMaster/QuizMaster';
+import WrongAndUnanswered from './Pages/WrongAndUnanswered/WrongAndUnanswered';
+import SubjectWiseQuestion from './Pages/Study/SubjectWise/SubjectWiseQuestion';
+import AllTopic from './Pages/Study/SubjectWise/AllTopic';
+import TopicWiseReadQuestion from './Pages/Study/SubjectWise/TopicWiseReadQuestion';
+import AllSubTopic from './Pages/Study/SubjectWise/AllSubTopic';
+import SubTopicWiseQuestion from './Pages/Study/SubjectWise/SubTopicWiseQuestion';
+import JobsAddTopic from './Pages/Study/JobSulationTopic/JobsAddTopic';
+import JobSulation from './Pages/Study/JobSulationTopic/Job';
+import JobsSubjectWiseQuestion from './Pages/Study/JobSulationTopic/SubjectWiseQuestion';
+import JobsTopic from './Pages/Study/JobSulationTopic/JobsTopic';
+import JobsSubtopics from './Pages/Study/JobSulationTopic/JobsSubtopics';
+import JobsTopicQuestion from './Pages/Study/JobSulationTopic/JobsTopicQuestion';
+import JobsSubQuestion from './Pages/Study/JobSulationTopic/JobsSubQuestion';
+import LastBCS from './Pages/Study/LastBCS/LastBCS';
+import LastBCSQuestion from './Pages/Study/LastBCS/LastBCSQuestion';
+import Jobsulationpast from './Pages/Study/JobsulationPast/Jobsulationpast';
+import JobSulationPastQuestion from './Pages/Study/JobsulationPast/JobSulationPastQuestion';
+import DFreeWeaklyModelTest from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyModelTest';
+import FreeModelRutin from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeModelRutin';
+import FreeWeeklyModelTest from './Pages/Exam/FreeWeeklyModelTest/FreeWeeklyModelTest';
+import FreeWeaklyRutin from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyRutin';
+import FreeWeaklyStartExam from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyStartExam';
+import FreeWeaklyModelTestArchive from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyModelTestArchive';
+import FreeWeaklyArchive from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyArchive';
+import FreeWeaklyExamList from './Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyExamList';
+import FreeWeaklyResult from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResult';
+import FreeWeaklyResultSingleView from './Pages/Exam/FreeWeeklyModelTest/FreeWeaklyResultSingleView';
+
 import BCSForNew from "./Pages/Exam/BCSForNew/BCSForNew";
 import JobSolution from "./Pages/Exam/JobSolution/JobSolution";
 import PreparationForGread from "./Pages/Exam/PreparationForGread/PreparationForGread";
@@ -138,6 +139,11 @@ import TeacherArchiveSingle from "./Pages/Exam/Teacher/TeacherArchiveSingle";
 import TeacherResult from "./Pages/Exam/Teacher/TeacherResult";
 import TeacherResultSingle from "./Pages/Exam/Teacher/TeacherResultSingle";
 
+import AlreadyAttendExam from "./Pages/Exam/FreeWeeklyModelTest/AlreadyAttendExam";
+import FreeWeaklyMeritList from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyMeritList";
+import FreeWeaklyMeritListSingleView from "./Pages/Exam/FreeWeeklyModelTest/MeitListSingleView";
+
+
 function App() {
   return (
     <div className="bg-banner ">
@@ -190,18 +196,11 @@ function App() {
           ></Route>
 
           {/* free weakly model test  */}
-          <Route
-            path="/dashboard/free-weakly-modeltest"
-            element={<DFreeWeaklyModelTest />}
-          ></Route>
-          <Route
-            path="/dashboard/free-weakly-modeltest/rutin"
-            element={<FreeModelRutin />}
-          ></Route>
-          <Route
-            path="/dashboard/free-weakly-modeltest/exam-list"
-            element={<FreeWeaklyExamList />}
-          ></Route>
+
+          <Route path='/dashboard/free-weakly-modeltest' element={<DFreeWeaklyModelTest />}></Route>
+          <Route path='/dashboard/free-weakly-modeltest/rutin' element={<FreeModelRutin />}></Route>
+          <Route path='/dashboard/free-weakly-modeltest/exam-list' element={<FreeWeaklyExamList />}></Route>
+
           <Route
             path="/dashboard/free-weakly-modeltest"
             element={<DFreeWeaklyModelTest />}
@@ -414,10 +413,10 @@ function App() {
           element={<FreeWeaklyArchive />}
         />
         <Route path="/free-weakly-result" element={<FreeWeaklyResult />} />
-        <Route
-          path="/free-weakly-result/:_id"
-          element={<FreeWeaklyResultSingleView />}
-        />
+        <Route path="/free-weakly-result/:_id" element={<FreeWeaklyResultSingleView />} />
+        <Route path='/already-attent-exam' element={<AlreadyAttendExam />}></Route>
+        <Route path='/free-weakly-meritlist-single/:date' element={<FreeWeaklyMeritListSingleView />}></Route>
+
         <Route
           path="/free-weakly-model-test"
           element={<FreeWeeklyModelTest />}
@@ -429,6 +428,10 @@ function App() {
         <Route
           path="/free-weally-start-exam"
           element={<FreeWeaklyStartExam />}
+        />
+        <Route
+          path="/free-weakly-model-test/merit-list"
+          element={<FreeWeaklyMeritList />}
         />
 
         {/* BCS For New */}

@@ -10,6 +10,7 @@ import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import GroupIcon from "@mui/icons-material/Group";
+import DiamondIcon from '@mui/icons-material/Diamond';
 
 const Dashboard = () => {
   const [study, setStudy] = useState(false);
@@ -149,6 +150,7 @@ const Dashboard = () => {
               <EditCalendarIcon /> Teacher
             </Link>
           </div>
+          <Link className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "><DiamondIcon/> Pakage</Link>
         </div>
         <div className="w-[calc(100%-250px)]">
           <Outlet />
