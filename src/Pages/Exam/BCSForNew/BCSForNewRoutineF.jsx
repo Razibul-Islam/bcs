@@ -7,9 +7,10 @@ const BCSForNewRoutineF = () => {
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
+
   return (
     <div className="p-5 max-w-6xl mx-auto">
-      <h1 className="text-center my-4 text-lg">New BCS Routine</h1>
+      <h1 className="text-center my-4 text-lg">BCS For New Routine</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         {data.map((rd) => (
           <div
