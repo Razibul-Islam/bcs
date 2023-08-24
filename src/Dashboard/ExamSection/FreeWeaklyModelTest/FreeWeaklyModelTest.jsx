@@ -64,9 +64,11 @@ const FreeWeaklyModelTest = () => {
         const time = e.target.time.value;
         const startDate = e.target.startDate.value;
         const cutsark = e.target.cutsark.value;
+        const negativeMark = e.target.negativeMark.value;
+        const exam = e.target.exam.value;
         const participate = [];
 
-        const data = { examQuestion, time, startDate, participate, cutsark };
+        const data = { examQuestion, time, startDate, participate, cutsark, exam , negativeMark};
         console.log(data);
         fetch('http://localhost:5000/free-weakly-text-exam', {
             method: "POST",
@@ -77,6 +79,8 @@ const FreeWeaklyModelTest = () => {
         })
             .then(res => res.json())
             .then(data => console.log(data));
+
+        window.location.reload();
     }
 
 
@@ -93,7 +97,7 @@ const FreeWeaklyModelTest = () => {
             <div className='flex justify-between items-center'>
                 <div className='flex gap-5'>
                     <Link to='/dashboard/free-weakly-modeltest/rutin' className='bg-orange-500 px-5 py-1 text-white rounded-sm shadow-lg'>Rutine</Link>
-                    <Link className='bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg'>Examinee</Link>
+                    <Link to='/dashboard/free-ewakly-examenee' className='bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg'>Examinee</Link>
                     <Link to='/dashboard/free-weakly-modeltest/exam-list' className='bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg'>Exam List</Link>
                     <button onClick={() => setModal(!modal)} className='bg-purple-600 text-white px-5 py-1 rounded-sm shadow-lg'>Add New Question</button>
                 </div>
@@ -111,8 +115,13 @@ const FreeWeaklyModelTest = () => {
                         <p className='text-center'>Total Mcq : {question.length}</p>
                         <hr className='my-5' />
                         <form onSubmit={handleCreateExam} className='my-5'>
+                            <select name="exam" className='p-2 border  block focus:outline-none w-full mb-3'>
+                                <option>--Select Exam ---</option>
+                                <option>ফ্রি সাপ্তাহিক মডেল টেস্ট</option>
+                            </select>
                             <input type="text" placeholder='Enter Time (Minute)' name='time' className='p-2 border  block focus:outline-none w-full mb-3' />
                             <input type="text" placeholder='Cuts Mark' name='cutsark' className='p-2 border  block focus:outline-none w-full mb-3' />
+                            <input type="text" placeholder='Negative Mark' name='negativeMark' className='p-2 border  block focus:outline-none w-full mb-3' />
                             <small>Exam Date</small>
                             <input type="date" name='startDate' className='p-2 border  block focus:outline-none w-full' />
                             <button className='bg-green-500 px-5 py-1 shadow mt-5 rounded text-white'>Submit</button>

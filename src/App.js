@@ -103,6 +103,10 @@ import UserList from "./Dashboard/UserList";
 import AlreadyAttendExam from "./Pages/Exam/FreeWeeklyModelTest/AlreadyAttendExam";
 import FreeWeaklyMeritList from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyMeritList";
 import FreeWeaklyMeritListSingleView from "./Pages/Exam/FreeWeeklyModelTest/MeitListSingleView";
+import CenterlArchiveSingle from "./Pages/CentralArchive/CenterlArchiveSingle";
+import CenterlResultSingle from "./Pages/CentralResult/CenterlResultSingle";
+import FreeWeaklyExamenee from "./Dashboard/ExamSection/FreeWeaklyModelTest/Examenee";
+import FreeWeaklyExamQuestion from "./Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyExamQuestion";
 
 function App() {
   return (
@@ -159,24 +163,16 @@ function App() {
           <Route path='/dashboard/free-weakly-modeltest' element={<DFreeWeaklyModelTest />}></Route>
           <Route path='/dashboard/free-weakly-modeltest/rutin' element={<FreeModelRutin />}></Route>
           <Route path='/dashboard/free-weakly-modeltest/exam-list' element={<FreeWeaklyExamList />}></Route>
-          
+          <Route path="/dashboard/free-ewakly-examenee" element={<FreeWeaklyExamenee/>}></Route>
+          <Route path="/dashboard/free-weakly-examenee/:_id" element={<FreeWeaklyExamQuestion/>}></Route>
           <Route
             path="/dashboard/free-weakly-modeltest"
             element={<DFreeWeaklyModelTest />}
           ></Route>
-          <Route
-            path="/dashboard/free-weakly-modeltest/rutin"
-            element={<FreeModelRutin />}
-          ></Route>
+          <Route path="/dashboard/free-weakly-modeltest/rutin" element={<FreeModelRutin />}></Route>
           {/* BCS For New */}
-          <Route
-            path="/dashboard/bcsForNew/routine"
-            element={<BcsForNewRoutine />}
-          />
-          <Route
-            path="/dashboard/bcsForNew"
-            element={<BcsForNewRoutineModelTest />}
-          />
+          <Route path="/dashboard/bcsForNew/routine" element={<BcsForNewRoutine />} />
+          <Route path="/dashboard/bcsForNew" element={<BcsForNewRoutineModelTest />}  />
           {/* Job Solution */}
           <Route
             path="/dashboard/jobSolution"
@@ -277,8 +273,10 @@ function App() {
         {/* <=====================================Preminum Section ========================================> */}
         <Route path="/searchquestion" element={<Search />} />
         <Route path="/centralArchive" element={<CentralArchive />} />
+        <Route path="/archive/:_id" element={<CenterlArchiveSingle />} />
         <Route path="/centralfavorite" element={<CentralFavorite />} />
         <Route path="/centralresult" element={<CentralResult />} />
+        <Route path="/centrul-result/:_id" element={<CenterlResultSingle />} />
         <Route path="/quizmaster" element={<QuizMaster />} />
         <Route path="/wrongandunanswered" element={<WrongAndUnanswered />} />
 
@@ -368,6 +366,7 @@ function App() {
           path="/free-weally-start-exam"
           element={<FreeWeaklyStartExam />}
         />
+        
         <Route
           path="/free-weakly-model-test/merit-list"
           element={<FreeWeaklyMeritList />}

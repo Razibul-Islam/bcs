@@ -1,281 +1,228 @@
-import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import React, { useEffect, useState } from 'react';
 
 const QuizMaster = () => {
-  const [data, setData] = useState([]);
-  const [currect, setCurrect] = useState(0);
+
+  const [modalOne, setModalOne] = useState('hidden');
+  const [result, setResult] = useState('hidden');
+  const [question, setQuestion] = useState([]);
+  const [subject, setSubject] = useState([]);
+  const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
-  const [modal, setModal] = useState("hidden");
-  const [liDisable, setLiDisable] = useState(false);
-  const [answer, setAnswer] = useState(false);
-  const [selectedTime, setSelectedTime] = useState(5); // Default 5 minutes
-  const [timeRemaining, setTimeRemaining] = useState(selectedTime * 60);
+  const [modalTwo, setMopdalTwo] = useState('hidden');
+
+  const [sub, setSub] = useState([])
 
 
-  const options = [
-    { value: "বাংলা সাহিত্য", label: "বাংলা সাহিত্য" },
-    { value: "বাংলা ভাষা ও ব্যাকরণ", label: "বাংলা ভাষা ও ব্যাকরণ" },
-    { value: "English Literature", label: "English Literature" },
-    { value: "English Language", label: "English Language" },
-    { value: "বাংলাদেশ বিষয়াবলি", label: "বাংলাদেশ বিষয়াবলি" },
-    { value: "আন্তর্জাতিক বিষয়াবলি", label: "আন্তর্জাতিক বিষয়াবলি" },
-    {
-      value: "ভূগোল ও দুর্যোগ ব্যবস্থাপনা",
-      label: "ভূগোল ও দুর্যোগ ব্যবস্থাপনা",
-    },
-    {
-      value: "নৈতিকতা ,মূল্যবোধ ও সুশাসন",
-      label: "নৈতিকতা ,মূল্যবোধ ও সুশাসন",
-    },
-    { value: "সাধারণ বিজ্ঞান", label: "সাধারণ বিজ্ঞান" },
-    {
-      value: "কম্পিউটার ও তথ্যপ্রযুক্তি",
-      label: "কম্পিউটার ও তথ্যপ্রযুক্তি",
-    },
-    { value: "সাধারণ গণিত", label: "সাধারণ গণিত" },
-    { value: "মানসিক দক্ষতা", label: "মানসিক দক্ষতা" },
-    { value: "Bank Math", label: "Bank Math" },
-    { value: "Bank English", label: "Bank English" },
-    { value: "Bank Science and ICT", label: "Bank Science and ICT" },
-    { value: "Bank BD Affairs", label: "Bank BD Affairs" },
-    {
-      value: "Bank International Affairs",
-      label: "Bank International Affairs",
-    },
-    {
-      value: "জাতীয় ও আন্তর্জাতিক দিবস ও প্রতিপাদ্য",
-      label: "জাতীয় ও আন্তর্জাতিক দিবস ও প্রতিপাদ্য",
-    },
-    { value: "পরিবর্তনশীল তথ্য", label: "পরিবর্তনশীল তথ্য" },
-  ];
+  let index = 1;
+  const handleStartExam = () => {
+    const size = document.getElementById('size').value;
+    const time = document.getElementById('time').value;
+    document.getElementById('action').classList.remove('hidden')
+    const url = `http://localhost:5000/quiz-master?size=${size}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setQuestion(data))
+    setModalOne('hidden');
 
+    const countdownElement = document.getElementById("countdown");
+    let timeInSeconds = parseInt(time) * 60;
+    console.log(timeInSeconds);
 
-  useEffect(() => {
-    setTimeRemaining(selectedTime * 60);
-  }, [selectedTime]);
+    function updateCountdown() {
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = timeInSeconds % 60;
 
-  
-  const handleCount = ()=>{
-    if (timeRemaining > 0) {
-      const interval = setInterval(() => {
-        setTimeRemaining(prevTime => prevTime - 1);
-      }, 1000);
+      countdownElement.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-      return () => clearInterval(interval);
+      if (timeInSeconds > 0) {
+        timeInSeconds--;
+        setTimeout(updateCountdown, 1000); // Update every second
+      } else {
+        countdownElement.innerHTML = "Time's up!";
+      }
     }
-  } 
-
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
+    updateCountdown()
+  }
 
 
-
-
-  const handleQuestion = (e) => {
-    e.preventDefault();
-    const number = e.target.numberOfQuiz.value;
-    const subject = e.target.subject.value;
-
-    fetch(`http://localhost:5000/quiz-master?size=${number}&subject=${subject}`)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-
-    document.getElementById("numberBox").style.display = "none";
-    handleCount();
-  };
-
-
-  const currectAnswer = (option, answer, id) => {
-    var div = document.getElementById(id);
-    var buttons = div.querySelectorAll("li");
-    buttons.forEach(function (li) {
-      li.classList.add("pointer-events-none");
-      li.classList.add("opacity-50");
-    });
-
-    document.getElementById(id + option).style.backgroundColor = "yellow";
-
-    if (option === answer) {
-      setCurrect(currect + 1);
+  const handleCheckQuestion = (op, ans, _id) => {
+    console.log(op, ans);
+    if (op == ans) {
+      setCorrect(correct + 1)
     } else {
-      setWrong(wrong + 1);
+      setWrong(wrong + 1)
     }
-  };
+    const element = document.getElementById(op + _id);
+    element.classList.add('bg-orange-200');
+    const buttonContainer = document.getElementById(_id);
+    const buttons = buttonContainer.getElementsByTagName("button");
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = true;
+    }
 
-  if (liDisable) {
-    console.log("disabled");
   }
 
 
 
+
+  const handleStartExamSubjectWise = ()=>{
+    const size = document.getElementById('numberofquestion').value;
+    const url = `http://localhost:5000/questions?subject=${sub.join(',')}&size=${size}`;
+    // const url = `${baseUrl}`;
+    const time = document.getElementById('times').value;
+    console.log(url);
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setQuestion(data))
+    setMopdalTwo('hidden');
+    document.getElementById('action').classList.remove('hidden')
+    const countdownElement = document.getElementById("countdown");
+    let timeInSeconds = parseInt(time) * 60;
+    console.log(timeInSeconds);
+
+    function updateCountdown() {
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = timeInSeconds % 60;
+
+      countdownElement.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+      if (timeInSeconds > 0) {
+        timeInSeconds--;
+        setTimeout(updateCountdown, 1000); // Update every second
+      } else {
+        countdownElement.innerHTML = "Time's up!";
+      }
+    }
+    updateCountdown()
+  }
+
+
+  const handlleSubject = ()=>{
+    const subjects = document.getElementById('subject').value;
+    setSub(prev => [...sub , subjects])
+  }
+
+
+  useEffect(() => {
+    const url = `http://localhost:5000/get-subject-read-topiclly`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => setSubject(data))
+}, [])
+
   return (
-    <div className="max-w-6xl mx-auto">
-      <form
-        id="numberBox"
-        onSubmit={handleQuestion}
-        className="px-5 md:px-0 mt-5"
-      >
-        <div className="flex gap-5 flex-wrap md:flex-nowrap">
-          <select
-            name="quiz"
-            className="w-full border border-teal-500 rounded-md py-1"
-          >
-            <option value="Random Quiz">Random Quiz [Total Database]</option>
-          </select>
-          <Select
-            isMulti
-            name="subject"
-            options={options}
-            className="w-full border border-teal-500 rounded-md"
-          />
-        </div>
-        <div className="flex flex-wrap md:flex-nowrap mt-3 gap-5">
-          <select name="numberOfQuiz" value={selectedTime} className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none" onChange={e => setSelectedTime(Number(e.target.value))}>
-            <option value={5}>20</option>
-            <option value={7.3}>30</option>
-            <option value={10}>40</option>
-            {/* Add more options as needed */}
-          </select>
-          {/* <select
-            onChange={handleTime}
-            id="time-quiz"
-            className="w-full border border-teal-500 rounded-md px-2 py-2 outline-none"
-            name="ExamTime"
-          >
-            <option
-              value={
-                time === "20"
-                  ? "5"
-                  : time === "30"
-                    ? "7:30"
-                    : time === "40"
-                      ? "10"
-                      : `${null}`
-              }
-            >
-              {time === "20"
-                ? "5"
-                : time === "30"
-                  ? "7:30"
-                  : time === "40"
-                    ? "10"
-                    : "Select an option"}
-            </option>
-          </select> */}
-          <button className="w-full bg-teal-300 px-4 rounded-md py-2">
-            Start Quiz
-          </button>
-        </div>
-      </form>
-
-      <div className="flex justify-end">
-        <div>{formatTime(timeRemaining)}</div>
+    <div className='p-5 max-w-xl mx-auto'>
+      <div className='w-96 mx-auto p-5'>
+        <button onClick={() => setModalOne('block')} className='bg-teal-500 text-white text-center w-full py-2 rounded-sm shadow-lg'>Start Random Quiz</button>
+        <button onClick={() => setMopdalTwo('block')} className='bg-gradient-to-tr from-teal-500 to-green-300 mt-5  text-white text-center w-full py-2 rounded-sm shadow-lg'>Start Subject wise</button>
       </div>
-
-      <div className="mt-10">
-        {data.map((singleData, i) => (
-          <div key={i}>
-            <div className="border border-teal-600 rounded-md p-5  mb-5">
-              <h1 className="text-xl font-semibold mb-2">
-                <span>{i + 1}.</span>
-                {singleData.question}
-              </h1>
-              <ul id={singleData._id} className="space-y-2 text-base">
-                <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
-                    } ${answer && "a" === singleData.ans ? "bg-green-500" : ""}`}
-                  id={singleData._id + "a"}
-                  onClick={() =>
-                    currectAnswer("a", singleData.ans, singleData._id)
-                  }
-                >
-                  ক) {singleData.opA}
-                </li>
-                <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
-                    } ${answer && "b" === singleData.ans ? "bg-green-500" : ""}`}
-                  id={singleData._id + "b"}
-                  onClick={() =>
-                    currectAnswer("b", singleData.ans, singleData._id)
-                  }
-                >
-                  খ) {singleData.opB}
-                </li>
-                <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
-                    } ${answer && "c" === singleData.ans ? "bg-green-500" : ""}`}
-                  id={singleData._id + "c"}
-                  onClick={() =>
-                    currectAnswer("c", singleData.ans, singleData._id)
-                  }
-                >
-                  গ) {singleData.opC}
-                </li>
-                <li
-                  className={`cursor-pointer py-3 my-2 hover:bg-teal-200 ${liDisable ? "pointer-events-none opacity-50" : ""
-                    } ${answer && "d" === singleData.ans ? "bg-green-500" : ""}`}
-                  id={singleData._id + "d"}
-                  onClick={() =>
-                    currectAnswer("d", singleData.ans, singleData._id)
-                  }
-                >
-                  ঘ) {singleData.opD}
-                </li>
-              </ul>
-            </div>
-          </div>
-        ))}
+      <div className='hidden flex justify-between border-y border-dashed py-4' id='action' >
+        <div id="countdown"></div>
+        <button onClick={()=>  setResult('block')} className='px-5 py-1  bg-green-500 text-white'>Submit</button>
       </div>
-      <div className="flex justify-end">
-        <button
-          className="bg-teal-500 px-4 py-2 rounded-sm text-white mb-10"
-          onClick={() => setModal("block")}
-          disabled={data.length === wrong + currect ? false : true}
-        >
-          Submit
-        </button>
-      </div>
-      {/* modal  */}
-      <div
-        className={`relative z-10 ${modal}`}
-        aria-labelledby="modal-title"
-        role="dialog"
-        aria-modal="true"
-      >
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl">
-              <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+      <div className='my-10 max-w-xl mx-auto p-5'>
+        {
+          question.map(qsn => {
+            return (
+              <div className='my-10' id={qsn._id}>
+                <p>{index++})  {qsn.question}</p>
                 <div>
-                  <h1 className="flex justify-center text-xl items-center gap-4">
-                    Your Result
-                  </h1>
-                  <p>Total Question : {data.length}</p>
-                  <p>Correct Answer : {currect}</p>
-                  <p>Wrong Answer : {wrong}</p>
-                  <div className="flex justify-end items-center gap-5 mt-5">
-                    <label
-                      onClick={() => setModal("hidden")}
-                      className="px-4 py-1 text-white uppercase rounded-sm bg-red-500 cursor-pointer"
-                    >
-                      Cancel
-                    </label>
-                    <label
-                      onClick={() => {
-                        setAnswer(true);
-                        setModal("hidden");
-                      }}
-                      className="px-4 py-1 text-white uppercase rounded-sm bg-green-500 cursor-pointer"
-                    >
-                      All Answer
-                    </label>
+                  <button onClick={() => handleCheckQuestion('a', qsn.ans, qsn._id)} id={'a' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>ক) {qsn.opA}</button>
+                  <button onClick={() => handleCheckQuestion('b', qsn.ans, qsn._id)} id={'b' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>খ) {qsn.opB}</button>
+                  <button onClick={() => handleCheckQuestion('c', qsn.ans, qsn._id)} id={'c' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>গ) {qsn.opC}</button>
+                  <button onClick={() => handleCheckQuestion('d', qsn.ans, qsn._id)} id={'d' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>ঘ) {qsn.opD}</button>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+
+
+
+
+
+
+      <div class={`relative z-10 ${modalTwo}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <div className='flex gap-2'>
+                      {
+                        sub.map(ss => <button className='bg-teal-500 text-sm  px-2 rounded-xl'>{ss}</button>)
+                      }
+                    </div>
+                   <select className='px-5 py-2 border focus:outline-none w-full mt-3' onChange={handlleSubject} id="subject">
+                    <option>-- বিষয় নির্বাচন করুণ--</option>
+                    {
+                      subject.map(sub=> <option>{sub.subject}</option>)
+                    }
+                   </select>
+                    <input type="number" id='times' className='px-5 py-2 border focus:outline-none w-full mt-3' placeholder='Exam Time (Minutes)' />
+                    <input type="number" id='numberofquestion' className='px-5 py-2 border focus:outline-none w-full mt-3' placeholder='Number of Question' />
                   </div>
                 </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button onClick={handleStartExamSubjectWise} type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Submit</button>
+                <button onClick={() => setMopdalTwo('hidden')} type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class={`relative z-10 ${modalOne}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <input type="number" id='size' className='px-5 py-2 border focus:outline-none w-full' placeholder='Number Of question' />
+                    <input type="number" id='time' className='px-5 py-2 border focus:outline-none w-full mt-3' placeholder='Exam Time (Minutes)' />
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button onClick={handleStartExam} type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Submit</button>
+                <button onClick={() => setModalOne('hidden')} type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div class={`relative z-10 ${result}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <p>Total Question: {question.length}</p>
+                    <p>Currect Answer: {correct}</p>
+                    <p>Wrong Answer: {wrong}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+
+                <a href=''  type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</a>
               </div>
             </div>
           </div>

@@ -84,7 +84,9 @@ const FreeWeaklyStartExam = () => {
         const userEmail = user.email;
         const cutsark = question.cutsark;
         const totalQuestion = question.examQuestion.length;
-        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark};
+        const examName = 'ফ্রি সাপ্তাহিক মডেল টেস্ট'
+        const negativeMark = question.negativeMark;
+        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark, examName, negativeMark};
 
         fetch('http://localhost:5000/free-weakly-result', {
             method: "POST",
@@ -117,6 +119,12 @@ const FreeWeaklyStartExam = () => {
     if (found) {
         navigate('/already-attent-exam')
     } 
+    if (remainingTime === 1) {
+        // submitExam()
+        document.getElementById('btn').click()
+    } 
+
+   
 
 
 
@@ -151,7 +159,7 @@ const FreeWeaklyStartExam = () => {
     return (
         <div className='p-5 max-w-6xl mx-auto relative'>
             <div className='flex justify-between items-center sticky top-0 py-4 bg-white'>
-                <button onClick={submitExam} className='px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg'>Submit</button>
+                <button id='btn' onClick={submitExam} className='px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg'>Submit</button>
                 <p className='animate-ping text-red-500'> {formattedTime}</p>
             </div>
 
