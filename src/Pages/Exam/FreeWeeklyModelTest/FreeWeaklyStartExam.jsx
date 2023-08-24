@@ -4,14 +4,12 @@ import auth from '../../../Auth/Firebase.int';
 import { useNavigate } from 'react-router-dom';
 
 const FreeWeaklyStartExam = () => {
-
     const [question, setQuestion] = useState({});
     let index = 1;
     const [wrong, setWrong] = useState(0);
     const [correctAns, setCorrectAns] = useState(0);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate()
-
 
     const [times, setTimes] = useState(0);
     const [remainingTime, setRemainingTime] = useState(times * 60);
@@ -35,18 +33,11 @@ const FreeWeaklyStartExam = () => {
     const seconds = remainingTime % 60;
     const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
-
     const currentDate = new Date();
     const day = currentDate.getDate();
     const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
     const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
-
-
-
-
-
-
 
     const handleChexkQuestion = (ans, option, id) => {
         const div = document.getElementById(id);
@@ -69,13 +60,6 @@ const FreeWeaklyStartExam = () => {
         }
     }
 
-
-
-
-
-
-    // console.log(user)
-
     const submitExam = () => {
         const totalCorrectAns = correctAns;
         const totalWrong = wrong;
@@ -85,7 +69,8 @@ const FreeWeaklyStartExam = () => {
         const cutsark = question.cutsark;
         const totalQuestion = question.examQuestion.length;
         const examName = 'ফ্রি সাপ্তাহিক মডেল টেস্ট'
-        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark, examName};
+        const negativeMark = question.negativeMark;
+        const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion, cutsark, examName, negativeMark };
 
         fetch('http://localhost:5000/free-weakly-result', {
             method: "POST",
@@ -111,15 +96,15 @@ const FreeWeaklyStartExam = () => {
             .then(data => console.log(data))
     }
 
-
-   
     const found = question?.participate?.find(email => email === user?.email);
 
     if (found) {
         navigate('/already-attent-exam')
-    } 
-
-
+    }
+    if (remainingTime === 1) {
+        // submitExam()
+        document.getElementById('btn').click()
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -152,7 +137,7 @@ const FreeWeaklyStartExam = () => {
     return (
         <div className='p-5 max-w-6xl mx-auto relative'>
             <div className='flex justify-between items-center sticky top-0 py-4 bg-white'>
-                <button onClick={submitExam} className='px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg'>Submit</button>
+                <button id='btn' onClick={submitExam} className='px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg'>Submit</button>
                 <p className='animate-ping text-red-500'> {formattedTime}</p>
             </div>
 

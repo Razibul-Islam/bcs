@@ -74,6 +74,7 @@ const JobSolutionExam = () => {
     const userName = user.displayName;
     const userEmail = user.email;
     const totalQuestion = question.examQuestion.length;
+    const negativeMark = question.negativeMark;
     const data = {
       totalCorrectAns,
       totalWrong,
@@ -81,6 +82,7 @@ const JobSolutionExam = () => {
       userName,
       userEmail,
       totalQuestion,
+      negativeMark
     };
 
     setParticipate((prev) => [...prev, userEmail]);
@@ -117,6 +119,10 @@ const JobSolutionExam = () => {
   if (found) {
     navigate("/already-attent-exam");
   }
+  if (remainingTime === 1) {
+    // submitExam()
+    document.getElementById('btn').click()
+}
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -151,6 +157,7 @@ const JobSolutionExam = () => {
         <button
           onClick={submitExam}
           className="px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg"
+          id='btn'
         >
           Submit
         </button>

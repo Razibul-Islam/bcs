@@ -3,12 +3,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Auth/Firebase.int";
 import { Link } from "react-router-dom";
 
-const BCSForNewMaritList = () => {
+
+const SubjectWiseMerit = () => {
     const [result, setresult] = useState([]);
     const [user, loading, error] = useAuthState(auth);
 
     useEffect(() => {
-        const url = `http://localhost:5000/newbcs-result?userEmail=${user?.email}`;
+        const url = `http://localhost:5000/subject-wise-result?userEmail=${user?.email}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setresult(data));
@@ -20,9 +21,9 @@ const BCSForNewMaritList = () => {
                 return (
                     <div className="text-center p-5 border border-dashed ">
                         <p>{res.examDate}</p>
-                        <p>নতুনদের বিসিএস প্রস্তুতি</p>
+                        <p>বিষয় ভিত্তিক প্রস্তুতি</p>
                         <Link
-                            to={`/bcs-for-new-merit-list/${res.examDate}`}
+                            to={`/subjectwisepreparationMerit/${res.examDate}`}
                             className="bg-teal-500 text-white px-5 rounded-3xl my-2"
                         >
                             view
@@ -34,4 +35,4 @@ const BCSForNewMaritList = () => {
     );
 };
 
-export default BCSForNewMaritList;
+export default SubjectWiseMerit;

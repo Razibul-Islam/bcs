@@ -74,6 +74,7 @@ const SubjectWisePreparationExam = () => {
     const userName = user.displayName;
     const userEmail = user.email;
     const totalQuestion = question.examQuestion.length;
+    const negativeMark = question.negativeMark;
     const data = {
       totalCorrectAns,
       totalWrong,
@@ -81,6 +82,7 @@ const SubjectWisePreparationExam = () => {
       userName,
       userEmail,
       totalQuestion,
+      negativeMark
     };
 
     setParticipate((prev) => [...prev, userEmail]);
@@ -93,7 +95,7 @@ const SubjectWisePreparationExam = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log("data:" + data));
 
     let participate = question.participate;
     participate.push(userEmail);
@@ -109,7 +111,7 @@ const SubjectWisePreparationExam = () => {
       }
     )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log("data Put :" + data));
   };
 
   const found = question?.participate?.find((email) => email === user?.email);
@@ -117,6 +119,10 @@ const SubjectWisePreparationExam = () => {
   if (found) {
     navigate("/already-attent-exam");
   }
+  if (remainingTime === 1) {
+    // submitExam()
+    document.getElementById('btn').click()
+}
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -151,6 +157,7 @@ const SubjectWisePreparationExam = () => {
         <button
           onClick={submitExam}
           className="px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg"
+          id='btn'
         >
           Submit
         </button>

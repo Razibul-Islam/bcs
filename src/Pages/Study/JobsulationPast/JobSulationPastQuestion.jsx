@@ -62,7 +62,6 @@ const JobSulationPastQuestion = () => {
       if (data.status === 409) {
         toast("Already Exist");
       } else {
-        // console.log(data);
         toast("Favorite added Successfully");
       }
     });
@@ -91,11 +90,10 @@ const JobSulationPastQuestion = () => {
               <div className="mt-3">
                 <p
                   id={`${qs._id + "a"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "a" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "a" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     ক
@@ -104,11 +102,10 @@ const JobSulationPastQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "b"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "b" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "b" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     খ
@@ -117,11 +114,10 @@ const JobSulationPastQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "c"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "c" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "c" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     গ
@@ -130,11 +126,10 @@ const JobSulationPastQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "d"}`}
-                  className={`flex items-center gap-3 my-2${
-                    eyeOn && "d" === qs.ans
+                  className={`flex items-center gap-3 my-2${eyeOn && "d" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : "text-black"
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     ঘ

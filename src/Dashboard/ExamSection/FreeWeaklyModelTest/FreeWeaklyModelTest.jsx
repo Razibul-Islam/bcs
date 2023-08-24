@@ -57,9 +57,10 @@ const FreeWeaklyModelTest = () => {
     const examQuestion = question;
     const time = e.target.time.value;
     const startDate = e.target.startDate.value;
+    const negativeMark = e.target.negativeMark.value
     const participate = [];
 
-    const data = { examQuestion, time, startDate, participate };
+    const data = { examQuestion, time, startDate, participate, negativeMark };
     console.log(data);
     fetch("http://localhost:5000/free-weakly-text-exam", {
       method: "POST",
@@ -70,6 +71,7 @@ const FreeWeaklyModelTest = () => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -78,6 +80,7 @@ const FreeWeaklyModelTest = () => {
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));
   }, []);
+
 
   return (
     <div className="p-5">
@@ -142,6 +145,7 @@ const FreeWeaklyModelTest = () => {
                 name="cutsark"
                 className="p-2 border  block focus:outline-none w-full mb-3"
               />
+              <input type="text" placeholder='Negative Mark' name='negativeMark' className='p-2 border  block focus:outline-none w-full mb-3' />
               <small>Exam Date</small>
               <input
                 type="date"

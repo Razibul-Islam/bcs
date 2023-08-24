@@ -57,7 +57,7 @@ const PreparationForGreadModelTest = () => {
     const examQuestion = question;
     const time = e.target.time.value;
     const startDate = e.target.startDate.value;
-
+    const negativeMark = e.target.negativeMark.value
     const cutsark = e.target.cutsark.value;
     const participate = [];
 
@@ -67,6 +67,7 @@ const PreparationForGreadModelTest = () => {
       startDate,
       participate,
       cutsark,
+      negativeMark
     };
     // console.log(data);
     fetch("http://localhost:5000/grade-preparation-exam", {
@@ -80,6 +81,7 @@ const PreparationForGreadModelTest = () => {
       .then((data) => {
         toast.success("Exam question added successful");
       });
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -102,8 +104,11 @@ const PreparationForGreadModelTest = () => {
           <Link className="bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg">
             Examinee
           </Link>
-          <Link className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg">
-            Result
+          <Link
+            to="/dashboard/gradePreparation/exam-list"
+            className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg"
+          >
+            Exam List
           </Link>
           <button
             onClick={() => setModal(!modal)}
@@ -132,7 +137,9 @@ const PreparationForGreadModelTest = () => {
       <section className="flex justify-between gap-5">
         <div className="w-1/2 border-r mt-10 shadow-lg p-5">
           <div>
-            <h2 className="text-center">9th - 20th grade preparation Question</h2>
+            <h2 className="text-center">
+              9th - 20th grade preparation Question
+            </h2>
             <p className="text-center">Total Mcq : {question.length}</p>
             <hr className="my-5" />
             <form onSubmit={handleCreateExam} className="my-5">
@@ -148,6 +155,7 @@ const PreparationForGreadModelTest = () => {
                 name="cutsark"
                 className="p-2 border  block focus:outline-none w-full mb-3"
               />
+              <input type="text" placeholder='Negative Mark' name='negativeMark' className='p-2 border  block focus:outline-none w-full mb-3' />
               <small>Exam Date</small>
               <input
                 type="date"

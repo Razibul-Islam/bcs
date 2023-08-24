@@ -58,7 +58,7 @@ const JobSolution = () => {
             আর্কাইভ
           </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-pink-400 -rotate-45 bottom-16 md:bottom-24 left-14"></span>
-          <Link className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6] rounded-sm shadow-md bottom-0 right-0">
+          <Link to="/jobsolution/merit" className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6] rounded-sm shadow-md bottom-0 right-0">
             মেরিট লিস্ট
           </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-teal-400 rotate-45 bottom-16 md:bottom-24 right-14 "></span>

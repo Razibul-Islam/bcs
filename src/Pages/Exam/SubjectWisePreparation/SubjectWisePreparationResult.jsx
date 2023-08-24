@@ -8,10 +8,12 @@ const SubjectWisePreparationResult = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `http://localhost:5000/subject-wise-result?userEmail=${user?.email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setresult(data));
+    if (user && user.email) {
+      const url = `http://localhost:5000/subject-wise-result?userEmail=${user?.email}`;
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => setresult(data));
+    }
   }, [user]);
   return (
     <div className="p-5 grid gap-5 grid-cols-3 max-w-6xl mx-auto">

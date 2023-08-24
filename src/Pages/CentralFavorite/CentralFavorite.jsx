@@ -10,7 +10,7 @@ const CentralFavorite = () => {
   const [data, setData] = useState([]);
   const email = user?.email;
 
-  console.log(email);
+  // console.log(email);
 
   useEffect(() => {
     fetch(`http://localhost:5000/get-favorite?email=${email}`)
