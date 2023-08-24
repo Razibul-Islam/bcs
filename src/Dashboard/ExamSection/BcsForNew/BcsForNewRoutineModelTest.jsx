@@ -57,7 +57,7 @@ const BcsForNewRoutineModelTest = () => {
     const examQuestion = question;
     const time = e.target.time.value;
     const startDate = e.target.startDate.value;
-
+    const negativeMark = e.target.negativeMark.value
     const cutsark = e.target.cutsark.value;
     const participate = [];
 
@@ -67,6 +67,7 @@ const BcsForNewRoutineModelTest = () => {
       startDate,
       participate,
       cutsark,
+      negativeMark
     };
     // console.log(data);
     fetch("http://localhost:5000/Bcs-For-New-exam", {
@@ -80,6 +81,7 @@ const BcsForNewRoutineModelTest = () => {
       .then((data) => {
         toast.success("Exam question added successful");
       });
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -102,8 +104,11 @@ const BcsForNewRoutineModelTest = () => {
           <Link className="bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg">
             Examinee
           </Link>
-          <Link className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg">
-            Result
+          <Link
+            to="/dashboard/bcsForNew/exam-list"
+            className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg"
+          >
+            Exam List
           </Link>
           <button
             onClick={() => setModal(!modal)}
@@ -148,6 +153,7 @@ const BcsForNewRoutineModelTest = () => {
                 name="cutsark"
                 className="p-2 border  block focus:outline-none w-full mb-3"
               />
+              <input type="text" placeholder='Negative Mark' name='negativeMark' className='p-2 border  block focus:outline-none w-full mb-3' />
               <small>Exam Date</small>
               <input
                 type="date"

@@ -8,7 +8,7 @@ const JobSolutionResult = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `http://localhost:5000/bank-preparation-result?userEmail=${user?.email}`;
+    const url = `http://localhost:5000/Job-Solution-result?userEmail=${user?.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setresult(data));

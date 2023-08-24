@@ -74,6 +74,7 @@ const BCSForExperienceExam = () => {
     const userName = user.displayName;
     const userEmail = user.email;
     const totalQuestion = question.examQuestion.length;
+    const negativeMark = question.negativeMark;
     const data = {
       totalCorrectAns,
       totalWrong,
@@ -81,6 +82,7 @@ const BCSForExperienceExam = () => {
       userName,
       userEmail,
       totalQuestion,
+      negativeMark
     };
 
     setParticipate((prev) => [...prev, userEmail]);
@@ -118,6 +120,11 @@ const BCSForExperienceExam = () => {
     navigate("/already-attent-exam");
   }
 
+  if (remainingTime === 1) {
+    // submitExam()
+    document.getElementById('btn').click()
+  }
+
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainingTime((prevRemainingTime) => {
@@ -148,7 +155,7 @@ const BCSForExperienceExam = () => {
   return (
     <div className="p-5 max-w-6xl mx-auto relative">
       <div className="flex justify-between items-center sticky top-0 py-4 bg-white">
-        <button
+        <button id='btn'
           onClick={submitExam}
           className="px-5 py-2 bg-green-500 text-white rounded-sm shadow-lg"
         >

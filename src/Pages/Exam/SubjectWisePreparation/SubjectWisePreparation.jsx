@@ -23,17 +23,15 @@ const SubjectWisePreparation = () => {
       <div className="w-full h-[400px]">
         <div className="w-[300px] md:w-[400px] h-[200px] md:h-[300px] mx-auto mt-10 relative flex items-center justify-center">
           <Link
-            to="/bcsfornewstartexam"
-            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${
-              question._id ? "" : "hidden"
-            }`}
+            to="/subjectwisepreparationstartexam"
+            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${question._id ? "" : "hidden"
+              }`}
           >
             Start Exam
           </Link>
           <Link
-            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${
-              question._id ? "hidden" : ""
-            }`}
+            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${question._id ? "hidden" : ""
+              }`}
           >
             এই মুহূর্তে কোনো পরীক্ষা নেই
           </Link>
@@ -59,7 +57,7 @@ const SubjectWisePreparation = () => {
           </Link>
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-pink-400 -rotate-45 bottom-16 md:bottom-24 left-14"></span>
           <Link
-            to="/"
+            to="/subjectwisepreparation/Merit"
             className="absolute text-white  w-24 text-center py-2 bg-[#9b59b6] rounded-sm shadow-md bottom-0 right-0"
           >
             মেরিট লিস্ট

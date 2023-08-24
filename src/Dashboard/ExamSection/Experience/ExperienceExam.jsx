@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const FreeWeaklyExamList = () => {
+const ExperienceExam = () => {
   const [question, setQuestion] = useState([]);
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/delete-free-modeltest?_id=${_id}`, {
+    fetch(`http://localhost:5000/get-experience-bcs-eaxma-all?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const FreeWeaklyExamList = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/get-free-weaklly-eaxma-all`;
+    const url = `http://localhost:5000/delete-experience-bcs-modeltest`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
@@ -31,7 +31,7 @@ const FreeWeaklyExamList = () => {
         {question.map((qsn) => {
           return (
             <div className="p-5 text-center border border-dashed rounded">
-              <h4>Free weakly Model Test</h4>
+              <h4>Bank</h4>
               <h5 className="my-2">{qsn.startDate}</h5>
               <div>
                 <button
@@ -49,4 +49,4 @@ const FreeWeaklyExamList = () => {
   );
 };
 
-export default FreeWeaklyExamList;
+export default ExperienceExam;
