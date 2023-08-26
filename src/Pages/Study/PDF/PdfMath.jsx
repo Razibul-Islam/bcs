@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const PdfMath = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/get-study-pdf?section=Math Master")
+    fetch("https://bcspioneer.vercel.app/get-study-pdf?section=Math Master")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

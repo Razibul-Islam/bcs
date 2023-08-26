@@ -11,11 +11,19 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import GroupIcon from "@mui/icons-material/Group";
 import DiamondIcon from '@mui/icons-material/Diamond';
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../Auth/Firebase.int";
+import Loading from "../Loader/Loading";
 
 const Dashboard = () => {
   const [study, setStudy] = useState(false);
   const [exam, setExam] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
 
+  if(loading){
+    return<Loading/>
+  }
+ 
   return (
     <div>
       <div className="bg-[#1F2937] w-full p-5 flex justify-between">
@@ -31,7 +39,7 @@ const Dashboard = () => {
         </div>
       </div>
       <section className="flex justify-between gap-5">
-        <div className="bg-[#1F2937] w-[250px] min-h-screen">
+        <div className="bg-[#1F2937] w-[300px] min-h-screen">
           <Link
             to="/dashboard"
             className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900"
@@ -69,28 +77,28 @@ const Dashboard = () => {
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
               <CreditScoreIcon />
-              Job Solution Topically
+              জব সলিউশন টপিক ভিত্তিক
             </Link>
             <Link
               to="/dashboard/past-jobs-question"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900"
             >
               <HelpIcon />
-              Past Jobs Questions
+              বিগত জবস প্রশ্ন
             </Link>
             <Link
               to="/dashboard/read-topicaly"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900"
             >
               <CreditScoreIcon />
-              Read Topically
+              বিষয়ভিত্তিক পড়ুন
             </Link>
             <Link
               to="/dashboard/past-bcs-question"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
               <CreditScoreIcon />
-              BCS Past Questions
+              বিগত বিসিএস প্রশ্ন
             </Link>
           </div>
           <button
@@ -105,54 +113,54 @@ const Dashboard = () => {
               to="/dashboard/free-weakly-modeltest"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Free Weakly Test
+              <EditCalendarIcon /> ফ্রি মডেল টেস্ট
             </Link>
             <Link
               to="/dashboard/bcsForNew"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> BCS For New
+              <EditCalendarIcon /> নতুনের জন্য বিসিএস
             </Link>
             <Link
               to="/dashboard/jobSolution"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Job Solution
+              <EditCalendarIcon /> জব সলিউশন
             </Link>
             <Link
               to="/dashboard/gradePreparation"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Grade Preparation
+              <EditCalendarIcon /> গ্রেডের প্রস্তুতি
             </Link>
             <Link
               to="/dashboard/subject-wise"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Subject Wise
+              <EditCalendarIcon /> বিষয়ভিত্তিক
             </Link>
             <Link
               to="/dashboard/bank-preparation"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Bank Preparation
+              <EditCalendarIcon /> ব্যাংক প্রস্তুতি
             </Link>
             <Link
               to="/dashboard/experience"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Experience
+              <EditCalendarIcon /> অভিজ্ঞদের জন্য বিসিএস
             </Link>
             <Link
               to="/dashboard/teacherRecruitment"
               className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "
             >
-              <EditCalendarIcon /> Teacher
+              <EditCalendarIcon /> শিক্ষক নিয়োগ ও নিবন্ধন
             </Link>
           </div>
           <Link className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "><DiamondIcon/> Pakage</Link>
         </div>
-        <div className="w-[calc(100%-250px)]">
+        <div className="w-[calc(100%-300px)]">
           <Outlet />
         </div>
       </section>

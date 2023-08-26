@@ -4,7 +4,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 const Weekly = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/get-study-video?section=Weekly%20Bulletin")
+    fetch("https://bcspioneer.vercel.app/get-study-video?section=Weekly%20Bulletin")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

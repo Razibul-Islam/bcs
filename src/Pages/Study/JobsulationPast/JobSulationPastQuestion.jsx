@@ -16,7 +16,7 @@ const JobSulationPastQuestion = () => {
   const [on, setOn] = useState(false);
 
   useEffect(() => {
-    const url = `http://localhost:5000/jobs-past-question?category=${category}&question_id=pastQ101`;
+    const url = `https://bcspioneer.vercel.app/jobs-past-question?category=${category}&question_id=pastQ101`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
@@ -41,16 +41,27 @@ const JobSulationPastQuestion = () => {
     const email = user.email;
     question.email = email;
 
-    fetch("http://localhost:5000/add-favorite", {
+    const data = {
+      question: question.question,
+      opA: question.opA,
+      opB: question.opB,
+      opC: question.opC,
+      opD: question.opD,
+      explain: question.explain,
+      ans: question.ans,
+      email: question.email,
+      id: question._id,
+    };
+
+    fetch(`https://bcspioneer.vercel.app/add-favorite?id=${question._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(question),
+      body: JSON.stringify(data),
     }).then((data) => {
       console.log(data);
       if (data.status === 409) {
         toast("Already Exist");
       } else {
-        // console.log(data);
         toast("Favorite added Successfully");
       }
     });
@@ -79,11 +90,10 @@ const JobSulationPastQuestion = () => {
               <div className="mt-3">
                 <p
                   id={`${qs._id + "a"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "a" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "a" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     ক
@@ -92,11 +102,10 @@ const JobSulationPastQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "b"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "b" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "b" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     খ
@@ -105,11 +114,10 @@ const JobSulationPastQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "c"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "c" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "c" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     গ
@@ -118,11 +126,10 @@ const JobSulationPastQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "d"}`}
-                  className={`flex items-center gap-3 my-2${
-                    eyeOn && "d" === qs.ans
+                  className={`flex items-center gap-3 my-2${eyeOn && "d" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : "text-black"
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     ঘ

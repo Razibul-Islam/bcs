@@ -7,7 +7,7 @@ const FreeWeaklyExamQuestion = () => {
     
 
     useEffect(()=>{
-        const url = `http://localhost:5000/get-free-weaklly-single-exam`
+        const url = `https://bcspioneer.vercel.app/get-free-weaklly-single-exam`
     }, [])
 
     return (

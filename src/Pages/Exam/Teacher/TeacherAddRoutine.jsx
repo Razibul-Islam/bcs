@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const TeacherAddRoutine = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/teacher-preparation")
+    fetch("https://bcspioneer.vercel.app/teacher-preparation")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

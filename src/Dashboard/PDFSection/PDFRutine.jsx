@@ -18,7 +18,7 @@ const PDFRutine = () => {
         const data = { title, date, topics, descripetion };
         console.log(data);
 
-        fetch('http://localhost:5000/add-pdf-rutine', {
+        fetch('https://bcspioneer.vercel.app/add-pdf-rutine', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -35,7 +35,7 @@ const PDFRutine = () => {
 
 
     useState(() => {
-        const url = `http://localhost:5000/get-pdf-rutine`
+        const url = `https://bcspioneer.vercel.app/get-pdf-rutine`
         fetch(url)
             .then(res => res.json())
             .then(data => setRutin(data))

@@ -13,26 +13,23 @@ const FreeWeaklyResultSingleView = () => {
     const [pashed, setPashed] = useState([]);
     const { _id } = useParams();
 
-
     useEffect(() => {
-        fetch(`http://localhost:5000/get-single-free-result?_id=${_id}`)
+        fetch(`https://bcspioneer.vercel.app/get-single-free-result?_id=${_id}`)
             .then(res => res.json())
             .then(data => setResult(data))
     }, [_id])
 
-
     useEffect(() => {
-        fetch(`http://localhost:5000/free-weakly-merit-list?examDate=${result.examDate}`)
+        fetch(`https://bcspioneer.vercel.app/free-weakly-merit-list?examDate=${result.examDate}`)
             .then(res => res.json())
             .then(data => setPosition(data))
     }, [result])
-    
+
     useEffect(() => {
-        fetch(`http://localhost:5000/free-weakly-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`)
+        fetch(`https://bcspioneer.vercel.app/free-weakly-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`)
             .then(res => res.json())
             .then(data => setPashed(data))
     }, [result])
-
 
     const targetEmail = result.userEmail;
     const targetIndex = position.findIndex(item => item.userEmail === targetEmail);
@@ -98,8 +95,6 @@ const FreeWeaklyResultSingleView = () => {
                 </table>
             </div>
 
-
-
             <div className='text-center mt-10'>
                 <Link className='bg-teal-500 px-5 text-white my-2 rounded-sm'>উত্তরপত্র দেখুন</Link>
                 <br />
@@ -109,7 +104,6 @@ const FreeWeaklyResultSingleView = () => {
                 <br />
                 <Link to={`/free-weakly-model-test/rutin`} className='bg-teal-500 px-5 text-white my-2 rounded-sm'>পরবর্তী পরীক্ষার রুটিন ও সিলেবাস দেখুন</Link>
             </div>
-
         </div>
     );
 };

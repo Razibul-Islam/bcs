@@ -6,7 +6,7 @@ const AllSubTopic = () => {
   const [subTopic, setSubTopic] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/get-subtopic-topically?topic=${topic}`;
+    const url = `https://bcspioneer.vercel.app/get-subtopic-topically?topic=${topic}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSubTopic(data));

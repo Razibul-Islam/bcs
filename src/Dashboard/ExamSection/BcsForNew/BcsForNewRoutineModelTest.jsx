@@ -12,7 +12,7 @@ const BcsForNewRoutineModelTest = () => {
 
   const handleSearch = () => {
     const keyword = document.getElementById("search-box").value;
-    const url = `http://localhost:5000/smart-search?keyword=${keyword}`;
+    const url = `https://bcspioneer.vercel.app/smart-search?keyword=${keyword}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +24,7 @@ const BcsForNewRoutineModelTest = () => {
   };
 
   const handleShowall = () => {
-    const url = `http://localhost:5000/get-all-question`;
+    const url = `https://bcspioneer.vercel.app/get-all-question`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));
@@ -56,25 +56,21 @@ const BcsForNewRoutineModelTest = () => {
     e.preventDefault();
     const examQuestion = question;
     const time = e.target.time.value;
-    // const startTime = e.target.startTime.value;
     const startDate = e.target.startDate.value;
-    // const endTime = e.target.endTime.value;
-    // const endDate = e.target.endDate.value;
-    const cut = e.target.cut.value;
+    const negativeMark = e.target.negativeMark.value
+    const cutsark = e.target.cutsark.value;
     const participate = [];
 
     const data = {
       examQuestion,
       time,
       startDate,
-      // startTime,
-      // endDate,
-      // endTime,
       participate,
-      cut,
+      cutsark,
+      negativeMark
     };
     // console.log(data);
-    fetch("http://localhost:5000/Bcs-For-New-exam", {
+    fetch("https://bcspioneer.vercel.app/Bcs-For-New-exam", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -85,10 +81,11 @@ const BcsForNewRoutineModelTest = () => {
       .then((data) => {
         toast.success("Exam question added successful");
       });
+    window.location.reload();
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/get-all-question`;
+    const url = `https://bcspioneer.vercel.app/get-all-question`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));
@@ -104,8 +101,14 @@ const BcsForNewRoutineModelTest = () => {
           >
             Rutine
           </Link>
-          <Link className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg">
-            Result
+          <Link className="bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg">
+            Examinee
+          </Link>
+          <Link
+            to="/dashboard/bcsForNew/exam-list"
+            className="bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg"
+          >
+            Exam List
           </Link>
           <button
             onClick={() => setModal(!modal)}
@@ -144,39 +147,19 @@ const BcsForNewRoutineModelTest = () => {
                 name="time"
                 className="p-2 border  block focus:outline-none w-full mb-3"
               />
-
+              <input
+                type="text"
+                placeholder="Cuts Mark"
+                name="cutsark"
+                className="p-2 border  block focus:outline-none w-full mb-3"
+              />
+              <input type="text" placeholder='Negative Mark' name='negativeMark' className='p-2 border  block focus:outline-none w-full mb-3' />
               <small>Exam Date</small>
-              <div className="flex gap-2">
-                <input
-                  type="date"
-                  name="startDate"
-                  className="p-2 border  block focus:outline-none w-full"
-                />
-                {/* <input
-                  type="time"
-                  name="startTime"
-                  className="p-2 border  block focus:outline-none w-full"
-                /> */}
-                <input
-                  type="text"
-                  name="cut"
-                  className="p-2 border  block focus:outline-none w-full"
-                  placeholder="Cuts Mark"
-                />
-              </div>
-              {/* <small>End Date And Time</small> */}
-              {/* <div className="flex gap-2">
-                <input
-                  type="date"
-                  name="endDate"
-                  className="p-2 border  block focus:outline-none w-full"
-                />
-                <input
-                  type="time"
-                  name="endTime"
-                  className="p-2 border  block focus:outline-none w-full"
-                />
-              </div> */}
+              <input
+                type="date"
+                name="startDate"
+                className="p-2 border  block focus:outline-none w-full"
+              />
               <button className="bg-green-500 px-5 py-1 shadow mt-5 rounded text-white">
                 Submit
               </button>

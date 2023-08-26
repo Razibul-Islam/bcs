@@ -5,7 +5,7 @@ const FreeWeaklyExamenee = () => {
     const [question, setQuestion] = useState([]);
 
     useEffect(()=>{
-        const url = `http://localhost:5000/get-free-weaklly-eaxma-all`;
+        const url = `https://bcspioneer.vercel.app/get-free-weaklly-eaxma-all`;
         fetch(url)
         .then(res=> res.json())
         .then(data => setQuestion(data))

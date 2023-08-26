@@ -1,6 +1,22 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../Auth/Firebase.int";
+import Loading from "../Loader/Loading";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
+
+  const navigate = useNavigate()
+  const [user, loading, error] = useAuthState(auth);
+
+  if(loading){
+    return <Loading/>
+  }
+
+  if(!user){
+    navigate('/login')
+  }
+
   return (
     <div className="banner-bg p-5 md:p-2 md:block hidden">
       <div className="md:flex justify-between items-center h-full pt-10 max-w-6xl  mx-auto">

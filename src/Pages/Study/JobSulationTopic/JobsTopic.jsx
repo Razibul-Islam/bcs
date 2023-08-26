@@ -6,7 +6,7 @@ const JobsTopic = () => {
   const [topic, setTopic] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/get-jobs-topic?subject=${subject}`;
+    const url = `https://bcspioneer.vercel.app/get-jobs-topic?subject=${subject}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setTopic(data));

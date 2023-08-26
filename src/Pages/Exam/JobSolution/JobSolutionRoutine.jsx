@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const JobSolutionRoutine = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/Job-Solution-rutin")
+    fetch("https://bcspioneer.vercel.app/Job-Solution-rutin")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

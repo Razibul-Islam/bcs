@@ -1,73 +1,83 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+
+  const handleDelete = (_id)=> {
+    const url = `https://bcspioneer.vercel.app/delete-user?_id=${_id}`;
+    fetch(url, {
+      method: "DELETE"
+    })
+    .then(res=> res.json())
+    .then(data => {
+      toast.success('Delete Successfull')
+    })
+  };
+
+
+
+  const handleMakeAdmin = (_id)=>{
+    const url = `https://bcspioneer.vercel.app/make-admin?_id=${_id}`;
+    fetch(url, {
+      method: "PUT"
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
+  const handleMakeUser = (_id)=>{
+    const url = `https://bcspioneer.vercel.app/make-user?_id=${_id}`;
+    fetch(url, {
+      method: "PUT"
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
+
+
   useEffect(() => {
-    fetch("http://localhost:5000/get-users")
+    fetch("https://bcspioneer.vercel.app/get-users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
-  }, []);
+  }, [handleDelete, handleMakeUser, handleMakeAdmin]);
+
+  
+
+
+
   return (
-    <div className="overflow-y-auto">
-      <table class="min-w-full text-left text-sm font-light">
-        <thead class="border-b font-medium dark:border-neutral-500">
+    <div className="p-5">
+      <div className="max-w-2xl mx-auto overflow-scroll">
+        <table>
           <tr>
-            <th scope="col" class="px-6 py-4">
-              Serial
-            </th>
-            <th scope="col" class="px-6 py-4">
-              Name
-            </th>
-            <th scope="col" class="px-6 py-4">
-              Email
-            </th>
-            <th scope="col" class="px-6 py-4">
-              Role
-            </th>
-            <th scope="col" class="px-6 py-4">
-              Address
-            </th>
-            <th scope="col" class="px-6 py-4">
-              Mobile
-            </th>
-            <th scope="col" class="px-6 py-4">
-              Package
-            </th>
-            <th scope="col" class="px-6 py-4">
-              PackageEndDate
-            </th>
-            <th scope="col" class="px-6 py-4">
-              PackageStartDate
-            </th>
-            <th scope="col" class="px-6 py-4">
-              PackageType
-            </th>
-            <th scope="col" class="px-6 py-4">
-              UserStatus
-            </th>
+            <th>নাম</th>
+            <th>ইমেইল</th>
+            <th>রোল</th>
+            <th>একশন</th>
           </tr>
-        </thead>
-        <tbody>
-          {users.map((user, i) => (
-            <tr class="border-b dark:border-neutral-500">
-              <td class="whitespace-nowrap px-6 py-4 font-medium">{i++}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.UserName}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.email}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.Role}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.Address}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.Mobile}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.Package}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.PackageEndDate}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.PackageEndDate}</td>
-              <td class="whitespace-nowrap px-6 py-4">
-                {user.PackageStartDate}
-              </td>
-              <td class="whitespace-nowrap px-6 py-4">{user.PackageType}</td>
-              <td class="whitespace-nowrap px-6 py-4">{user.UserStatus}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          {
+            users.map(user => {
+              return (
+                <tr>
+                  <td>{user.UserName}</td>
+                  <td>{user.email}</td>
+                  <td>{user.Role}</td>
+                  <td className="flex gap-2">
+                    {
+                      user.Role == 'Admin' ? <button onClick={()=> handleMakeUser(user._id)} className="px-3 rounded-sm shadow-2xl text-white bg-green-500">Make User</button> : <button onClick={()=> handleMakeAdmin(user._id)} className="px-3 rounded-sm shadow-2xl text-white bg-green-500">Make Admin</button>
+                    }
+                    
+                    <button onClick={()=> handleDelete(user._id)} className="px-3 rounded-sm shadow-2xl text-white bg-red-500">Delete</button>
+                  </td>
+                </tr>
+
+              )
+            })
+          }
+        </table>
+      </div>
+
+
     </div>
   );
 };

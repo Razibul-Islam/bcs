@@ -8,6 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Loading from "../Loader/Loading";
 
 const SignUP = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -17,6 +18,10 @@ const SignUP = () => {
   const [photoURL, setphotoURL] = useState("");
   const [users, load, er] = useAuthState(auth);
   const navigate = useNavigate();
+  
+  if(load){
+    return <Loading></Loading>
+  }
 
   const handleCreateAccount = (e) => {
     e.preventDefault();
@@ -46,8 +51,8 @@ const SignUP = () => {
     return <>Loading ...........</>;
   }
 
-  if (error) {
-    toast.error(err.message);
+  if(error) {
+    toast.error(error.message);
   }
 
   if (user) {
@@ -60,7 +65,7 @@ const SignUP = () => {
   return (
     <div className="banner-bg flex justify-center items-center">
       <div className="w-96 mx-auto p-10 rounded-lg shadow form-bg bg-[#ffffff2d] mt-14">
-        <h1 className="text-2xl font-bold text-[#FFC000]">
+        <h1 className="text-2xl font-bold text-teal-500">
           নতুন একাউন্ট তৈরি করুন
         </h1>
 
@@ -97,7 +102,7 @@ const SignUP = () => {
             </span>
           </div>
           <div className="flex justify-between items-center mt-5">
-            <button className="px-5 p-2 bg-[#FFC000]  text-[#484646]  font-bold">
+            <button className="px-5 p-2 bg-teal-500  text-[#fffcfc]  font-bold">
               একাউন্ট তৈরি করুন
             </button>
             <Link to="/login" className="text-[#000000] text-sm ">

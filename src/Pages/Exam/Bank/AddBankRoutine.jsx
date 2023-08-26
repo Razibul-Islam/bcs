@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const AddBankRoutine = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/bank-preparation")
+    fetch("https://bcspioneer.vercel.app/bank-preparation")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

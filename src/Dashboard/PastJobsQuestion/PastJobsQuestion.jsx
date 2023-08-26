@@ -31,7 +31,7 @@ const PastJobsQuestion = () => {
         const question_id = 'pastQ101'
         const data = { question, opA, opB, opC, opD, explain, ans, question_id , category}
         console.log(data);
-        fetch('http://localhost:5000/add-question', {
+        fetch('https://bcspioneer.vercel.app/add-question', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,7 @@ const PastJobsQuestion = () => {
 
 
     const handleDeleteQuestion = (_id) => {
-        const url = `http://localhost:5000/delete-question?_id=${_id}`;
+        const url = `https://bcspioneer.vercel.app/delete-question?_id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -78,7 +78,7 @@ const PastJobsQuestion = () => {
         e.preventDefault();
         const category = e.target.category.value;
 
-        fetch('http://localhost:5000/jobs-past-category-add', {
+        fetch('https://bcspioneer.vercel.app/jobs-past-category-add', {
             method: "POST",
             headers: {
                 'content-type':'application/json'
@@ -96,7 +96,7 @@ const PastJobsQuestion = () => {
 
 
     const handleDeletecategory = (_id) =>{
-        const url = `http://localhost:5000/jobs-past-category-delete?_id=${_id}`;
+        const url = `https://bcspioneer.vercel.app/jobs-past-category-delete?_id=${_id}`;
         fetch(url,{
             method: "DELETE"
         })
@@ -111,7 +111,7 @@ const PastJobsQuestion = () => {
 
 
     useEffect(()=>{
-        const url = `http://localhost:5000/jobs-past-category-get`;
+        const url = `https://bcspioneer.vercel.app/jobs-past-category-get`;
         fetch(url)
         .then(res => res.json())
         .then(data => setcategory(data))
@@ -119,7 +119,7 @@ const PastJobsQuestion = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-question?question_id=pastQ101`;
+        const url = `https://bcspioneer.vercel.app/get-question?question_id=pastQ101`;
         fetch(url)
             .then(res => res.json())
             .then(data => setQuestion(data))

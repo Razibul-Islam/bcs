@@ -38,7 +38,7 @@ const JobSulationTopic = () => {
         const question_id = 'jst101'
         const data = { topic, subTopic, question, opA, opB, opC, opD, explain, ans, question_id, subject }
         console.log(data);
-        fetch('http://localhost:5000/add-question', {
+        fetch('https://bcspioneer.vercel.app/add-question', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -56,14 +56,14 @@ const JobSulationTopic = () => {
 
     const filterByTopic = () => {
         const topic = document.getElementById('filter_topic').value;
-        const url = `http://localhost:5000/get-question-topic-job-sulation?topic=${topic}&question_id=jst101`;
+        const url = `https://bcspioneer.vercel.app/get-question-topic-job-sulation?topic=${topic}&question_id=jst101`;
         fetch(url)
             .then(res => res.json())
             .then(data => setQuestion(data))
     }
 
     const handleAll = () => {
-        const url = `http://localhost:5000/get-question?question_id=jst101`;
+        const url = `https://bcspioneer.vercel.app/get-question?question_id=jst101`;
         fetch(url)
             .then(res => res.json())
             .then(data => setQuestion(data))
@@ -72,7 +72,7 @@ const JobSulationTopic = () => {
 
 
     const handleDeleteQuestion = (_id)=>{
-        const url = `http://localhost:5000/delete-question?_id=${_id}`;
+        const url = `https://bcspioneer.vercel.app/delete-question?_id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -86,7 +86,7 @@ const JobSulationTopic = () => {
     }
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-question?question_id=jst101`;
+        const url = `https://bcspioneer.vercel.app/get-question?question_id=jst101`;
         fetch(url)
             .then(res => res.json())
             .then(data => setQuestion(data))
@@ -94,19 +94,19 @@ const JobSulationTopic = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-subject-read-jobs`;
+        const url = `https://bcspioneer.vercel.app/get-subject-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubject(data))
     }, [])
     useEffect(() => {
-        const url = `http://localhost:5000/get-topic-read-jobs`;
+        const url = `https://bcspioneer.vercel.app/get-topic-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setTopic(data))
     }, [])
     useEffect(() => {
-        const url = `http://localhost:5000/get-subtopic-read-jobs`;
+        const url = `https://bcspioneer.vercel.app/get-subtopic-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubTopic(data))

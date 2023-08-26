@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const PreparationForGreadRoutin = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/grade-preparation")
+    fetch("https://bcspioneer.vercel.app/grade-preparation")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

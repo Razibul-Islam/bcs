@@ -4,7 +4,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 const English = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/get-study-video?section=English%20Literature")
+    fetch("https://bcspioneer.vercel.app/get-study-video?section=English%20Literature")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

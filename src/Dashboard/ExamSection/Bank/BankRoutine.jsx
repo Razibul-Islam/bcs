@@ -12,7 +12,7 @@ const BankRoutine = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("http://localhost:5000/bank-preparation", {
+    fetch("https://bcspioneer.vercel.app/bank-preparation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,14 +29,14 @@ const BankRoutine = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/bank-preparation`;
+    const url = `https://bcspioneer.vercel.app/bank-preparation`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));
   }, []);
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/bank-preparation-rutin-delete?_id=${_id}`, {
+    fetch(`https://bcspioneer.vercel.app/bank-preparation-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

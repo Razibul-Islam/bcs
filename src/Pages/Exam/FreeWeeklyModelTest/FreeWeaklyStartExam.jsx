@@ -4,14 +4,12 @@ import auth from '../../../Auth/Firebase.int';
 import { useNavigate } from 'react-router-dom';
 
 const FreeWeaklyStartExam = () => {
-
     const [question, setQuestion] = useState({});
     let index = 1;
     const [wrong, setWrong] = useState(0);
     const [correctAns, setCorrectAns] = useState(0);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate()
-
 
     const [times, setTimes] = useState(0);
     const [remainingTime, setRemainingTime] = useState(times * 60);
@@ -35,18 +33,11 @@ const FreeWeaklyStartExam = () => {
     const seconds = remainingTime % 60;
     const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
-
     const currentDate = new Date();
     const day = currentDate.getDate();
     const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
     const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
-
-
-
-
-
-
 
     const handleChexkQuestion = (ans, option, id) => {
         const div = document.getElementById(id);
@@ -69,13 +60,6 @@ const FreeWeaklyStartExam = () => {
         }
     }
 
-
-
-
-
-
-    // console.log(user)
-
     const submitExam = () => {
         const totalCorrectAns = correctAns;
         const totalWrong = wrong;
@@ -88,7 +72,7 @@ const FreeWeaklyStartExam = () => {
         const negativeMark = question.negativeMark;
         const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark, examName, negativeMark};
 
-        fetch('http://localhost:5000/free-weakly-result', {
+        fetch('https://bcspioneer.vercel.app/free-weakly-result', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -101,7 +85,7 @@ const FreeWeaklyStartExam = () => {
         let participate = question.participate;
         participate.push(userEmail)
 
-        fetch(`http://localhost:5000/updated-free-weakly-participet?_id=${question._id}`, {
+        fetch(`https://bcspioneer.vercel.app/updated-free-weakly-participet?_id=${question._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -112,8 +96,6 @@ const FreeWeaklyStartExam = () => {
             .then(data => console.log(data))
     }
 
-
-   
     const found = question?.participate?.find(email => email === user?.email);
 
     if (found) {
@@ -147,7 +129,7 @@ const FreeWeaklyStartExam = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-free-wakly-exam?startDate=${date}`;
+        const url = `https://bcspioneer.vercel.app/get-free-wakly-exam?startDate=${date}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -186,7 +168,3 @@ const FreeWeaklyStartExam = () => {
 };
 
 export default FreeWeaklyStartExam;
-
-
-
-

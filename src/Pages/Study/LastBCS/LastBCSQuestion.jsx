@@ -16,7 +16,7 @@ const LastBCSQuestion = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `http://localhost:5000/bcs-past-question?category=${category}&question_id=pastbcsquestion101`;
+    const url = `https://bcspioneer.vercel.app/bcs-past-question?category=${category}&question_id=pastbcsquestion101`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
@@ -43,10 +43,22 @@ const LastBCSQuestion = () => {
     const email = user.email;
     question.email = email;
 
-    fetch("http://localhost:5000/add-favorite", {
+    const data = {
+      question: question.question,
+      opA: question.opA,
+      opB: question.opB,
+      opC: question.opC,
+      opD: question.opD,
+      explain: question.explain,
+      ans: question.ans,
+      email: question.email,
+      id: question._id,
+    };
+
+    fetch(`https://bcspioneer.vercel.app/add-favorite?id=${question._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(question),
+      body: JSON.stringify(data),
     }).then((data) => {
       console.log(data);
       if (data.status === 409) {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const SubjectWisePreparationRoutine = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/subject-wise")
+    fetch("https://bcspioneer.vercel.app/subject-wise")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

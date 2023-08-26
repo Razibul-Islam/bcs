@@ -1,11 +1,24 @@
 import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "./Firebase.int";
 import { toast } from "react-toastify";
+import Loading from "../Loader/Loading";
 
 const Login = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [us, lo, er] = useAuthState(auth);
+  const nvigate = useNavigate()
+
+  if (lo) {
+    return <Loading></Loading>
+  }
+
+  if (us) {
+    nvigate('/')
+  }
+
+
 
   if (user) {
     const UserEmail = user.user.email;
@@ -31,7 +44,7 @@ const Login = () => {
       UserStatus,
     };
 
-    fetch(`http://localhost:5000/user-update?email=${UserEmail}`, {
+    fetch(`https://bcspioneer.vercel.app/user-update?email=${UserEmail}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +60,7 @@ const Login = () => {
   return (
     <div className="banner-bg flex justify-center items-center">
       <div className="w-96 mx-auto p-10 rounded-lg shadow form-bg bg-[#ffffff53]">
-        <h1 className="text-2xl font-bold text-[#FFC000]">লগইন করুন</h1>
+        <h1 className="text-2xl font-bold text-teal-500">লগইন করুন</h1>
 
         <div className="mt-5">
           <input
@@ -70,7 +83,7 @@ const Login = () => {
             </Link>
           </div>
           <div className="flex justify-between items-center mt-5">
-            <button className="px-5 p-2 bg-[#FFC000]  text-[#282828]  font-bold">
+            <button className="px-5 p-2 bg-teal-500  text-[#ffffff]  font-bold">
               লগইন
             </button>
             <Link to="/sign-up" className="text-[#000000] text-sm ">
@@ -79,10 +92,11 @@ const Login = () => {
           </div>
         </div>
 
+        <p className="my-4">সরাসরি লগইন করতে গুগল লগইন বাটন এ ক্লিক করুন. </p>
         <div className="flex  gap-4">
           <button
             onClick={() => signInWithGoogle()}
-            className="bg-[#decb9289] mt-5 rounded space-x-2 justify-center items-center p-2 w-full flex"
+            className="bg-[#46e0db89] mt-5 rounded space-x-2 justify-center items-center p-2 w-full flex"
           >
             <img
               className="h-8"

@@ -15,7 +15,7 @@ const FreeWeeklyModelTest = () => {
 
 
   useEffect(() => {
-    const url = `http://localhost:5000/get-free-wakly-exam?startDate=${date}`;
+    const url = `https://bcspioneer.vercel.app/get-free-wakly-exam?startDate=${date}`;
     fetch(url)
         .then(res => res.json())
         .then(data => setQuestion(data))

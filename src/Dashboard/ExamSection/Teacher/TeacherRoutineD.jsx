@@ -12,7 +12,7 @@ const TeacherRoutineD = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("http://localhost:5000/teacher-preparation", {
+    fetch("https://bcspioneer.vercel.app/teacher-preparation", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const TeacherRoutineD = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/teacher-preparation-rutin-delete?_id=${_id}`, {
+    fetch(`https://bcspioneer.vercel.app/teacher-preparation-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const TeacherRoutineD = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5000/teacher-preparation`;
+    const url = `https://bcspioneer.vercel.app/teacher-preparation`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));

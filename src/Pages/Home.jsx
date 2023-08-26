@@ -8,9 +8,10 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <ExamSection></ExamSection>
+      {/* <ExamSection></ExamSection>
       <StudySection></StudySection>
-      <PrimiumSectrion />
+      <PrimiumSectrion /> */}
+      <h1 className="text-center my-10 text-2xl font-bold text-slate-400">The site is under development.</h1>
     </div>
   );
 };

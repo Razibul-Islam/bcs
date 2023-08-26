@@ -34,7 +34,7 @@ const BCSPastQuestion = () => {
         const question_id = 'pastbcsquestion101'
         const data = { question, opA, opB, opC, opD, explain, ans, question_id , category}
         console.log(data);
-        fetch('http://localhost:5000/add-question', {
+        fetch('https://bcspioneer.vercel.app/add-question', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const BCSPastQuestion = () => {
 
 
     const handleDeleteQuestion = (_id) => {
-        const url = `http://localhost:5000/delete-question?_id=${_id}`;
+        const url = `https://bcspioneer.vercel.app/delete-question?_id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -75,7 +75,7 @@ const BCSPastQuestion = () => {
         e.preventDefault();
         const category = e.target.category.value;
         const data = {category};
-        fetch('http://localhost:5000/bcs-past-category-add', {
+        fetch('https://bcspioneer.vercel.app/bcs-past-category-add', {
             method: "POST",
             headers :{
                 'content-type':'application/json'
@@ -93,7 +93,7 @@ const BCSPastQuestion = () => {
 
 
     const handleDeletecategory =(_id)=>{
-        const url = `http://localhost:5000/bcs-past-category-delete?_id=${_id}`;
+        const url = `https://bcspioneer.vercel.app/bcs-past-category-delete?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -107,13 +107,13 @@ const BCSPastQuestion = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/bcs-past-category-get')
+        fetch('https://bcspioneer.vercel.app/bcs-past-category-get')
         .then(res => res.json())
         .then(data => setCategory(data))
     }, [])
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-question?question_id=pastbcsquestion101`;
+        const url = `https://bcspioneer.vercel.app/get-question?question_id=pastbcsquestion101`;
         fetch(url)
             .then(res => res.json())
             .then(data => setQuestion(data))

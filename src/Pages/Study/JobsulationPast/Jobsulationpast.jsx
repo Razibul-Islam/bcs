@@ -7,7 +7,7 @@ const Jobsulationpast = () => {
 
 
   useEffect(()=>{
-    const url = `http://localhost:5000/jobs-past-category-get`;
+    const url = `https://bcspioneer.vercel.app/jobs-past-category-get`;
     fetch(url)
     .then(res=> res.json())
     .then(data => setCategory(data))

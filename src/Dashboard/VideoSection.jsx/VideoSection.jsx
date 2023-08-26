@@ -35,7 +35,7 @@ const VideoSection = () => {
                 const _video = data.url;
                 if (data.url) {
                     const info = { title, section, category, epsode, _video, time };
-                    fetch('http://localhost:5000/add-study-video', {
+                    fetch('https://bcspioneer.vercel.app/add-study-video', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'
@@ -55,7 +55,7 @@ const VideoSection = () => {
     const handleFilter = () => {
         setLoading(true);
         const section = document.getElementById('section_id').value;
-        const url = `http://localhost:5000/get-study-video?section=${section}`;
+        const url = `https://bcspioneer.vercel.app/get-study-video?section=${section}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setVideo(data))
@@ -65,7 +65,7 @@ const VideoSection = () => {
 
     const viewAll = () => {
         setLoading(true);
-        const url = `http://localhost:5000/get-study-video?section=all`;
+        const url = `https://bcspioneer.vercel.app/get-study-video?section=all`;
         fetch(url)
             .then(res => res.json())
             .then(data => setVideo(data))
@@ -75,7 +75,7 @@ const VideoSection = () => {
 
 
     const handleDeleteVideo = (_id)=>{
-        const url = `http://localhost:5000/delete-video?_id=${_id}`;
+        const url = `https://bcspioneer.vercel.app/delete-video?_id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -92,7 +92,7 @@ const VideoSection = () => {
 
     useEffect(() => {
         setLoading(true);
-        const url = `http://localhost:5000/get-study-video?section=all`;
+        const url = `https://bcspioneer.vercel.app/get-study-video?section=all`;
         fetch(url)
             .then(res => res.json())
             .then(data => setVideo(data))

@@ -6,7 +6,7 @@ const JobSulation = () => {
 
 
   useEffect(() => {
-    const url = `http://localhost:5000/get-subject-read-jobs`;
+    const url = `https://bcspioneer.vercel.app/get-subject-read-jobs`;
     fetch(url)
       .then(res => res.json())
       .then(data => setSubject(data))

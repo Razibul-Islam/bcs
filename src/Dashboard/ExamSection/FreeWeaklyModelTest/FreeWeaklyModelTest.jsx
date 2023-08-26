@@ -16,7 +16,7 @@ const FreeWeaklyModelTest = () => {
 
     const handleSearch = () => {
         const keyword = document.getElementById('search-box').value;
-        const url = `http://localhost:5000/smart-search?keyword=${keyword}`
+        const url = `https://bcspioneer.vercel.app/smart-search?keyword=${keyword}`
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -29,7 +29,7 @@ const FreeWeaklyModelTest = () => {
 
 
     const handleShowall = () => {
-        const url = `http://localhost:5000/get-all-question`
+        const url = `https://bcspioneer.vercel.app/get-all-question`
         fetch(url)
             .then(res => res.json())
             .then(data => setAllQuestion(data))
@@ -70,7 +70,7 @@ const FreeWeaklyModelTest = () => {
 
         const data = { examQuestion, time, startDate, participate, cutsark, exam , negativeMark};
         console.log(data);
-        fetch('http://localhost:5000/free-weakly-text-exam', {
+        fetch('https://bcspioneer.vercel.app/free-weakly-text-exam', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -85,7 +85,7 @@ const FreeWeaklyModelTest = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/get-all-question`
+        const url = `https://bcspioneer.vercel.app/get-all-question`
         fetch(url)
             .then(res => res.json())
             .then(data => setAllQuestion(data))
