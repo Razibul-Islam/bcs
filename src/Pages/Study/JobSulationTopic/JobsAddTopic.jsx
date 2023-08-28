@@ -3,8 +3,6 @@ import { toast } from 'react-toastify';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const JobsAddTopic = () => {
-
-
     const [modalOne, setModalOne] = useState(false);
     const [modalTwo, setModalTwo] = useState(false);
     const [modalThree, setModalThree] = useState(false);
@@ -19,7 +17,7 @@ const JobsAddTopic = () => {
         const order = e.target.order.value;
         const data = { subject, order };
 
-        fetch('https://bcspioneer.vercel.app/add-subject-read-jobs', {
+        fetch('http://localhost:5000/add-subject-read-jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +41,7 @@ const JobsAddTopic = () => {
         const topic = e.target.topic.value;
         const data = { subject, topic };
 
-        fetch('https://bcspioneer.vercel.app/add-topic-read-jobs', {
+        fetch('http://localhost:5000/add-topic-read-jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -66,7 +64,7 @@ const JobsAddTopic = () => {
         const subtopic = e.target.subtopic.value;
         const data = { subject, topic , subtopic};
 
-        fetch('https://bcspioneer.vercel.app/add-subtopic-read-jobs', {
+        fetch('http://localhost:5000/add-subtopic-read-jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -85,7 +83,7 @@ const JobsAddTopic = () => {
 
 
     const handleDeleteSubject = (_id) =>{
-        const url = `https://bcspioneer.vercel.app/delete-subject-read-jobs?_id=${_id}`;
+        const url = `http://localhost:5000/delete-subject-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -95,7 +93,7 @@ const JobsAddTopic = () => {
         })
     };
     const handleDeleteTopic = (_id) =>{
-        const url = `https://bcspioneer.vercel.app/delete-topic-read-jobs?_id=${_id}`;
+        const url = `http://localhost:5000/delete-topic-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -105,7 +103,7 @@ const JobsAddTopic = () => {
         })
     };
     const handleDeleteSubTopic = (_id) =>{
-        const url = `https://bcspioneer.vercel.app/delete-subtopic-read-jobs?_id=${_id}`;
+        const url = `http://localhost:5000/delete-subtopic-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -118,19 +116,19 @@ const JobsAddTopic = () => {
 
 
     useEffect(() => {
-        const url = `https://bcspioneer.vercel.app/get-subject-read-jobs`;
+        const url = `http://localhost:5000/get-subject-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubject(data))
     }, [])
     useEffect(() => {
-        const url = `https://bcspioneer.vercel.app/get-topic-read-jobs`;
+        const url = `http://localhost:5000/get-topic-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setTopic(data))
     }, [])
     useEffect(() => {
-        const url = `https://bcspioneer.vercel.app/get-subtopic-read-jobs`;
+        const url = `http://localhost:5000/get-subtopic-read-jobs`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubTopic(data))
@@ -169,7 +167,7 @@ const JobsAddTopic = () => {
                     <hr />
                     <div className='p-5'>
                     {
-                            subTopic.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.subtopic}  <button onClick={()=> handleDeleteSubTopic(subjects._)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
+                            subTopic.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.subtopic}  <button onClick={()=> handleDeleteSubTopic(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
                         }
                     </div>
                 </div>

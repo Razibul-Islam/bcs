@@ -18,7 +18,7 @@ const Rutin = () => {
         const data = { title, date, topics, descripetion, time };
         console.log(data);
 
-        fetch('https://bcspioneer.vercel.app/add-video-rutine', {
+        fetch('http://localhost:5000/add-video-rutine', {
             method: "POSt",
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const Rutin = () => {
     };
 
     useState(() => {
-        const url = `https://bcspioneer.vercel.app/get-video-rutin`
+        const url = `http://localhost:5000/get-video-rutin`
         fetch(url)
             .then(res => res.json())
             .then(data => setRutin(data))

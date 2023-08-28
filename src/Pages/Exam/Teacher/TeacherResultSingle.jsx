@@ -11,7 +11,7 @@ const TeacherResultSingle = () => {
 
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/get-single-teacher-preparation-result?_id=${_id}`
+      `http://localhost:5000/get-single-teacher-preparation-result?_id=${_id}`
     )
       .then((res) => res.json())
       .then((data) => setResult(data));
@@ -19,7 +19,7 @@ const TeacherResultSingle = () => {
 
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/teacher-preparation-merit-list?examDate=${result.examDate}`
+      `http://localhost:5000/teacher-preparation-merit-list?examDate=${result.examDate}`
     )
       .then((res) => res.json())
       .then((data) => setPosition(data));
@@ -27,7 +27,7 @@ const TeacherResultSingle = () => {
 
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/teacher-preparation-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`
+      `http://localhost:5000/teacher-preparation-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`
     )
       .then((res) => res.json())
       .then((data) => setPashed(data));

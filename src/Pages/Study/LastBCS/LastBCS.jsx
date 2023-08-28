@@ -8,7 +8,7 @@
 //   const [data, setData] = useState([]);
 //   const [on, setOn] = useState(false);
 //   useEffect(() => {
-//     fetch("https://bcspioneer.vercel.app/get-question?question_id=pastbcsquestion101")
+//     fetch("http://localhost:5000/get-question?question_id=pastbcsquestion101")
 //       .then((res) => res.json())
 //       .then((data) => setData(data));
 //   }, []);
@@ -40,7 +40,7 @@
 //     const id = data._id;
 
 //     const info = {ans, explain, opA , opB, opC, opD, question, question_id, id};
-//     fetch('https://bcspioneer.vercel.app/add-favorite', {
+//     fetch('http://localhost:5000/add-favorite', {
 //       method: "POST",
 //       headers : {
 //         'content-type': 'application/json'
@@ -142,7 +142,7 @@ const LastBCS = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/bcs-past-category-get")
+    fetch("http://localhost:5000/bcs-past-category-get")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);

@@ -9,7 +9,7 @@ const BCSForExperienceResult = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      const url = `https://bcspioneer.vercel.app/experience-bcs-result?userEmail=${user.email}`;
+      const url = `http://localhost:5000/experience-bcs-result?userEmail=${user.email}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setresult(data));

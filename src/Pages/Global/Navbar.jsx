@@ -17,7 +17,7 @@ const Navbar = () => {
     const currentUrl = window.location.href;
 
     const handleUser = () => {
-        const url = `https://bcspioneer.vercel.app/get-user-email?email=${user?.email}`;
+        const url = `http://localhost:5000/get-user-email?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUserRole(data.Role))
@@ -67,7 +67,7 @@ const Navbar = () => {
                 {
                     userRole == 'Admin' ? <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/dashboard'>ড্যাশবোর্ড</Link> : ''
                 }
-               {
+                {
                     user ? <button onClick={() => signOut()} className='bg-[#ff4558]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগ আউট</button> : <Link to='/login' className='bg-[#0d0c0a]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগইন</Link>
                 }
             </div>

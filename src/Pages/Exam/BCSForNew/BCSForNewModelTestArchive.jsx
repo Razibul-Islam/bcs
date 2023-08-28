@@ -13,7 +13,7 @@ const BCSForNewModelTestArchive = () => {
     .padStart(2, "0")}`;
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-newbcs-archive?date=${date}`;
+    const url = `http://localhost:5000/get-newbcs-archive?date=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => seTArchive(data));

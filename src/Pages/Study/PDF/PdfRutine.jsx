@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const PdfRutine = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/get-pdf-rutine")
+    fetch("http://localhost:5000/get-pdf-rutine")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

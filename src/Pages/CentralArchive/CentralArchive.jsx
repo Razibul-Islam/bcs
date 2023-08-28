@@ -11,7 +11,7 @@ const CentralArchive = () => {
   const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
 
   useState(() => {
-    const url = `https://bcspioneer.vercel.app/get-all-archive?date=${date}`
+    const url = `http://localhost:5000/get-all-archive?date=${date}`
     console.log(url);
     fetch(url)
       .then(res => res.json())

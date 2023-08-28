@@ -4,7 +4,7 @@ const FreeWeaklyRutin = () => {
   const [rutin, setRutin] = useState([]);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/free-weakly-test-rutin`;
+    const url = `http://localhost:5000/free-weakly-test-rutin`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));

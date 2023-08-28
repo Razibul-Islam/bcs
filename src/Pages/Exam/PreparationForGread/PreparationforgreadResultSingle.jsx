@@ -11,7 +11,7 @@ const PreparationforgreadResultSingle = () => {
 
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/get-single-grade-preparation-result?_id=${_id}`
+      `http://localhost:5000/get-single-grade-preparation-result?_id=${_id}`
     )
       .then((res) => res.json())
       .then((data) => setResult(data));
@@ -20,14 +20,14 @@ const PreparationforgreadResultSingle = () => {
 
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/grade-preparation-merit-list?examDate=${result.examDate}`
+      `http://localhost:5000/grade-preparation-merit-list?examDate=${result.examDate}`
     )
       .then((res) => res.json())
       .then((data) => setPosition(data));
   }, [result]);
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/grade-preparation-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`
+      `http://localhost:5000/grade-preparation-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`
     )
       .then((res) => res.json())
       .then((data) => setPashed(data));

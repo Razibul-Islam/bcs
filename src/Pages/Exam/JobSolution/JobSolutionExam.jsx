@@ -87,7 +87,7 @@ const JobSolutionExam = () => {
 
     setParticipate((prev) => [...prev, userEmail]);
 
-    fetch("https://bcspioneer.vercel.app/Job-Solution-result", {
+    fetch("http://localhost:5000/Job-Solution-result", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const JobSolutionExam = () => {
     participate.push(userEmail);
 
     fetch(
-      `https://bcspioneer.vercel.app/updated-Job-Solution-participet?_id=${question._id}`,
+      `http://localhost:5000/updated-Job-Solution-participet?_id=${question._id}`,
       {
         method: "PUT",
         headers: {
@@ -142,7 +142,7 @@ const JobSolutionExam = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/Get-Job-Solution-exam?startDate=${date}`;
+    const url = `http://localhost:5000/Get-Job-Solution-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

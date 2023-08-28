@@ -10,20 +10,20 @@ const BcsForNewResultSingle = () => {
   const { _id } = useParams();
 
   useEffect(() => {
-    fetch(`https://bcspioneer.vercel.app/get-single-newbcs-result?_id=${_id}`)
+    fetch(`http://localhost:5000/get-single-newbcs-result?_id=${_id}`)
       .then((res) => res.json())
       .then((data) => setResult(data));
   }, [_id]);
   console.log(result);
 
   useEffect(() => {
-    fetch(`https://bcspioneer.vercel.app/newbcs-merit-list?examDate=${result.examDate}`)
+    fetch(`http://localhost:5000/newbcs-merit-list?examDate=${result.examDate}`)
       .then((res) => res.json())
       .then((data) => setPosition(data));
   }, [result]);
   useEffect(() => {
     fetch(
-      `https://bcspioneer.vercel.app/newbcs-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`
+      `http://localhost:5000/newbcs-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`
     )
       .then((res) => res.json())
       .then((data) => setPashed(data));

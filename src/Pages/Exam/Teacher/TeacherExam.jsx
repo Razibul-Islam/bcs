@@ -87,7 +87,7 @@ const TeacherExam = () => {
 
     setParticipate((prev) => [...prev, userEmail]);
 
-    fetch("https://bcspioneer.vercel.app/teacher-preparation-result", {
+    fetch("http://localhost:5000/teacher-preparation-result", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const TeacherExam = () => {
     participate.push(userEmail);
 
     fetch(
-      `https://bcspioneer.vercel.app/updated-teacher-preparation-participet?_id=${question._id}`,
+      `http://localhost:5000/updated-teacher-preparation-participet?_id=${question._id}`,
       {
         method: "PUT",
         headers: {
@@ -142,7 +142,7 @@ const TeacherExam = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-teacher-preparation-exam?startDate=${date}`;
+    const url = `http://localhost:5000/get-teacher-preparation-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

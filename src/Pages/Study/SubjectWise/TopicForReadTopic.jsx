@@ -17,7 +17,7 @@ const TopicForReadTopic = () => {
     const order = e.target.order.value;
     const data = { subject, order };
 
-    fetch("https://bcspioneer.vercel.app/add-subject-read-topiclly", {
+    fetch("http://localhost:5000/add-subject-read-topiclly", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,7 +40,7 @@ const TopicForReadTopic = () => {
     const topic = e.target.topic.value;
     const data = { subject, topic };
 
-    fetch("https://bcspioneer.vercel.app/add-topic-read-topiclly", {
+    fetch("http://localhost:5000/add-topic-read-topiclly", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ const TopicForReadTopic = () => {
     const subtopic = e.target.subtopic.value;
     const data = { subject, topic, subtopic };
 
-    fetch("https://bcspioneer.vercel.app/add-subtopic-read-topiclly", {
+    fetch("http://localhost:5000/add-subtopic-read-topiclly", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -81,7 +81,7 @@ const TopicForReadTopic = () => {
   };
 
   const handleDeleteSubject = (_id) => {
-    const url = `https://bcspioneer.vercel.app/delete-subject-read-topiclly?_id=${_id}`;
+    const url = `http://localhost:5000/delete-subject-read-topiclly?_id=${_id}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -91,7 +91,7 @@ const TopicForReadTopic = () => {
       });
   };
   const handleDeleteTopic = (_id) => {
-    const url = `https://bcspioneer.vercel.app/delete-topic-read-topiclly?_id=${_id}`;
+    const url = `http://localhost:5000/delete-topic-read-topiclly?_id=${_id}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -101,7 +101,7 @@ const TopicForReadTopic = () => {
       });
   };
   const handleDeleteSubTopic = (_id) => {
-    const url = `https://bcspioneer.vercel.app/delete-subtopic-read-topiclly?_id=${_id}`;
+    const url = `http://localhost:5000/delete-subtopic-read-topiclly?_id=${_id}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -112,19 +112,19 @@ const TopicForReadTopic = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-subject-read-topiclly`;
+    const url = `http://localhost:5000/get-subject-read-topiclly`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSubject(data));
   }, []);
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-topic-read-topiclly`;
+    const url = `http://localhost:5000/get-topic-read-topiclly`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setTopic(data));
   }, []);
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-subtopic-read-topiclly`;
+    const url = `http://localhost:5000/get-subtopic-read-topiclly`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSubTopic(data));
@@ -196,7 +196,7 @@ const TopicForReadTopic = () => {
               <div className="flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200">
                 {subjects.subtopic}{" "}
                 <button
-                  onClick={() => handleDeleteSubTopic(subjects._)}
+                  onClick={() => handleDeleteSubTopic(subjects._id)}
                   className="text-red-400"
                 >
                   <DeleteIcon></DeleteIcon>

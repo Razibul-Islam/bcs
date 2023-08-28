@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const BCSForExperienceRoutine = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/experience-bcs")
+    fetch("http://localhost:5000/experience-bcs")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

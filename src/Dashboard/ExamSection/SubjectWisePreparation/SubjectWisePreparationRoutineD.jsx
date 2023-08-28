@@ -12,7 +12,7 @@ const SubjectWisePreparationRoutineD = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("https://bcspioneer.vercel.app/subject-wise", {
+    fetch("http://localhost:5000/subject-wise", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const SubjectWisePreparationRoutineD = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/subject-wise-rutin-delete?_id=${_id}`, {
+    fetch(`http://localhost:5000/subject-wise-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const SubjectWisePreparationRoutineD = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/subject-wise`;
+    const url = `http://localhost:5000/subject-wise`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));

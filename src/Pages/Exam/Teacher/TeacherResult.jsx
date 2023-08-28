@@ -8,7 +8,7 @@ const TeacherResult = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/teacher-preparation-result?userEmail=${user?.email}`;
+    const url = `http://localhost:5000/teacher-preparation-result?userEmail=${user?.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setresult(data));

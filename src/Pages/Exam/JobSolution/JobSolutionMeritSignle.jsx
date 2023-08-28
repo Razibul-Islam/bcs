@@ -22,7 +22,7 @@ const JobSolutionMeritSignle = () => {
     }
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/Job-Solution-merit-list?examDate=${date}`)
+        fetch(`http://localhost:5000/Job-Solution-merit-list?examDate=${date}`)
             .then((res) => res.json())
             .then((data) => setPosition(data));
     }, []);

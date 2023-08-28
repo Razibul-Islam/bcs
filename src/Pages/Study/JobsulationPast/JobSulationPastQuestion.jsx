@@ -16,7 +16,7 @@ const JobSulationPastQuestion = () => {
   const [on, setOn] = useState(false);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/jobs-past-question?category=${category}&question_id=pastQ101`;
+    const url = `http://localhost:5000/jobs-past-question?category=${category}&question_id=pastQ101`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
@@ -53,7 +53,7 @@ const JobSulationPastQuestion = () => {
       id: question._id,
     };
 
-    fetch(`https://bcspioneer.vercel.app/add-favorite?id=${question._id}`, {
+    fetch(`http://localhost:5000/add-favorite?id=${question._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

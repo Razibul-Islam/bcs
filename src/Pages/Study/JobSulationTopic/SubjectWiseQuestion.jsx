@@ -16,7 +16,7 @@ const JobsSubjectWiseQuestion = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/jobs-question?subject=${subject}&question_id=jst101`;
+    const url = `http://localhost:5000/jobs-question?subject=${subject}&question_id=jst101`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
@@ -54,7 +54,7 @@ const JobsSubjectWiseQuestion = () => {
       id: question._id,
     };
 
-    fetch(`https://bcspioneer.vercel.app/add-favorite?id=${question._id}`, {
+    fetch(`http://localhost:5000/add-favorite?id=${question._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

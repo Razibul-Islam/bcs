@@ -6,7 +6,7 @@ const PreparationForGreadExamList = () => {
 
   const handleDelete = (_id) => {
     fetch(
-      `https://bcspioneer.vercel.app/delete-grade-preparation-modeltest?_id=${_id}`,
+      `http://localhost:5000/delete-grade-preparation-modeltest?_id=${_id}`,
       {
         method: "DELETE",
       }
@@ -20,7 +20,7 @@ const PreparationForGreadExamList = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-grade-preparation-eaxma-all`;
+    const url = `http://localhost:5000/get-grade-preparation-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

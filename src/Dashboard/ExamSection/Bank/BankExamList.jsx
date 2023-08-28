@@ -5,7 +5,7 @@ const BankExamList = () => {
   const [question, setQuestion] = useState([]);
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/delete-bank-preparation-modeltest?_id=${_id}`, {
+    fetch(`http://localhost:5000/delete-bank-preparation-modeltest?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const BankExamList = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-bank-preparation-eaxma-all`;
+    const url = `http://localhost:5000/get-bank-preparation-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

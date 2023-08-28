@@ -4,7 +4,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 const Ict = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/get-study-video?section=ICT")
+    fetch("http://localhost:5000/get-study-video?section=ICT")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

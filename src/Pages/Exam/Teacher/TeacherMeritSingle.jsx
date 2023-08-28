@@ -22,7 +22,7 @@ const TeacherMeritSingle = () => {
     }
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/teacher-preparation-merit-list?examDate=${date}`)
+        fetch(`http://localhost:5000/teacher-preparation-merit-list?examDate=${date}`)
             .then((res) => res.json())
             .then((data) => setPosition(data));
     }, []);

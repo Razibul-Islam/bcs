@@ -4,7 +4,7 @@ const Rutine = () => {
   const [rutineData, setRutineData] = useState([]);
 
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/get-video-rutin")
+    fetch("http://localhost:5000/get-video-rutin")
       .then((res) => res.json())
       .then((data) => setRutineData(data));
   }, []);

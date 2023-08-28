@@ -64,7 +64,7 @@ const PDFSection = () => {
                 const _video = data.url;
                 if (data.url) {
                     const info = { title, section, category, epsode, _video, time };
-                    fetch('https://bcspioneer.vercel.app/add-study-pdf', {
+                    fetch('http://localhost:5000/add-study-pdf', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'
@@ -84,7 +84,7 @@ const PDFSection = () => {
     const handleFilter = () => {
         setLoading(true);
         const section = document.getElementById('section_id').value;
-        const url = `https://bcspioneer.vercel.app/get-study-pdf?section=${section}`;
+        const url = `http://localhost:5000/get-study-pdf?section=${section}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setVideo(data))
@@ -94,7 +94,7 @@ const PDFSection = () => {
 
     const viewAll = () => {
         setLoading(true);
-        const url = `https://bcspioneer.vercel.app/get-study-pdf?section=all`;
+        const url = `http://localhost:5000/get-study-pdf?section=all`;
         fetch(url)
             .then(res => res.json())
             .then(data => setVideo(data))
@@ -103,7 +103,7 @@ const PDFSection = () => {
 
 
     const handleDeletePdf = (_id)=>{
-        const url = `https://bcspioneer.vercel.app/delete-pdf?_id=${_id}`;
+        const url = `http://localhost:5000/delete-pdf?_id=${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -119,7 +119,7 @@ const PDFSection = () => {
 
     useEffect(() => {
         setLoading(true);
-        const url = `https://bcspioneer.vercel.app/get-study-pdf?section=all`;
+        const url = `http://localhost:5000/get-study-pdf?section=all`;
         fetch(url)
             .then(res => res.json())
             .then(data => setVideo(data))

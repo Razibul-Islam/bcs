@@ -6,7 +6,7 @@ const SubjectWisePreparationExamD = () => {
 
   const handleDelete = (_id) => {
     fetch(
-      `https://bcspioneer.vercel.app/delete-subject-wise-modeltest?_id=${_id}`,
+      `http://localhost:5000/delete-subject-wise-modeltest?_id=${_id}`,
       {
         method: "DELETE",
       }
@@ -20,7 +20,7 @@ const SubjectWisePreparationExamD = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-subject-wise-eaxma-all`;
+    const url = `http://localhost:5000/get-subject-wise-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

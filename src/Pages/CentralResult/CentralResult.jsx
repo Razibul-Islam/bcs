@@ -11,7 +11,7 @@ const [user, loading , error] = useAuthState(auth);
 
 
   useEffect(()=>{
-    const url = `https://bcspioneer.vercel.app/get-all-result?email=${user?.email}`;
+    const url = `http://localhost:5000/get-all-result?email=${user?.email}`;
     fetch(url)
     .then(res => res.json())
     .then(data => setResult(data))

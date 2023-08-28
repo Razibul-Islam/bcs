@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const PdfEnglish = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/get-study-pdf?section=English Literature")
+    fetch("http://localhost:5000/get-study-pdf?section=English Literature")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

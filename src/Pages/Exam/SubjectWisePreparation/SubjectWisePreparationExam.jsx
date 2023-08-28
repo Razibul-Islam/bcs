@@ -87,7 +87,7 @@ const SubjectWisePreparationExam = () => {
 
     setParticipate((prev) => [...prev, userEmail]);
 
-    fetch("https://bcspioneer.vercel.app/subject-wise-result", {
+    fetch("http://localhost:5000/subject-wise-result", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const SubjectWisePreparationExam = () => {
     participate.push(userEmail);
 
     fetch(
-      `https://bcspioneer.vercel.app/updated-subject-wise-participet?_id=${question._id}`,
+      `http://localhost:5000/updated-subject-wise-participet?_id=${question._id}`,
       {
         method: "PUT",
         headers: {
@@ -142,7 +142,7 @@ const SubjectWisePreparationExam = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-subject-wise-exam?startDate=${date}`;
+    const url = `http://localhost:5000/get-subject-wise-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

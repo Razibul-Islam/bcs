@@ -18,7 +18,7 @@ const QuizMaster = () => {
     const size = document.getElementById('size').value;
     const time = document.getElementById('time').value;
     document.getElementById('action').classList.remove('hidden')
-    const url = `https://bcspioneer.vercel.app/quiz-master?size=${size}`;
+    const url = `http://localhost:5000/quiz-master?size=${size}`;
     fetch(url)
       .then(res => res.json())
       .then(data => setQuestion(data))
@@ -67,7 +67,7 @@ const QuizMaster = () => {
 
   const handleStartExamSubjectWise = ()=>{
     const size = document.getElementById('numberofquestion').value;
-    const url = `https://bcspioneer.vercel.app/questions?subject=${sub.join(',')}&size=${size}`;
+    const url = `http://localhost:5000/questions?subject=${sub.join(',')}&size=${size}`;
     // const url = `${baseUrl}`;
     const time = document.getElementById('times').value;
     console.log(url);
@@ -104,7 +104,7 @@ const QuizMaster = () => {
 
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-subject-read-topiclly`;
+    const url = `http://localhost:5000/get-subject-read-topiclly`;
     fetch(url)
         .then(res => res.json())
         .then(data => setSubject(data))
