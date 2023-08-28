@@ -6,7 +6,7 @@ const TeacherExamList = () => {
     const [question, setQuestion] = useState([]);
 
     const handleDelete = (_id) => {
-        fetch(`https://bcspioneer.vercel.app/delete-teacher-preparation-modeltest?_id=${_id}`, {
+        fetch(`http://localhost:5000/delete-teacher-preparation-modeltest?_id=${_id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
@@ -18,7 +18,7 @@ const TeacherExamList = () => {
     };
 
     useEffect(() => {
-        const url = `https://bcspioneer.vercel.app/get-teacher-preparation-eaxma-all`;
+        const url = `http://localhost:5000/get-teacher-preparation-eaxma-all`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setQuestion(data));

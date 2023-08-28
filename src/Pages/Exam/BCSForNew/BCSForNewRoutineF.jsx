@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const BCSForNewRoutineF = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/Bcs-For-New-rutin")
+    fetch("http://localhost:5000/Bcs-For-New-rutin")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

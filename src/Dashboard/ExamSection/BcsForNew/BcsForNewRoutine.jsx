@@ -12,7 +12,7 @@ const BcsForNewRoutine = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("https://bcspioneer.vercel.app/Bcs-For-New-rutin", {
+    fetch("http://localhost:5000/Bcs-For-New-rutin", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const BcsForNewRoutine = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/Bcs-For-New-rutin-delete?_id=${_id}`, {
+    fetch(`http://localhost:5000/Bcs-For-New-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const BcsForNewRoutine = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/Bcs-For-New-rutin`;
+    const url = `http://localhost:5000/Bcs-For-New-rutin`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));

@@ -13,7 +13,7 @@ const TeacherArchive = () => {
     .padStart(2, "0")}`;
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-teacher-preparation-archive?date=${date}`;
+    const url = `http://localhost:5000/get-teacher-preparation-archive?date=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => seTArchive(data));

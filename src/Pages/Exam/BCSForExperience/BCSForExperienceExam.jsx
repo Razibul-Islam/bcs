@@ -87,7 +87,7 @@ const BCSForExperienceExam = () => {
 
     setParticipate((prev) => [...prev, userEmail]);
 
-    fetch("https://bcspioneer.vercel.app/experience-bcs-result", {
+    fetch("http://localhost:5000/experience-bcs-result", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const BCSForExperienceExam = () => {
     participate.push(userEmail);
 
     fetch(
-      `https://bcspioneer.vercel.app/updated-experience-bcs-participet?_id=${question._id}`,
+      `http://localhost:5000/updated-experience-bcs-participet?_id=${question._id}`,
       {
         method: "PUT",
         headers: {
@@ -143,7 +143,7 @@ const BCSForExperienceExam = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-experience-bcs-exam?startDate=${date}`;
+    const url = `http://localhost:5000/get-experience-bcs-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

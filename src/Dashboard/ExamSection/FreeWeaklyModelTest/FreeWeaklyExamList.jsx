@@ -5,7 +5,7 @@ const FreeWeaklyExamList = () => {
   const [question, setQuestion] = useState([]);
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/delete-free-modeltest?_id=${_id}`, {
+    fetch(`http://localhost:5000/delete-free-modeltest?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const FreeWeaklyExamList = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-free-weaklly-eaxma-all`;
+    const url = `http://localhost:5000/get-free-weaklly-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

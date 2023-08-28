@@ -27,7 +27,7 @@ const Search = () => {
   const handleSearch = () => {
     setLoading(true);
     const keyword = document.getElementById("search-box").value;
-    const url = `https://bcspioneer.vercel.app/smart-search?keyword=${keyword}`;
+    const url = `http://localhost:5000/smart-search?keyword=${keyword}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

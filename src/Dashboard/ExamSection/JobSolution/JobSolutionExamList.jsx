@@ -6,7 +6,7 @@ const JobSolutionExamList = () => {
 
   const handleDelete = (_id) => {
     fetch(
-      `https://bcspioneer.vercel.app/delete-Job-Solution-modeltest?_id=${_id}`,
+      `http://localhost:5000/delete-Job-Solution-modeltest?_id=${_id}`,
       {
         method: "DELETE",
       }
@@ -20,7 +20,7 @@ const JobSolutionExamList = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-Job-Solution-eaxma-all`;
+    const url = `http://localhost:5000/get-Job-Solution-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

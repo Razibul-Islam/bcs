@@ -5,7 +5,7 @@ const ExperienceExam = () => {
   const [question, setQuestion] = useState([]);
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/get-experience-bcs-eaxma-all?_id=${_id}`, {
+    fetch(`http://localhost:5000/get-experience-bcs-eaxma-all?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const ExperienceExam = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/delete-experience-bcs-modeltest`;
+    const url = `http://localhost:5000/delete-experience-bcs-modeltest`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

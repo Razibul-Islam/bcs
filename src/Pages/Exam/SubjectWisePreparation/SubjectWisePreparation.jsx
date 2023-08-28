@@ -13,7 +13,7 @@ const SubjectWisePreparation = () => {
     .padStart(2, "0")}`;
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-subject-wise-exam?startDate=${date}`;
+    const url = `http://localhost:5000/get-subject-wise-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

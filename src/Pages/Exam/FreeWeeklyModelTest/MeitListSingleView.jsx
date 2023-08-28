@@ -22,7 +22,7 @@ const FreeWeaklyMeritListSingleView = () => {
   }
 
   useEffect(() => {
-    fetch(`https://bcspioneer.vercel.app/free-weakly-merit-list?examDate=${date}`)
+    fetch(`http://localhost:5000/free-weakly-merit-list?examDate=${date}`)
       .then((res) => res.json())
       .then((data) => setPosition(data));
   }, []);

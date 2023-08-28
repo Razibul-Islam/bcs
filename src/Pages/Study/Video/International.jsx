@@ -4,7 +4,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 const International = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/get-study-video?section=আন্তর্জাতিক বিষয়াবলী")
+    fetch("http://localhost:5000/get-study-video?section=আন্তর্জাতিক বিষয়াবলী")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

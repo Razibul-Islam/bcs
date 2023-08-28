@@ -22,7 +22,7 @@ const PreparationForGreadMeritSingle = () => {
     }
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/grade-preparation-merit-list?examDate=${date}`)
+        fetch(`http://localhost:5000/grade-preparation-merit-list?examDate=${date}`)
             .then((res) => res.json())
             .then((data) => setPosition(data));
     }, []);

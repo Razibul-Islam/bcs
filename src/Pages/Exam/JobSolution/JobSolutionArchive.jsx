@@ -13,7 +13,7 @@ const JobSolutionArchive = () => {
     .padStart(2, "0")}`;
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-Job-Solution-archive?date=${date}`;
+    const url = `http://localhost:5000/get-Job-Solution-archive?date=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => seTArchive(data));

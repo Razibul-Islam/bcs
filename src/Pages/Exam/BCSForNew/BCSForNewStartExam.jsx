@@ -87,7 +87,7 @@ const BCSForNewStartExam = () => {
 
     setParticipate((prev) => [...prev, userEmail]);
 
-    fetch("https://bcspioneer.vercel.app/newbcs-result", {
+    fetch("http://localhost:5000/newbcs-result", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const BCSForNewStartExam = () => {
     participate.push(userEmail);
 
     fetch(
-      `https://bcspioneer.vercel.app/updated-newbcs-participet?_id=${question._id}`,
+      `http://localhost:5000/updated-newbcs-participet?_id=${question._id}`,
       {
         method: "PUT",
         headers: {
@@ -142,7 +142,7 @@ const BCSForNewStartExam = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/Bcs-For-New-exam?startDate=${date}`;
+    const url = `http://localhost:5000/Bcs-For-New-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

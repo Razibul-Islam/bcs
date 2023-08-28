@@ -12,7 +12,7 @@ const TeacherTestModel = () => {
 
   const handleSearch = () => {
     const keyword = document.getElementById("search-box").value;
-    const url = `https://bcspioneer.vercel.app/smart-search?keyword=${keyword}`;
+    const url = `http://localhost:5000/smart-search?keyword=${keyword}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +24,7 @@ const TeacherTestModel = () => {
   };
 
   const handleShowall = () => {
-    const url = `https://bcspioneer.vercel.app/get-all-question`;
+    const url = `http://localhost:5000/get-all-question`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));
@@ -70,7 +70,7 @@ const TeacherTestModel = () => {
       negativeMark
     };
     // console.log(data);
-    fetch("https://bcspioneer.vercel.app/teacher-preparation-exam", {
+    fetch("http://localhost:5000/teacher-preparation-exam", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -86,7 +86,7 @@ const TeacherTestModel = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-all-question`;
+    const url = `http://localhost:5000/get-all-question`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));

@@ -5,7 +5,7 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
 
   const handleDelete = (_id)=> {
-    const url = `https://bcspioneer.vercel.app/delete-user?_id=${_id}`;
+    const url = `http://localhost:5000/delete-user?_id=${_id}`;
     fetch(url, {
       method: "DELETE"
     })
@@ -18,7 +18,7 @@ const UserList = () => {
 
 
   const handleMakeAdmin = (_id)=>{
-    const url = `https://bcspioneer.vercel.app/make-admin?_id=${_id}`;
+    const url = `http://localhost:5000/make-admin?_id=${_id}`;
     fetch(url, {
       method: "PUT"
     })
@@ -26,7 +26,7 @@ const UserList = () => {
     .then(data => console.log(data))
   }
   const handleMakeUser = (_id)=>{
-    const url = `https://bcspioneer.vercel.app/make-user?_id=${_id}`;
+    const url = `http://localhost:5000/make-user?_id=${_id}`;
     fetch(url, {
       method: "PUT"
     })
@@ -36,7 +36,7 @@ const UserList = () => {
 
 
   useEffect(() => {
-    fetch("https://bcspioneer.vercel.app/get-users")
+    fetch("http://localhost:5000/get-users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [handleDelete, handleMakeUser, handleMakeAdmin]);

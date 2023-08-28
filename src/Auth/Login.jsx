@@ -44,7 +44,7 @@ const Login = () => {
       UserStatus,
     };
 
-    fetch(`https://bcspioneer.vercel.app/user-update?email=${UserEmail}`, {
+    fetch(`http://localhost:5000/user-update?email=${UserEmail}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

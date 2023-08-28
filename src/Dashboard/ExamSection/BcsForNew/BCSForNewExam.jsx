@@ -6,7 +6,7 @@ const BCSForNewExam = () => {
 
   const handleDelete = (_id) => {
     fetch(
-      `https://bcspioneer.vercel.app/delete-newbcs-modeltest?_id=${_id}`,
+      `http://localhost:5000/delete-newbcs-modeltest?_id=${_id}`,
       {
         method: "DELETE",
       }
@@ -20,7 +20,7 @@ const BCSForNewExam = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-newbcs-eaxma-all`;
+    const url = `http://localhost:5000/get-newbcs-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

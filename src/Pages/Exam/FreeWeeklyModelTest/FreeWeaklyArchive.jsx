@@ -13,7 +13,7 @@ const FreeWeaklyArchive = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-free-weakly-archive-single?_id=${_id}`;
+    const url = `http://localhost:5000/get-free-weakly-archive-single?_id=${_id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

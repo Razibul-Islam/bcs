@@ -12,13 +12,13 @@ const RequireAdmin = ({ children }) => {
     const location = useLocation();
     const navigate = useNavigate()
     const handleUser = () => {
-        const url = `https://bcspioneer.vercel.app/get-user-email?email=${user?.email}`;
+        const url = `http://localhost:5000/get-user-email?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
               if(data.Role !== 'Admin'){
                 // navigate('/')
-                console.log(data);
+                // console.log(data);
               }
             })
     }

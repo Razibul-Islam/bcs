@@ -14,19 +14,19 @@ const FreeWeaklyResultSingleView = () => {
     const { _id } = useParams();
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/get-single-free-result?_id=${_id}`)
+        fetch(`http://localhost:5000/get-single-free-result?_id=${_id}`)
             .then(res => res.json())
             .then(data => setResult(data))
     }, [_id])
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/free-weakly-merit-list?examDate=${result.examDate}`)
+        fetch(`http://localhost:5000/free-weakly-merit-list?examDate=${result.examDate}`)
             .then(res => res.json())
             .then(data => setPosition(data))
     }, [result])
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/free-weakly-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`)
+        fetch(`http://localhost:5000/free-weakly-passhed?examDate=${result.examDate}&cuts=${result.cutsark}`)
             .then(res => res.json())
             .then(data => setPashed(data))
     }, [result])

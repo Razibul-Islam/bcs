@@ -13,7 +13,7 @@ const Bank = () => {
     .padStart(2, "0")}`;
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-bank-preparation-exam?startDate=${date}`;
+    const url = `http://localhost:5000/get-bank-preparation-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

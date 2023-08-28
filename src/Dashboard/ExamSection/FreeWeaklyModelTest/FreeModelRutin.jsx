@@ -12,7 +12,7 @@ const FreeModelRutin = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("https://bcspioneer.vercel.app/free-weakly-test-rutin", {
+    fetch("http://localhost:5000/free-weakly-test-rutin", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const FreeModelRutin = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/free-weakly-test-routine-delete?_id=${_id}`, {
+    fetch(`http://localhost:5000/free-weakly-test-routine-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const FreeModelRutin = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/free-weakly-test-rutin`;
+    const url = `http://localhost:5000/free-weakly-test-rutin`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));

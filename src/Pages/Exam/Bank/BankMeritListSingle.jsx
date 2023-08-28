@@ -22,7 +22,7 @@ const BankMeritListSingle = () => {
     }
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/bank-preparation-merit-list?examDate=${date}`)
+        fetch(`http://localhost:5000/bank-preparation-merit-list?examDate=${date}`)
             .then((res) => res.json())
             .then((data) => setPosition(data));
     }, []);

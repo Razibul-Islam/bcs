@@ -164,6 +164,7 @@ import SubjectWiseMeritSingle from "./Pages/Exam/SubjectWisePreparation/SubjectW
 import TeacherMeritSingle from "./Pages/Exam/Teacher/TeacherMeritSingle";
 import TeacherMerit from "./Pages/Exam/Teacher/TeacherMerit";
 import RequireAdmin from "./Auth/RequireAdmin";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
@@ -172,6 +173,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/sign-up" element={<SignUP />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
         <Route path="/reset" element={<Reset />}></Route>
         <Route path="/dashboard" element={<RequireAdmin>
           <Dashboard />

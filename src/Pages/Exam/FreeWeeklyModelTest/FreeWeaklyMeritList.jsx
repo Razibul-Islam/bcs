@@ -8,7 +8,7 @@ const FreeWeaklyMeritList = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/free-weakly-result?userEmail=${user?.email}`;
+    const url = `http://localhost:5000/free-weakly-result?userEmail=${user?.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setresult(data));

@@ -6,7 +6,7 @@ const AllTopic = () => {
   const [topic, setTopic] = useState();
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-topic-topically?subject=${subject}`;
+    const url = `http://localhost:5000/get-topic-topically?subject=${subject}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setTopic(data));

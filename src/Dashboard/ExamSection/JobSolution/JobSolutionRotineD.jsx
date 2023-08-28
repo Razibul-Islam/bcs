@@ -12,7 +12,7 @@ const JobSolutionRotineD = () => {
     const time = Date.now();
 
     const data = { title, descripetion, footer, time };
-    fetch("https://bcspioneer.vercel.app/Job-Solution-rutin", {
+    fetch("http://localhost:5000/Job-Solution-rutin", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const JobSolutionRotineD = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`https://bcspioneer.vercel.app/Job-Solution-rutin-delete?_id=${_id}`, {
+    fetch(`http://localhost:5000/Job-Solution-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,7 +41,7 @@ const JobSolutionRotineD = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/Job-Solution-rutin`;
+    const url = `http://localhost:5000/Job-Solution-rutin`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));

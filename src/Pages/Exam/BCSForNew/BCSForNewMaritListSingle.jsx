@@ -22,7 +22,7 @@ const BCSForNewMaritListSingle = () => {
     }
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/newbcs-merit-list?examDate=${date}`)
+        fetch(`http://localhost:5000/newbcs-merit-list?examDate=${date}`)
             .then((res) => res.json())
             .then((data) => setPosition(data));
     }, []);

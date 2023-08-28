@@ -13,7 +13,7 @@ const PreparationForGreadArchiveSingle = () => {
   };
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-grade-preparation-archive-single?_id=${_id}`;
+    const url = `http://localhost:5000/get-grade-preparation-archive-single?_id=${_id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));

@@ -6,7 +6,7 @@ const JobsSubtopics = () => {
   const { topic } = useParams();
 
   useState(() => {
-    const url = `https://bcspioneer.vercel.app/get-jobs-subtopic?topic=${topic}`;
+    const url = `http://localhost:5000/get-jobs-subtopic?topic=${topic}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSubTopic(data));

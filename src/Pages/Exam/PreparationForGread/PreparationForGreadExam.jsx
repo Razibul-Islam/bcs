@@ -87,7 +87,7 @@ const PreparationForGreadExam = () => {
 
     setParticipate((prev) => [...prev, userEmail]);
 
-    fetch("https://bcspioneer.vercel.app/grade-preparation-result", {
+    fetch("http://localhost:5000/grade-preparation-result", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,7 +101,7 @@ const PreparationForGreadExam = () => {
     participate.push(userEmail);
 
     fetch(
-      `https://bcspioneer.vercel.app/updated-grade-preparation-participet?_id=${question._id}`,
+      `http://localhost:5000/updated-grade-preparation-participet?_id=${question._id}`,
       {
         method: "PUT",
         headers: {
@@ -142,7 +142,7 @@ const PreparationForGreadExam = () => {
   }, []);
 
   useEffect(() => {
-    const url = `https://bcspioneer.vercel.app/get-grade-preparation-exam?startDate=${date}`;
+    const url = `http://localhost:5000/get-grade-preparation-exam?startDate=${date}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

@@ -22,7 +22,7 @@ const SubjectWiseMeritSingle = () => {
     }
 
     useEffect(() => {
-        fetch(`https://bcspioneer.vercel.app/subject-wise-merit-list?examDate=${date}`)
+        fetch(`http://localhost:5000/subject-wise-merit-list?examDate=${date}`)
             .then((res) => res.json())
             .then((data) => setPosition(data));
     }, []);
