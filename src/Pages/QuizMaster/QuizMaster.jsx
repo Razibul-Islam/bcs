@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom"
 
 const QuizMaster = () => {
 
@@ -9,6 +10,7 @@ const QuizMaster = () => {
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [modalTwo, setMopdalTwo] = useState('hidden');
+  const [answer, setAnswer] = useState(false);
 
   const [sub, setSub] = useState([])
 
@@ -46,7 +48,7 @@ const QuizMaster = () => {
 
 
   const handleCheckQuestion = (op, ans, _id) => {
-    console.log(op, ans);
+    // console.log(op, ans);
     if (op == ans) {
       setCorrect(correct + 1)
     } else {
@@ -59,21 +61,20 @@ const QuizMaster = () => {
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].disabled = true;
     }
-
   }
 
 
 
 
-  const handleStartExamSubjectWise = ()=>{
+  const handleStartExamSubjectWise = () => {
     const size = document.getElementById('numberofquestion').value;
     const url = `http://localhost:5000/questions?subject=${sub.join(',')}&size=${size}`;
     // const url = `${baseUrl}`;
     const time = document.getElementById('times').value;
     console.log(url);
     fetch(url)
-    .then(res => res.json())
-    .then(data => setQuestion(data))
+      .then(res => res.json())
+      .then(data => setQuestion(data))
     setMopdalTwo('hidden');
     document.getElementById('action').classList.remove('hidden')
     const countdownElement = document.getElementById("countdown");
@@ -97,18 +98,19 @@ const QuizMaster = () => {
   }
 
 
-  const handlleSubject = ()=>{
+  const handlleSubject = () => {
     const subjects = document.getElementById('subject').value;
-    setSub(prev => [...sub , subjects])
+    setSub(prev => [...sub, subjects])
   }
 
 
   useEffect(() => {
     const url = `http://localhost:5000/get-subject-read-topiclly`;
     fetch(url)
-        .then(res => res.json())
-        .then(data => setSubject(data))
-}, [])
+      .then(res => res.json())
+      .then(data => setSubject(data))
+  }, [])
+  console.log(question);
 
   return (
     <div className='p-5 max-w-xl mx-auto'>
@@ -118,7 +120,7 @@ const QuizMaster = () => {
       </div>
       <div className='hidden flex justify-between border-y border-dashed py-4' id='action' >
         <div id="countdown"></div>
-        <button onClick={()=>  setResult('block')} className='px-5 py-1  bg-green-500 text-white'>Submit</button>
+        <button onClick={() => setResult('block')} className='px-5 py-1  bg-green-500 text-white'>Submit</button>
       </div>
       <div className='my-10 max-w-xl mx-auto p-5'>
         {
@@ -127,10 +129,22 @@ const QuizMaster = () => {
               <div className='my-10' id={qsn._id}>
                 <p>{index++})  {qsn.question}</p>
                 <div>
-                  <button onClick={() => handleCheckQuestion('a', qsn.ans, qsn._id)} id={'a' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>ক) {qsn.opA}</button>
-                  <button onClick={() => handleCheckQuestion('b', qsn.ans, qsn._id)} id={'b' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>খ) {qsn.opB}</button>
-                  <button onClick={() => handleCheckQuestion('c', qsn.ans, qsn._id)} id={'c' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>গ) {qsn.opC}</button>
-                  <button onClick={() => handleCheckQuestion('d', qsn.ans, qsn._id)} id={'d' + qsn._id} className='py-2 block hover:bg-teal-100 cursor-pointer'>ঘ) {qsn.opD}</button>
+                  <button onClick={() => handleCheckQuestion('a', qsn.ans, qsn._id)} id={'a' + qsn._id} className={`py-2 block w-full text-start hover:bg-teal-100 cursor-pointer${answer && "a" == qsn.ans
+                    ? "bg-green-500 pointer-events-none"
+                    : ""
+                    }`}>ক) {qsn.opA}</button>
+                  <button onClick={() => handleCheckQuestion('b', qsn.ans, qsn._id)} id={'b' + qsn._id} className={`py-2 block w-full text-start hover:bg-teal-100 cursor-pointer${answer && "b" == qsn.ans
+                    ? "bg-green-500 pointer-events-none"
+                    : ""
+                    }`}>খ) {qsn.opB}</button>
+                  <button onClick={() => handleCheckQuestion('c', qsn.ans, qsn._id)} id={'c' + qsn._id} className={`py-2 block w-full text-start hover:bg-teal-100 cursor-pointer${answer && "c" == qsn.ans
+                    ? "bg-green-500 pointer-events-none"
+                    : ""
+                    }`}>গ) {qsn.opC}</button>
+                  <button onClick={() => handleCheckQuestion('d', qsn.ans, qsn._id)} id={'d' + qsn._id} className={`py-2 block w-full text-start hover:bg-teal-100 cursor-pointer${answer && "d" == qsn.ans
+                    ? "bg-green-500 pointer-events-none"
+                    : ""
+                    }`}>ঘ) {qsn.opD}</button>
                 </div>
               </div>
             )
@@ -138,16 +152,11 @@ const QuizMaster = () => {
         }
       </div>
 
-
-
-
-
-
       <div class={`relative z-10 ${modalTwo}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
           <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
               <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -156,12 +165,12 @@ const QuizMaster = () => {
                         sub.map(ss => <button className='bg-teal-500 text-sm  px-2 rounded-xl'>{ss}</button>)
                       }
                     </div>
-                   <select className='px-5 py-2 border focus:outline-none w-full mt-3' onChange={handlleSubject} id="subject">
-                    <option>-- বিষয় নির্বাচন করুণ--</option>
-                    {
-                      subject.map(sub=> <option>{sub.subject}</option>)
-                    }
-                   </select>
+                    <select className='px-5 py-2 border focus:outline-none w-full mt-3' onChange={handlleSubject} id="subject">
+                      <option>-- বিষয় নির্বাচন করুণ--</option>
+                      {
+                        subject.map(sub => <option>{sub.subject}</option>)
+                      }
+                    </select>
                     <input type="number" id='times' className='px-5 py-2 border focus:outline-none w-full mt-3' placeholder='Exam Time (Minutes)' />
                     <input type="number" id='numberofquestion' className='px-5 py-2 border focus:outline-none w-full mt-3' placeholder='Number of Question' />
                   </div>
@@ -176,13 +185,11 @@ const QuizMaster = () => {
         </div>
       </div>
 
-
-
       <div class={`relative z-10 ${modalOne}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
           <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
               <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -200,17 +207,11 @@ const QuizMaster = () => {
         </div>
       </div>
 
-
-
-
-
-
-
       <div class={`relative z-10 ${result}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
           <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-xl">
               <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -221,8 +222,11 @@ const QuizMaster = () => {
                 </div>
               </div>
               <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-
-                <a href=''  type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</a>
+                <button onClick={() => {
+                  setAnswer(true);
+                  setResult("hidden");
+                }} class="mt-3 inline-flex w-full justify-center rounded-md bg-teal-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-500 sm:mt-0 sm:w-auto ml-2">View Solution</button>
+                <button onClick={() => { setResult("hidden"); window.location = window.location.href; }} class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
               </div>
             </div>
           </div>

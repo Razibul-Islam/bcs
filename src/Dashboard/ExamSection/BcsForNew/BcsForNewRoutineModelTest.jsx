@@ -30,14 +30,43 @@ const BcsForNewRoutineModelTest = () => {
       .then((data) => setAllQuestion(data));
   };
 
+  // const handleAddQue3stion = (qsn) => {
+  //   const targetObject = question.find((item) => item._id === qsn._id);
+  //   console.log(targetObject);
+  //   const getBtn = document.getElementById(`AddButton${qsn._id}`);
+  //   if (targetObject) {
+  //     // toast.warning("Already Exigist");
+  //     console.log(getBtn);
+  //     getBtn.innerHTML = "Already Added"
+  //   } else {
+  //     setQuestion((prev) => [...prev, qsn]);
+  //   }
+  // };
+
   const handleAddQue3stion = (qsn) => {
-    const targetObject = question.find((item) => item._id === qsn._id);
-    if (targetObject) {
-      toast.warning("Already Exigist");
-    } else {
-      setQuestion((prev) => [...prev, qsn]);
-    }
+    setQuestion((prev) => {
+      const currentQuestionState = [...prev]; // Capture the current state
+
+      const targetObject = currentQuestionState.find((item) => item._id === qsn._id);
+      const getBtn = document.getElementById(`AddButton${qsn._id}`);
+
+      if (!getBtn) {
+        console.log(`Button not found for question with ID: ${qsn._id}`);
+        return currentQuestionState; // Return the captured state
+      }
+
+      if (targetObject) {
+        console.log(getBtn);
+        getBtn.innerHTML = "Already Added";
+        getBtn.disabled = true; // Disable the button
+      } else {
+        currentQuestionState.push(qsn); // Update the captured state
+      }
+
+      return currentQuestionState; // Return the updated state
+    });
   };
+
 
   const handleAddQuestion = (e) => {
     e.preventDefault();
@@ -241,6 +270,7 @@ const BcsForNewRoutineModelTest = () => {
                     </p>
                   </div>
                   <button
+                    id={`AddButton${qs._id}`}
                     onClick={() => handleAddQue3stion(qs)}
                     className="bg-green-500 mt-2 text-white px-5 py-1 rounded-sm shadow-lg"
                   >

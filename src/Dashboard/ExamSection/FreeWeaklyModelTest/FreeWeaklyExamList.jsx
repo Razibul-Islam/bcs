@@ -16,12 +16,26 @@ const FreeWeaklyExamList = () => {
       });
   };
 
+  const handleEdit = () => {
+
+  }
+
+  const handleView = () => {
+
+  }
+
+  const handlePDF = () => {
+
+  }
+
   useEffect(() => {
     const url = `http://localhost:5000/get-free-weaklly-eaxma-all`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setQuestion(data));
   }, []);
+
+  console.log(question);
 
   return (
     <div className="p-5">
@@ -33,12 +47,30 @@ const FreeWeaklyExamList = () => {
             <div className="p-5 text-center border border-dashed rounded">
               <h4>Free weakly Model Test</h4>
               <h5 className="my-2">{qsn.startDate}</h5>
-              <div>
+              <div className="space-x-2">
                 <button
                   onClick={() => handleDelete(qsn._id)}
                   className="bg-red-500 px-5 rounded-3xl text-white text-sm"
                 >
                   Delete
+                </button>
+                <button
+                  onClick={() => handleEdit(qsn._id)}
+                  className="bg-gray-400 px-5 rounded-3xl text-white text-sm"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleView(qsn._id)}
+                  className="bg-gray-500 px-5 rounded-3xl text-white text-sm"
+                >
+                  View
+                </button>
+                <button
+                  onClick={() => handlePDF(qsn._id)}
+                  className="bg-gray-500 px-5 rounded-3xl text-white text-sm"
+                >
+                  PDF
                 </button>
               </div>
             </div>

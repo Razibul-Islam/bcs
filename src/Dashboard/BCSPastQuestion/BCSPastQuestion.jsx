@@ -243,7 +243,7 @@ const BCSPastQuestion = () => {
                                             </label>
                                         </div>
                                         <p>Note : লাইন আলাদা করতে ব্যাকের পর " {'<br />'} "  ব্যাবহার করুণ । </p>
-                                        <textarea name="explain" placeholder='ব্যাখ্যা করুণ' className='p-2 border  block focus:outline-none h-24 w-full'></textarea>
+                                        <textarea name="explain" placeholder='ব্যাখ্যা করুণ' className='p-2 border block focus:outline-none h-24 w-full'></textarea>
                                         <div className='flex justify-end items-center gap-5 mt-5'>
                                             <label onClick={() => setModal('hidden')} className='px-4 py-1 text-white uppercase rounded-sm bg-red-500 cursor-pointer'>Cancel</label>
                                             <button className='px-4 py-1 text-white uppercase rounded-sm bg-green-500'>Submit</button>

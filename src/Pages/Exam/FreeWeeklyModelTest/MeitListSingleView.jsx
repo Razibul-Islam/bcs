@@ -21,6 +21,12 @@ const FreeWeaklyMeritListSingleView = () => {
     });
   }
 
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
+  const currentDate2 = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+
   useEffect(() => {
     fetch(`http://localhost:5000/free-weakly-merit-list?examDate=${date}`)
       .then((res) => res.json())
@@ -30,7 +36,10 @@ const FreeWeaklyMeritListSingleView = () => {
   // console.log();
   return (
     <div>
-      <h1 className="text-center my-5">Merit List</h1>
+      <h1 className="text-center my-5 font-semibold">Merit List</h1>
+      {
+        date === currentDate2 && <p className="text-center my-5">চূড়ান্ত মেরিট লিস্ট দেখতে রাত ১২টার পর ভিজিট করুন </p>
+      }
       <div className="max-w-xl mx-auto">
         <table>
           <tr>

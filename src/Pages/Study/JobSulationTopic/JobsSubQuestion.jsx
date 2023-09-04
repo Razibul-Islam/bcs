@@ -27,17 +27,12 @@ const JobsSubQuestion = () => {
 
   const handleShowExplain = (id) => {
     const element = document.getElementById(id);
-    if (element.classList[0] === "hidden") {
-      element.classList.remove("hidden");
-    } else {
-      element.classList.add("hidden");
-    }
+    element.classList.toggle("hidden");
   };
 
   const handleShowQuestion = (ans) => {
     const option = document.getElementById(ans);
-    option.style.color = "green";
-    console.log(option);
+    option.style.fontWeight = "700";
   };
 
   const handleFavorite = (question) => {
@@ -75,6 +70,7 @@ const JobsSubQuestion = () => {
     <div>
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         <h1 className="text-xl text-center">{subtopic}</h1>
+        <p>মোট প্রশ্নঃ {question.length} টি</p>
         <p onClick={() => setOn(!on)}>
           {eyeOn ? (
             <RemoveRedEyeIcon onClick={() => setEyeOn(!eyeOn)} />
@@ -94,11 +90,10 @@ const JobsSubQuestion = () => {
               <div className="mt-3">
                 <p
                   id={`${qs._id + "a"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "a" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "a" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     ক
@@ -107,11 +102,10 @@ const JobsSubQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "b"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "b" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "b" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     খ
@@ -120,11 +114,10 @@ const JobsSubQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "c"}`}
-                  className={`flex  items-center gap-3 my-2${
-                    eyeOn && "c" === qs.ans
+                  className={`flex  items-center gap-3 my-2${eyeOn && "c" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : ""
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     গ
@@ -133,11 +126,10 @@ const JobsSubQuestion = () => {
                 </p>
                 <p
                   id={`${qs._id + "d"}`}
-                  className={`flex items-center gap-3 my-2${
-                    eyeOn && "d" === qs.ans
+                  className={`flex items-center gap-3 my-2${eyeOn && "d" === qs.ans
                       ? "text-green-500 font-extrabold"
                       : "text-black"
-                  }`}
+                    }`}
                 >
                   <p className="bg-black rounded-full h-5 text-white flex justify-center items-center w-5">
                     ঘ
