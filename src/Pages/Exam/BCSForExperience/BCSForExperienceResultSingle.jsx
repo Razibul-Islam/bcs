@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import PeopleIcon from "@mui/icons-material/People";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
 const BCSForExperienceResultSingle = () => {
   const [result, setResult] = useState({});
@@ -69,19 +70,23 @@ const BCSForExperienceResultSingle = () => {
             <p>আপনার মার্কস</p>
             <span className="flex justify-center items-center gap-3">
               <CheckCircleIcon className="text-green-500" />
-              {result.totalCorrectAns}
+              {parseFloat(result.totalCorrectAns) - parseInt(result.totalWrong) * parseFloat(result.negativeMark)}
             </span>
           </div>
         </div>
       </div>
       <div className="max-w-xl mx-auto ">
-        <div className="">
+      <div className="grid grid-cols-2 gap-2">
           <div className="bg-orange-100 py-4 text-center">
             <p>মার্কস অনুযায়ী আপনার অবস্থান</p>
             <span className="flex justify-center items-center gap-3">
               <PeopleIcon className="text-teal-600"></PeopleIcon>
               {targetIndex + 1}
             </span>
+          </div>
+          <div className='bg-orange-100 py-4 text-center'>
+            <p>স্ট্যাটাস</p>
+            <span className='flex justify-center items-center gap-3'><MilitaryTechIcon className='text-teal-600'></MilitaryTechIcon>{parseInt(result.cutsark) <= parseInt(result.totalCorrectAns) ? 'Pashed' : 'Failed'}</span>
           </div>
         </div>
       </div>
@@ -91,17 +96,19 @@ const BCSForExperienceResultSingle = () => {
         <table>
           <tr>
             <th>বিষয়</th>
-            <th>সঠিক</th>
+            <th>মোট নাম্বার</th>
+            <th>সঠিক উত্তর</th>
             <th>ভুল</th>
-            <th>মার্ক</th>
-            <th>মোট</th>
+            <th>unanswered</th>
+            <th>প্রাপ্ত নাম্বার</th>
           </tr>
           <tr>
             <td>ফ্রী সাপ্তাহিক মডেল টেস্ট</td>
-            <td>{result.totalCorrectAns}</td>
-            <td>{result.totalWrong}</td>
-            <td>{result.totalCorrectAns}</td>
-            <td>{result.totalQuestion}</td>
+            <td className='text-center'>{result.totalQuestion}</td>
+            <td className='text-center'>{result.totalCorrectAns}</td>
+            <td className='text-center'>{result.totalWrong}</td>
+            <td className='text-center'>{result.totalQuestion - (result.totalCorrectAns + result.totalWrong)}</td>
+            <td className='text-center'>{parseFloat(result.totalCorrectAns) - parseInt(result.totalWrong) * parseFloat(result.negativeMark)}</td>
           </tr>
         </table>
       </div>

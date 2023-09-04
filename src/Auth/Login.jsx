@@ -18,8 +18,6 @@ const Login = () => {
     nvigate('/')
   }
 
-
-
   if (user) {
     const UserEmail = user.user.email;
     const Address = "";
@@ -43,7 +41,7 @@ const Login = () => {
       UserName,
       UserStatus,
     };
-
+    console.log(data);
     fetch(`http://localhost:5000/user-update?email=${UserEmail}`, {
       method: "PUT",
       headers: {
@@ -53,7 +51,7 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
   }
 

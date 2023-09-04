@@ -31,6 +31,7 @@ const FreeWeaklyResultSingleView = () => {
             .then(data => setPashed(data))
     }, [result])
 
+
     const targetEmail = result.userEmail;
     const targetIndex = position.findIndex(item => item.userEmail === targetEmail);
 
@@ -56,23 +57,23 @@ const FreeWeaklyResultSingleView = () => {
                     </div>
                     <div className='bg-pink-100 py-4 text-center'>
                         <p>আপনার মার্কস</p>
-                        <span className='flex justify-center items-center gap-3'><RadarIcon className='text-teal-500' />{result.totalCorrectAns}</span>
+                        <span className='flex justify-center items-center gap-3'><RadarIcon className='text-teal-500' />{parseFloat(result.totalCorrectAns) - parseInt(result.totalWrong) * parseFloat(result.negativeMark)}</span>
                     </div>
                 </div>
             </div>
             <div className='max-w-xl mx-auto my-2'>
                 <div className='grid grid-cols-2 gap-2'>
-                <div className='bg-orange-100 py-4 text-center'>
+                    <div className='bg-orange-100 py-4 text-center'>
                         <p>মার্কস অনুযায়ী আপনার অবস্থান</p>
                         <span className='flex justify-center items-center gap-3'><AssignmentIcon className='text-teal-600'></AssignmentIcon>{targetIndex + 1}</span>
                     </div>
-                <div className='bg-orange-100 py-4 text-center'>
+                    <div className='bg-orange-100 py-4 text-center'>
                         <p>স্ট্যাটাস</p>
-                        <span className='flex justify-center items-center gap-3'><MilitaryTechIcon className='text-teal-600'></MilitaryTechIcon>{parseInt(result.cutsark) <= parseInt(result.totalCorrectAns) ? 'Pashed': 'Failed'}</span>
+                        <span className='flex justify-center items-center gap-3'><MilitaryTechIcon className='text-teal-600'></MilitaryTechIcon>{parseInt(result.cutsark) <= parseInt(result.totalCorrectAns) ? 'Pashed' : 'Failed'}</span>
                     </div>
                 </div>
             </div>
-    
+
 
             <h2 className='my-5 text-center'>Mark sheet</h2>
             <div className='max-w-xl mx-auto '>
@@ -82,15 +83,16 @@ const FreeWeaklyResultSingleView = () => {
                         <th>মোট নাম্বার</th>
                         <th>সঠিক উত্তর</th>
                         <th>ভুল</th>
+                        <th>unanswered</th>
                         <th>প্রাপ্ত নাম্বার</th>
                     </tr>
                     <tr>
                         <td>ফ্রী সাপ্তাহিক মডেল টেস্ট</td>
-                        <td>{result.totalQuestion}</td>
-                        <td>{result.totalCorrectAns}</td>
-                        <td>{result.totalWrong}</td>
-                        <td>{parseFloat(result.totalCorrectAns) - parseInt(result.totalWrong)*parseFloat(result.negativeMark)}</td>
-                        
+                        <td className='text-center'>{result.totalQuestion}</td>
+                        <td className='text-center'>{result.totalCorrectAns}</td>
+                        <td className='text-center'>{result.totalWrong}</td>
+                        <td className='text-center'>{result.totalQuestion - (result.totalCorrectAns + result.totalWrong)}</td>
+                        <td className='text-center'>{parseFloat(result.totalCorrectAns) - parseInt(result.totalWrong) * parseFloat(result.negativeMark)}</td>
                     </tr>
                 </table>
             </div>

@@ -24,16 +24,12 @@ const JobSulationPastQuestion = () => {
 
   const handleShowExplain = (id) => {
     const element = document.getElementById(id);
-    if (element.classList[0] === "hidden") {
-      element.classList.remove("hidden");
-    } else {
-      element.classList.add("hidden");
-    }
+    element.classList.toggle("hidden");
   };
 
   const handleShowQuestion = (ans) => {
     const option = document.getElementById(ans);
-    option.style.color = "green";
+    option.style.fontWeight = "700";
     // console.log(option);
   };
 
@@ -71,6 +67,7 @@ const JobSulationPastQuestion = () => {
     <div>
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         <h1 className="text-xl text-center">{category}</h1>
+        <p>মোট প্রশ্নঃ {question.length} টি</p>
         <p onClick={() => setOn(!on)}>
           {eyeOn ? (
             <RemoveRedEyeIcon onClick={() => setEyeOn(!eyeOn)} />

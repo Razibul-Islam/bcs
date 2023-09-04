@@ -60,12 +60,12 @@ const Navbar = () => {
                 <button onClick={() => setOpen(!open)} className='md:hidden bg-[#ffffff] px-2 rounded-sm text-teal-500'><MenuIcon /></button>
             </div>
             <div className={`${open ? 'block' : 'hidden'}`}>
-                <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/'>হোম</Link>
-                <Link className='text-[#fff] block py-2 bg-teal-500 px-3'>প্যাকেজ</Link>
-                <Link className='text-[#fff] block py-2 bg-teal-500 px-3'>আমাদের সম্পর্কে</Link>
-                <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/contact'>যোগাযোগ</Link>
+                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3' to='/'>হোম</Link>
+                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3'>প্যাকেজ</Link>
+                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3'>আমাদের সম্পর্কে</Link>
+                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3' to='/contact'>যোগাযোগ</Link>
                 {
-                    userRole == 'Admin' ? <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/dashboard'>ড্যাশবোর্ড</Link> : ''
+                    userRole == 'Admin' ? <Link className='text-[#fff] block py-2 bg-teal-500 px-3' onClick={() => setOpen(!open)} to='/dashboard'>ড্যাশবোর্ড</Link> : ''
                 }
                 {
                     user ? <button onClick={() => signOut()} className='bg-[#ff4558]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগ আউট</button> : <Link to='/login' className='bg-[#0d0c0a]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগইন</Link>

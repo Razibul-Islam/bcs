@@ -25,16 +25,14 @@ const BCSForNew = () => {
         <div className="w-[300px] md:w-[400px] h-[200px] md:h-[300px] mx-auto mt-10 relative flex items-center justify-center">
           <Link
             to="/bcsfornewstartexam"
-            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${
-              question._id ? "" : "hidden"
-            }`}
+            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${question._id ? "" : "hidden"
+              }`}
           >
             Start Exam
           </Link>
           <Link
-            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${
-              question._id ? "hidden" : ""
-            }`}
+            className={`text-white px-5 py-2 bg-teal-500 rounded-sm shadow-md z-10 ${question._id ? "hidden" : ""
+              }`}
           >
             এই মুহূর্তে কোনো পরীক্ষা নেই
           </Link>
@@ -68,11 +66,8 @@ const BCSForNew = () => {
           <span className="absolute w-[50px] md:w-[160px] h-[2px] bg-teal-400 rotate-45 bottom-16 md:bottom-24 right-14 "></span>
         </div>
       </div>
-      <div className="max-w-6xl mx-auto text-center space-y-2 text-lg">
-        <p>দৃষ্টি আকর্ষণ</p>
-        <p>এই মুহূর্তে এই বাটনে কোনো লাইভ পরীক্ষা নেই</p>
-        <p>পরবর্তী পরীক্ষা</p>
-        <p>Friday</p>
+      <div className="text-center  text-lg mt-10">
+        <p>দৃষ্টি আকর্ষণ !</p>
         <p>-পরীক্ষার টপিক জানতে রুটিনে ক্লিক করুন।</p>
         <p>-পূর্বে অনুষ্ঠিত পরীক্ষা গুলোর প্রশ্ন দেখতে আর্কাইভ এ ক্লিক করুন।</p>
       </div>

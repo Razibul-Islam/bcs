@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Contact = () => {
     return (
-        <div className="bg-[#ffffff] h-full">
-            <div className="h-72 w-full flex justify-center items-center bg-[#ffffff] mt-[-100px] text-slate-400">
+        <div className="bg-[#ffffff] h-full -z-10 relative">
+            <div className="h-72 w-full flex justify-center items-center bg-[#ffffff] mt-[-100px] text-slate-400 -z-10 relative">
                 <h5 className="flex justify-center gap-5 mt-10">
                     <Link to="/">হোম -</Link>|<Link>যোগাযোগ</Link>
                 </h5>
