@@ -1,65 +1,61 @@
-import React from "react";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import Typed from "typed.js";
+import PanToolAltIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+// import KeyboardDoubleArrowRightIcon from '';
 
 const StudySection = () => {
+
+
+  useEffect(() => {
+    const options = {
+      strings: ['Study Section'], // Add more strings if needed
+      typeSpeed: 80, // Typing speed in milliseconds
+      showCursor: false,
+      backSpeed: 50, // Backspacing speed in milliseconds
+      loop: true, // Loop the animation indefinitely
+    };
+
+    const typed = new Typed('.typing-text-2', options);
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
+
   return (
-    <div className="text-teal-500 md:pt-20">
-      <section className="max-w-6xl mx-auto  md:pt-10 rounded-md ">
-        <h1 className="text-center  text-teal-500 uppercase font-bold md:text-2xl  mt-5 md:mt-20">
-          <span className="border border-dashed px-5 border-teal-600 ">
-            Study Segment
-          </span>
-        </h1>
+    <div className="md:pt-20 max-w-6xl mx-auto px-2">
+      <section className="md:pt-10 rounded-md ">
+        <h1 className="text-xl my-5 text-center space-x-3 text-[#32E37F]"><PanToolAltIcon className="text-[#32E37F]" /> <span className="typing-text-2"></span></h1>
+        <hr className="my-2" />
+        <div className="grid  md:grid-cols-3 grid-cols-2 gap-2  md:gap-10   md:text-lg mx-auto">
+          <Link to="/video" className="shadow-sm text-center card-2 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+            <span>ভিডিও ক্লাস</span>
+            <ArrowCircleRightIcon />
+          </Link>
+          <Link to="/pdf" className="shadow-sm text-center card-2 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+            <span>PDF Section</span>
+            <ArrowCircleRightIcon />
+          </Link>
+          <Link to="/jobsulationpast" className="shadow-sm text-center card-2 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+            <span>বিগত জব সল্যুশন প্রশ্ন </span>
+            <ArrowCircleRightIcon />
+          </Link>
+          <Link to="/subjectwise" className="shadow-sm text-center card-2 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+            <span>বিষয়ভিত্তিক পড়ুন</span>
+            <ArrowCircleRightIcon />
+          </Link>
+          <Link to="/jobsulationtopic" className="shadow-sm text-center card-2 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+            <span>জব সল্যুশন টপিক ভিত্তিক</span>
+            <ArrowCircleRightIcon />
+          </Link>
+          <Link to="/lastbcs" className="shadow-sm text-center card-2 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+            <span>বিগত বিসিএস প্রশ্ন</span>
+            <ArrowCircleRightIcon />
+          </Link>
+        </div>
 
-        <section className="flex justify-between items-center">
-          <div className="md:block hidden">
-            <img
-              className="w-96 "
-              src="https://cdni.iconscout.com/illustration/premium/thumb/online-learning-2245537-1889500.png"
-              alt=""
-            />
-          </div>
-
-          <div className="grid grid-cols-2 md:w-1/2 mt-5 md:py-10 px-2 text-sm gap-2">
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:pr-3  pr-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/video">
-                <span>ভিডিও ক্লাস</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:pr-3  pr-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/pdf">
-                <span>PDF Section</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:pr-3  pr-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/jobsulationpast">
-                <span>বিগত জব সল্যুশন প্রশ্ন </span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:pr-3  pr-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/subjectwise">
-                <span>বিষয়ভিত্তিক পড়ুন</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-1 md:pr-3  pr-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/jobsulationtopic">
-                <span>জব সল্যুশন টপিক ভিত্তিক</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:pr-3  pr-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/lastbcs">
-                <span>বিগত বিসিএস প্রশ্ন</span>
-              </Link>
-            </div>
-          </div>
-        </section>
       </section>
     </div>
   );

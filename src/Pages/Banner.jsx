@@ -28,13 +28,13 @@ const Banner = () => {
             সমস্ত <span className="text-teal-500">প্রস্তুতি</span> ঘরে বসে এক
             অ্যাপে
           </h1>
-          <button className="mt-5 shadow-2xl px-5 py-2 bg-teal-500 text-white font-bold">
+          <button className="mt-5 shadow-2xl px-5 py-2 card-1 text-white font-bold">
             আরো জানুন
           </button>
         </div>
         <img
           className="md:w-1/2 mt-12"
-          src="https://pngimg.com/d/student_PNG104.png"
+          src="https://cdni.iconscout.com/illustration/premium/thumb/online-study-2710520-2261196.png"
           alt=""
         />
       </div>

@@ -17,7 +17,7 @@ const Navbar = () => {
     const currentUrl = window.location.href;
 
     const handleUser = () => {
-        const url = `http://localhost:5000/get-user-email?email=${user?.email}`;
+        const url = `https://bcspioneer.vercel.app/get-user-email?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUserRole(data.Role))
@@ -41,34 +41,34 @@ const Navbar = () => {
 
     return (
         <section>
-            <div className='bg-teal-500 py-5 px-5 nav-bg flex justify-between items-center sticky top-0 z-50'>
+            <div className='card-2 py-5 px-5 nav-bg flex justify-between items-center sticky top-0 z-50'>
                 <div>
                     <Link>BCS Pionner</Link>
                 </div>
                 <div className='md:flex hidden md:block justify-center gap-5 text-[#c3c3e1] uppercase font-light'>
-                    <Link className='text-[#0d0c0a]' to='/'>হোম</Link>
-                    <Link className='text-[#0d0c0a]'>প্যাকেজ</Link>
-                    <Link className='text-[#0d0c0a]'>আমাদের সম্পর্কে</Link>
-                    <Link className='text-[#0d0c0a]' to='/contact'>যোগাযোগ</Link>
+                    <Link className='text-white' to='/'>হোম</Link>
+                    <Link className='text-white'>প্যাকেজ</Link>
+                    <Link className='text-white'>আমাদের সম্পর্কে</Link>
+                    <Link className='text-white' to='/contact'>যোগাযোগ</Link>
                     {
                         userRole == 'Admin' ? <Link className='text-[#0d0c0a]' to='/dashboard'>ড্যাশবোর্ড</Link> : ''
                     }
                 </div>
                 {
-                    user ? <button onClick={() => signOut()} className='bg-[#ff4558]  hidden md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগ আউট</button> : <Link to='/login' className='bg-[#0d0c0a]  hidden md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগইন</Link>
+                    user ? <button onClick={() => signOut()} className='card-1  hidden md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগ আউট</button> : <Link to='/login' className='bg-[#0d0c0a]  hidden md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগইন</Link>
                 }
                 <button onClick={() => setOpen(!open)} className='md:hidden bg-[#ffffff] px-2 rounded-sm text-teal-500'><MenuIcon /></button>
             </div>
             <div className={`${open ? 'block' : 'hidden'}`}>
-                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3' to='/'>হোম</Link>
-                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3'>প্যাকেজ</Link>
-                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3'>আমাদের সম্পর্কে</Link>
-                <Link onClick={() => setOpen(!open)} className='text-[#fff] block py-2 bg-teal-500 px-3' to='/contact'>যোগাযোগ</Link>
+                <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/'>হোম</Link>
+                <Link className='text-[#fff] block py-2 bg-teal-500 px-3'>প্যাকেজ</Link>
+                <Link className='text-[#fff] block py-2 bg-teal-500 px-3'>আমাদের সম্পর্কে</Link>
+                <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/contact'>যোগাযোগ</Link>
                 {
-                    userRole == 'Admin' ? <Link className='text-[#fff] block py-2 bg-teal-500 px-3' onClick={() => setOpen(!open)} to='/dashboard'>ড্যাশবোর্ড</Link> : ''
+                    userRole == 'Admin' ? <Link className='text-[#fff] block py-2 bg-teal-500 px-3' to='/dashboard'>ড্যাশবোর্ড</Link> : ''
                 }
                 {
-                    user ? <button onClick={() => signOut()} className='bg-[#ff4558]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগ আউট</button> : <Link to='/login' className='bg-[#0d0c0a]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগইন</Link>
+                    user ? <button onClick={() => signOut()} className='card-1   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগ আউট</button> : <Link to='/login' className='bg-[#0d0c0a]   md:block px-5 py-2 text-[#ffffff] font-bold rounded-sm'>লগইন</Link>
                 }
             </div>
         </section>

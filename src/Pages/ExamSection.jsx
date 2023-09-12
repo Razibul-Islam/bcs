@@ -1,69 +1,68 @@
-import React from "react";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import Typed from "typed.js";
+import PanToolAltIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 const ExamSection = () => {
-  return (
-    <div className="text-teal-500 md:pt-20">
-      <section className="max-w-6xl mx-auto   md:pt-10 rounded-md ">
-        <h1 className="text-center  text-teal-500 uppercase font-bold md:text-2xl  my-5 md:mt-20">
-          <span className="border border-dashed px-5 border-teal-600">
-            Exam Segment
-          </span>
-        </h1>
-        <section className="flex justify-between mx-w-6xl mx-auto items-center">
-          <div className="grid grid-cols-2 gap-2  md:gap-10 px-2 text-sm md:text-lg">
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:gap-5 md:pr-3">
-              <MenuBookIcon className="bg-teal-500 text-white p-1 md:ml-1 md:scale-150" />
-              <Link to="/free-weakly-model-test">
-                <span>ফ্রি সাপ্তাহিক মডেল টেস্ট </span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden gap-2 md:gap-5 md:pr-3 pr-3">
-              <MenuBookIcon className="bg-teal-500 text-white p-1 md:ml-1 md:scale-150" />
-              <Link to="/bcsfornew" className="info_item_content">
-                <span>নতুনদের বিসিএস প্রস্তুতি</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3">
-              <MenuBookIcon className="bg-teal-500 text-white p-1" />
-              <Link to="/subjectwisepreparation">
-                <span>বিষয় ভিত্তিক প্রস্তুতি</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3">
-              <MenuBookIcon className="bg-teal-500 text-white p-1 md:ml-1 md:scale-150" />
-              <Link to="/jobsolution">
-                <span>জব সল্যুশন</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-2 pr-3">
-              <MenuBookIcon className="bg-teal-500 text-white p-1 md:ml-1 md:scale-150" />
-              <Link to="/addbank">
-                <span>ব্যাংক নিয়োগ প্রস্তুতি</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1 md:ml-1 md:scale-150" />
-              <Link to="/bcsforexperience" className="">
-                <span>অভিজ্ঞদের বিসিএস প্রস্তুতি</span>
-              </Link>
-            </div>
+  
+  useEffect(() => {
+    const options = {
+      strings: ['Exam Section'], // Add more strings if needed
+      typeSpeed: 80, // Typing speed in milliseconds
+      showCursor: false,
+      backSpeed: 50, // Backspacing speed in milliseconds
+      loop: true, // Loop the animation indefinitely
+    };
 
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1  md:ml-1 md:scale-150" />
-              <Link to="/addteacher">
-                <span>শিক্ষক নিয়োগ ও নিবন্ধন</span>
-              </Link>
-            </div>
-            <div className="flex items-center shadow-sm rounded shadow-teal-500 overflow-hidden md:gap-5 gap-1">
-              <MenuBookIcon className="bg-teal-500 text-white p-1  md:ml-1 md:scale-150" />
-              <Link to="/preparationforgread">
-                <span>৯ম - ২০ তম গ্রেডের প্রস্তুতি</span>
-              </Link>
-            </div>
+    const typed = new Typed('.typing-text', options);
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+  
+
+  return (
+    <div className="md:pt-20 max-w-6xl mx-auto px-2">
+      <section className="md:pt-10 rounded-md ">
+      <h1 className="my-5 text-center text-xl space-x-3 text-[#F2257F]"><PanToolAltIcon className="text-[#F2257F]"/> <span className="typing-text"></span></h1>
+        <hr className="my-2" />
+          <div className="grid md:grid-cols-3 grid-cols-2 md:gap-10 gap-2">
+            <Link  className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-center" to="/free-weakly-model-test">
+              <span>সাপ্তাহিক মডেল টেস্ট </span>
+              <ArrowCircleRightIcon />
+            </Link>
+            <Link  to="/bcsfornew" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-center">
+              <span>নতুনদের বিসিএস প্রস্তুতি</span>
+              <ArrowCircleRightIcon />
+            </Link>
+            <Link  to="/subjectwisepreparation" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-cente">
+              <span>বিষয় ভিত্তিক প্রস্তুতি</span>
+              <ArrowCircleRightIcon />
+            </Link>
+            <Link  to="/jobsolution" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-cente">
+              <span>জব সল্যুশন</span>
+              <ArrowCircleRightIcon />
+            </Link>
+            <Link  to="/addbank" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-cente">
+              <span>ব্যাংক নিয়োগ প্রস্তুতি</span>
+              <ArrowCircleRightIcon />
+            </Link>
+            <Link  to="/addteacher" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-cente">
+              <span>শিক্ষক নিয়োগ ও নিবন্ধন</span>
+              <ArrowCircleRightIcon />
+            </Link>
+
+            <Link  to="/bcsforexperience" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-cente">
+              <span>অভিজ্ঞদের বিসিএস প্রস্তুতি</span>
+              <ArrowCircleRightIcon />
+            </Link>
+
+            <Link  to="/preparationforgread" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-cente">
+              <span>৯ম - ২০ তম গ্রেডের প্রস্তুতি</span>
+              <ArrowCircleRightIcon />
+            </Link>
           </div>
-        </section>
       </section>
     </div>
   );
