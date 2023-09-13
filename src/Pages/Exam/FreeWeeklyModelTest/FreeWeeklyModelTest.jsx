@@ -23,7 +23,7 @@ const FreeWeeklyModelTest = () => {
 
   return (
     <div>
-      <h1 className='my-5 text-center '> ফ্রি সাপ্তাহিক মডেল টেস্ট</h1>
+      <h1 className='my-5 text-center '> ফ্রী পরীক্ষা</h1>
 
 
       <div>

@@ -103,7 +103,7 @@ const SubjectWisePreparationResultSingle = () => {
             <th>প্রাপ্ত নাম্বার</th>
           </tr>
           <tr>
-            <td>ফ্রী সাপ্তাহিক মডেল টেস্ট</td>
+            <td>ফ্রী পরীক্ষা</td>
             <td className='text-center'>{result.totalQuestion}</td>
             <td className='text-center'>{result.totalCorrectAns}</td>
             <td className='text-center'>{result.totalWrong}</td>

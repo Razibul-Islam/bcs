@@ -22,7 +22,7 @@ const FreeWeaklyExamenee = () => {
                     question.map(qsn => {
                         return(
                             <div className='p-5 text-center border border-dashed rounded'>
-                                <h4>ফ্রি সাপ্তাহিক মডেল টেস্ট</h4>
+                                <h4>ফ্রী পরীক্ষা</h4>
                                 <h5 className='my-2'>{qsn.startDate}</h5>
                                 <div>
                                     <Link to={`/dashboard/free-weakly-examenee/${qsn._id}`} className='px-3 bg-green-400 rounded-3xl text-white text-sm'>view</Link>

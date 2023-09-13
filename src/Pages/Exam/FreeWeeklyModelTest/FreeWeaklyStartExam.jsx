@@ -68,7 +68,7 @@ const FreeWeaklyStartExam = () => {
         const userEmail = user.email;
         const cutsark = question.cutsark;
         const totalQuestion = question.examQuestion.length;
-        const examName = 'ফ্রি সাপ্তাহিক মডেল টেস্ট'
+        const examName = 'ফ্রী পরীক্ষা'
         const negativeMark = question.negativeMark;
         const data = { totalCorrectAns, totalWrong, examDate, userName, userEmail, totalQuestion , cutsark, examName, negativeMark};
 

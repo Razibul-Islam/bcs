@@ -15,10 +15,10 @@ const PreparationforgreadResult = () => {
   }, [user]);
 
   return (
-    <div className="p-5 grid gap-5 grid-cols-3 max-w-6xl mx-auto">
+    <div className="p-5 grid gap-5 md:grid-cols-3 grid-cols-1 max-w-6xl mx-auto">
       {result.map((res) => {
         return (
-          <div className="text-center p-5 border border-dashed ">
+          <div className="text-center p-5 border border-dashed border-green-400">
             <p>{res.examDate}</p>
             <p>৯ম - ২০ তম গ্রেডের প্রস্তুতি</p>
             <Link

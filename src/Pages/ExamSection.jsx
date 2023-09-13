@@ -29,7 +29,7 @@ const ExamSection = () => {
         <hr className="my-2" />
           <div className="grid md:grid-cols-3 grid-cols-2 md:gap-10 gap-2">
             <Link  className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-center" to="/free-weakly-model-test">
-              <span>সাপ্তাহিক মডেল টেস্ট </span>
+              <span>ফ্রী পরীক্ষা </span>
               <ArrowCircleRightIcon />
             </Link>
             <Link  to="/bcsfornew" className="shadow-sm text-center card-1 md:p-5 px-2 py-3 text-white flex justify-between items-center">

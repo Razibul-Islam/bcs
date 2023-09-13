@@ -23,7 +23,7 @@ const FreeWeaklyArchive = () => {
   return (
     <div className="p-5">
       <h1 className="text-center my-10">
-        {question.startDate} (ফ্রি সাপ্তাহিক মডেল টেস্ট)
+        {question.startDate} (ফ্রী পরীক্ষা)
       </h1>
       <div className="my-10 max-w-xl mx-auto ">
         {question?.examQuestion?.map((qs) => {

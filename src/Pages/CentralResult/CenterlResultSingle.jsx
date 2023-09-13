@@ -32,7 +32,7 @@ const CenterlResultSingle = () => {
                         <th>মোট</th>
                     </tr>
                     <tr>
-                        <td>ফ্রী সাপ্তাহিক মডেল টেস্ট</td>
+                        <td>ফ্রী পরীক্ষা</td>
                         <td>{myResult?.totalCorrectAns}</td>
                         <td>{myResult?.totalWrong}</td>
                         <td>{myResult?.totalCorrectAns}</td>

@@ -31,7 +31,7 @@ const FreeWeaklyModelTestArchive = () => {
                 to={`/free-waekly-archive/${question._id}`}
                 className="bg-teal-500  px-5  py-1 text-white mt-3 rounded-full "
               >
-                {question.startDate} (ফ্রি সাপ্তাহিক মডেল টেস্ট)
+                {question.startDate} (ফ্রী পরীক্ষা)
               </Link>
             </div>
           );

@@ -29,7 +29,7 @@ const FreeModelRutin = () => {
   };
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/free-weakly-test-routine-delete?_id=${_id}`, {
+    fetch(`http://localhost:5000/free-weakly-rutin-delete?_id=${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -45,7 +45,7 @@ const FreeModelRutin = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setRutin(data));
-  }, []);
+  }, [handleDelete, handleAddRutine]);
 
   return (
     <div>
@@ -70,10 +70,6 @@ const FreeModelRutin = () => {
                 {rutins.descripetion?.split("...").map((p) => (
                   <h4 className="text-sm">{p}</h4>
                 ))}
-
-                <small>
-                  ফ্রি সাপ্তাহিক মডেল টেস্ট প্রতি শুক্রবার সকলের জন্য
-                </small>
               </div>
             );
           })}

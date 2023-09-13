@@ -86,6 +86,24 @@ const FreeWeaklyModelTest = () => {
     }
 
 
+
+    const handleTopic = () => {
+        const topic = document.getElementById('topic').value;
+        const url = `http://localhost:5000/get-question-by-topic?topic=${topic}&question_id=readtopicaly101`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setAllQuestion(data));
+    }
+
+
+    const handleSubtopic = () => {
+        const subTopic = document.getElementById('subTopic').value;
+        const url = `http://localhost:5000/get-question-by-subtopic?subTopic=${subTopic}&question_id=readtopicaly101`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setAllQuestion(data));
+    }
+
     useEffect(() => {
         const url = `http://localhost:5000/get-all-question`
         fetch(url)
@@ -100,13 +118,13 @@ const FreeWeaklyModelTest = () => {
             .then(data => setSubject(data))
     }, [])
     useEffect(() => {
-        const url = `http://localhost:5000/get-topic-read-jobs`;
+        const url = `http://localhost:5000/get-topic-read-topiclly`;
         fetch(url)
             .then(res => res.json())
             .then(data => setTopic(data))
     }, [])
     useEffect(() => {
-        const url = `http://localhost:5000/get-subtopic-read-jobs`;
+        const url = `http://localhost:5000/get-subTopic-read-topiclly`;
         fetch(url)
             .then(res => res.json())
             .then(data => setSubTopic(data))
@@ -117,32 +135,26 @@ const FreeWeaklyModelTest = () => {
             <h1 className='text-center my-5'>Free Weakly Model Test</h1>
             <div className='flex justify-between items-center'>
                 <div className='flex gap-5 w-1/2'>
-                    <Link to='/dashboard/free-weakly-modeltest/rutin' className='bg-orange-500 px-5 py-1 text-white rounded-sm shadow-lg'>Rutine</Link>
-                    <Link to='/dashboard/free-ewakly-examenee' className='bg-yellow-400 px-5 py-1 text-white rounded-sm shadow-lg'>Examinee</Link>
-                    <Link to='/dashboard/free-weakly-modeltest/exam-list' className='bg-pink-500 px-5 py-1 text-white rounded-sm shadow-lg'>Exam List</Link>
-                    <button onClick={() => setModal(!modal)} className='bg-purple-600 text-white px-5 py-1 rounded-sm shadow-lg'>Add New Question</button>
+                    <Link to='/dashboard/free-weakly-modeltest/rutin' className='bg-orange-500 px-2 text-sm py-1 text-white rounded-sm shadow-lg'>Rutine</Link>
+                    <Link to='/dashboard/free-ewakly-examenee' className='bg-yellow-400 px-2 text-sm py-1 text-white rounded-sm shadow-lg'>Examinee</Link>
+                    <Link to='/dashboard/free-weakly-modeltest/exam-list' className='bg-pink-500 px-2 text-sm py-1 text-white rounded-sm shadow-lg'>Exam List</Link>
+                    <button onClick={() => setModal(!modal)} className='bg-purple-600 text-white px-2 text-sm py-1 rounded-sm shadow-lg'>Add New Question</button>
                 </div>
                 <div className='flex gap-2 grid grid-cols-4 w-1/2'>
-                    <select name="subject" className='p-2 border  block focus:outline-none w-full'>
-                        <option value="--টপিক নির্বাচন করুণ --">--বিষয় নির্বাচন করুণ --</option>
-                        {
-                            subject.map(subjects => <option>{subjects.subject}</option>)
-                        }
-                    </select>
-                    <select name="topic" className='p-2 border  block focus:outline-none w-full'>
+                    <select name="topic" id='topic' onChange={handleTopic} className='p-1 border  block focus:outline-none w-full'>
                         <option value="--টপিক নির্বাচন করুণ --">--টপিক নির্বাচন করুণ --</option>
                         {
                             topic.map(subjects => <option>{subjects.topic}</option>)
                         }
                     </select>
-                    <select name="subTopic" className='p-2 border  block focus:outline-none w-full'>
+                    <select name="subTopic" onChange={handleSubtopic} id='subTopic' className='p-1 border  block focus:outline-none w-full'>
                         <option value="--টপিক নির্বাচন করুণ --">--সাব টপিক নির্বাচন করুণ --</option>
                         {
                             subTopic.map(op => <option>{op.subtopic}</option>)
                         }
                     </select>
-                    <input type="search" onChange={handleSearch} id='search-box' className='p-2 px-5 block border rounded-full focus:outline-none' placeholder='Find Question' />
-                    <button onClick={handleShowall} className='bg-teal-500 px-5 py-1 rounded-sm shadow-lg text-white col-end-5'>All</button>
+                    <input type="search" onChange={handleSearch} id='search-box' className='px-2 block border rounded-full focus:outline-none' placeholder='Find Question' />
+                    <button onClick={handleShowall} className='bg-orange-500 px-2 text-sm py-1 text-white rounded-sm shadow-lg'>All</button>
                 </div>
             </div>
 
@@ -156,7 +168,7 @@ const FreeWeaklyModelTest = () => {
                         <form onSubmit={handleCreateExam} className='my-5'>
                             <select name="exam" className='p-2 border  block focus:outline-none w-full mb-3'>
                                 <option>--Select Exam ---</option>
-                                <option>ফ্রি সাপ্তাহিক মডেল টেস্ট</option>
+                                <option>ফ্রী পরীক্ষা</option>
                             </select>
                             <input type="text" placeholder='Enter Time (Minute)' name='time' className='p-2 border  block focus:outline-none w-full mb-3' />
                             <input type="text" placeholder='Cuts Mark' name='cutsark' className='p-2 border  block focus:outline-none w-full mb-3' />

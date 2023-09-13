@@ -153,7 +153,9 @@ const JobSulationTopic = () => {
                     <button className='px-5 py-1 bg-slate-700 text-white rounded-3xl' onClick={handleAll}>All</button>
                     <select onChange={filterByTopic} id="filter_topic" className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>
                         <option value="">--Filter by Topics--</option>
-
+                        {
+                            topic.map(subjects => <option>{subjects.subject}</option>)
+                        }
                     </select>
                 </div>
             </div>

@@ -22,7 +22,7 @@ const BCSForExperienceRoutine = () => {
               <h4 className="text-sm">{p}</h4>
             ))}
 
-            <small>ফ্রি সাপ্তাহিক মডেল টেস্ট প্রতি শুক্রবার সকলের জন্য</small>
+            <small>ফ্রী পরীক্ষা প্রতি শুক্রবার সকলের জন্য</small>
           </div>
         ))}
       </div>

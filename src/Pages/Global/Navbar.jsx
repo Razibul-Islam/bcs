@@ -17,7 +17,7 @@ const Navbar = () => {
     const currentUrl = window.location.href;
 
     const handleUser = () => {
-        const url = `https://bcspioneer.vercel.app/get-user-email?email=${user?.email}`;
+        const url = `http://localhost:5000/get-user-email?email=${user?.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUserRole(data.Role))
