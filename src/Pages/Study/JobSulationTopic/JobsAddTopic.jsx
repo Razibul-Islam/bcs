@@ -6,7 +6,6 @@ const JobsAddTopic = () => {
     const [modalOne, setModalOne] = useState(false);
     const [modalTwo, setModalTwo] = useState(false);
     const [modalThree, setModalThree] = useState(false);
-
     const [subject, setSubject] = useState([]);
     const [topic, setTopic] = useState([]);
     const [subTopic, setSubTopic] = useState([]);
@@ -57,12 +56,13 @@ const JobsAddTopic = () => {
                 }
             })
     };
+
     const addSubTopic = (e) => {
         e.preventDefault();
         const subject = e.target.subject.value;
         const topic = e.target.topic.value;
         const subtopic = e.target.subtopic.value;
-        const data = { subject, topic , subtopic};
+        const data = { subject, topic, subtopic };
 
         fetch('http://localhost:5000/add-subtopic-read-jobs', {
             method: "POST",
@@ -82,35 +82,36 @@ const JobsAddTopic = () => {
     };
 
 
-    const handleDeleteSubject = (_id) =>{
+    const handleDeleteSubject = (_id) => {
         const url = `http://localhost:5000/delete-subject-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
-        .then(res => res.json())
-        .then(data => {
-            toast.success('Delete Successfull')
-        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Delete Successfull')
+            })
     };
-    const handleDeleteTopic = (_id) =>{
+    
+    const handleDeleteTopic = (_id) => {
         const url = `http://localhost:5000/delete-topic-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
-        .then(res => res.json())
-        .then(data => {
-            toast.success('Delete Successfull')
-        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Delete Successfull')
+            })
     };
-    const handleDeleteSubTopic = (_id) =>{
+    const handleDeleteSubTopic = (_id) => {
         const url = `http://localhost:5000/delete-subtopic-read-jobs?_id=${_id}`;
         fetch(url, {
             method: "DELETE"
         })
-        .then(res => res.json())
-        .then(data => {
-            toast.success('Delete Successfull')
-        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Delete Successfull')
+            })
     };
 
 
@@ -145,7 +146,7 @@ const JobsAddTopic = () => {
                     <hr />
                     <div className='p-5'>
                         {
-                            subject.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.subject}  <button onClick={()=> handleDeleteSubject(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
+                            subject.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.subject}  <button onClick={() => handleDeleteSubject(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
                         }
                     </div>
                 </div>
@@ -156,7 +157,7 @@ const JobsAddTopic = () => {
                     <hr />
                     <div className='p-5'>
                         {
-                            topic.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.topic}  <button onClick={()=> handleDeleteTopic(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
+                            topic.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.topic}  <button onClick={() => handleDeleteTopic(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
                         }
                     </div>
                 </div>
@@ -166,8 +167,8 @@ const JobsAddTopic = () => {
                     </div>
                     <hr />
                     <div className='p-5'>
-                    {
-                            subTopic.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.subtopic}  <button onClick={()=> handleDeleteSubTopic(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
+                        {
+                            subTopic.map(subjects => <div className='flex justify-between items-center px-2 py-2 rounded-sm w-full  hover:bg-teal-200'>{subjects.subtopic}  <button onClick={() => handleDeleteSubTopic(subjects._id)} className='text-red-400'><DeleteIcon></DeleteIcon></button></div>)
                         }
                     </div>
                 </div>

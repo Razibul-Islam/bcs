@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const CenterlArchiveSingle = () => {
+const TeacherCentralArchiveSingle = () => {
     const { _id } = useParams();
     const [archive, setArchive] = useState([]);
     let index = 1;
@@ -12,7 +12,7 @@ const CenterlArchiveSingle = () => {
     const year = currentDate.getFullYear();
     const date = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
     useState(() => {
-        const url = `http://localhost:5000/get-all-archive?date=${date}`
+        const url = `http://localhost:5000/get-all-archive-Teacher?date=${date}`
         console.log(url);
         fetch(url)
             .then(res => res.json())
@@ -69,4 +69,4 @@ const CenterlArchiveSingle = () => {
     );
 };
 
-export default CenterlArchiveSingle;
+export default TeacherCentralArchiveSingle;

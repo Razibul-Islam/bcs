@@ -20,18 +20,17 @@ const Dashboard = () => {
   const [exam, setExam] = useState(false);
   const [user, loading, error] = useAuthState(auth);
 
-  if(loading){
-    return<Loading/>
+  if (loading) {
+    return <Loading />
   }
- 
+
   return (
     <div>
       <div className="bg-[#1F2937] w-full p-5 flex justify-between">
         <Link className="text-white w-[270px]">BCS Pioneer</Link>
         <div className="flex justify-between items-center w-full">
-          <Link className="text-white flex items-center gap-2">
-            {" "}
-            <HomeIcon /> / Home{" "}
+          <Link to="/" className="text-white flex items-center gap-2">
+            <HomeIcon /> / Home
           </Link>
           <button className="bg-slate-700 px-5 py-1 text-white ">
             Log Out
@@ -158,7 +157,7 @@ const Dashboard = () => {
               <EditCalendarIcon /> শিক্ষক নিয়োগ ও নিবন্ধন
             </Link>
           </div>
-          <Link className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "><DiamondIcon/> Pakage</Link>
+          <Link className="text-slate-100  px-8 py-2 flex items-center gap-4 hover:bg-slate-900 "><DiamondIcon /> Pakage</Link>
         </div>
         <div className="w-[calc(100%-300px)]">
           <Outlet />

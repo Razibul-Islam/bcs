@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const JobSolutionModelTest = () => {
+  const [topic, setTopic] = useState([]);
+  const [subTopic, setSubTopic] = useState([]);
   const [alQuestionm, setAllQuestion] = useState([]);
   const [question, setQuestion] = useState([]);
   let index = 1;
@@ -84,17 +86,49 @@ const JobSolutionModelTest = () => {
     window.location.reload();
   };
 
+  const handleTopic = () => {
+    const topic = document.getElementById('topic').value;
+    const url = `http://localhost:5000/get-question-by-topic?topic=${topic}&question_id=readtopicaly101`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setAllQuestion(data));
+  }
+
+
+  const handleSubtopic = () => {
+    const subTopic = document.getElementById('subTopic').value;
+    const url = `http://localhost:5000/get-question-by-subtopic?subTopic=${subTopic}&question_id=readtopicaly101`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setAllQuestion(data));
+  }
+
   useEffect(() => {
     const url = `http://localhost:5000/get-all-question`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAllQuestion(data));
   }, []);
+
+  
+  useEffect(() => {
+    const url = `http://localhost:5000/get-topic-read-topiclly`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setTopic(data))
+  }, [])
+  useEffect(() => {
+    const url = `http://localhost:5000/get-subTopic-read-topiclly`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setSubTopic(data))
+  }, [])
+
   return (
     <div className="p-5">
       <h1 className="text-center my-5">Job Solution</h1>
       <div className="flex justify-between items-center">
-        <div className="flex gap-5">
+        <div className='flex gap-5 w-1/2'>
           <Link
             to="/dashboard/jobSolution/routine"
             className="bg-orange-500 px-5 py-1 text-white rounded-sm shadow-lg"
@@ -117,20 +151,21 @@ const JobSolutionModelTest = () => {
             Add New Question
           </button>
         </div>
-        <div className="flex gap-5">
-          <input
-            type="search"
-            onChange={handleSearch}
-            id="search-box"
-            className="p-2 px-5 block border rounded-full focus:outline-none"
-            placeholder="Find Question"
-          />
-          <button
-            onClick={handleShowall}
-            className="bg-teal-500 px-5 py-1 rounded-sm shadow-lg text-white"
-          >
-            All
-          </button>
+        <div className='flex gap-2 grid grid-cols-4 w-1/2'>
+          <select name="topic" id='topic' onChange={handleTopic} className='p-1 border  block focus:outline-none w-full'>
+            <option value="--টপিক নির্বাচন করুণ --">--টপিক নির্বাচন করুণ --</option>
+            {
+              topic.map(subjects => <option>{subjects.topic}</option>)
+            }
+          </select>
+          <select name="subTopic" onChange={handleSubtopic} id='subTopic' className='p-1 border  block focus:outline-none w-full'>
+            <option value="--টপিক নির্বাচন করুণ --">--সাব টপিক নির্বাচন করুণ --</option>
+            {
+              subTopic.map(op => <option>{op.subtopic}</option>)
+            }
+          </select>
+          <input type="search" onChange={handleSearch} id='search-box' className='px-2 block border rounded-full focus:outline-none' placeholder='Find Question' />
+          <button onClick={handleShowall} className='bg-orange-500 px-2 text-sm py-1 text-white rounded-sm shadow-lg'>All</button>
         </div>
       </div>
 

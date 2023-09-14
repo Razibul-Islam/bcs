@@ -63,6 +63,48 @@ const JobSulationPastQuestion = () => {
     });
   };
 
+  // const handleFavorite = (question) => {
+  //   const email = user.email; // Make sure 'user' is defined and contains the user's email.
+  
+  //   const data = {
+  //     question: question.question,
+  //     opA: question.opA,
+  //     opB: question.opB,
+  //     opC: question.opC,
+  //     opD: question.opD,
+  //     explain: question.explain,
+  //     ans: question.ans,
+  //     email: email, // Use the 'email' variable here.
+  //     id: question._id,
+  //   };
+  
+  //   fetch(`http://localhost:5000/add-favorite?id=${question._id}`, {
+  //     method: "POST",
+  //     headers: { "content-type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         // Handle server errors or other non-successful status codes here.
+  //         throw new Error("Failed to add favorite");
+  //       }
+  //       return response.json(); // Parse the response data as JSON.
+  //     })
+  //     .then((responseData) => {
+  //       if (responseData.message === "Already Exist") {
+  //         toast("Already Exist");
+  //       } else {
+  //         toast("Favorite added Successfully");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding favorite:", error);
+  //       // Handle network errors or other errors here.
+  //       toast("Failed to add favorite");
+  //     });
+  // };
+  
+
   return (
     <div>
       <div className="flex justify-between items-center max-w-6xl mx-auto">

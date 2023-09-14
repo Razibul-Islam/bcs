@@ -139,7 +139,7 @@ import TeacherResult from "./Pages/Exam/Teacher/TeacherResult";
 import TeacherResultSingle from "./Pages/Exam/Teacher/TeacherResultSingle";
 import FreeWeaklyMeritList from "./Pages/Exam/FreeWeeklyModelTest/FreeWeaklyMeritList";
 import FreeWeaklyMeritListSingleView from "./Pages/Exam/FreeWeeklyModelTest/MeitListSingleView";
-import CenterlArchiveSingle from "./Pages/CentralArchive/CenterlArchiveSingle";
+// import CenterlArchiveSingle from "./Pages/CentralArchive/CenterlArchiveSingle";
 import CenterlResultSingle from "./Pages/CentralResult/CenterlResultSingle";
 import FreeWeaklyExamenee from "./Dashboard/ExamSection/FreeWeaklyModelTest/Examenee";
 import FreeWeaklyExamQuestion from "./Dashboard/ExamSection/FreeWeaklyModelTest/FreeWeaklyExamQuestion";
@@ -165,6 +165,20 @@ import TeacherMeritSingle from "./Pages/Exam/Teacher/TeacherMeritSingle";
 import TeacherMerit from "./Pages/Exam/Teacher/TeacherMerit";
 import RequireAdmin from "./Auth/RequireAdmin";
 import Contact from "./Pages/Contact";
+import BankCentralArcive from "./Pages/CentralArchive/BankCentralArcive";
+import BankCentralArchiveSingle from "./Pages/CentralArchive/BankCentralArchiveSingle";
+import FreeWeeklyCentralArchive from "./Pages/CentralArchive/FreeWeeklyCentralArchive";
+import FreeWeeklyCentralArchiveSingle from "./Pages/CentralArchive/FreeWeeklyCentralArchiveSingle";
+import NewBCSCentralArchive from "./Pages/CentralArchive/NewBCSCentralArchive";
+import NewBCSCentralArchiveSingle from "./Pages/CentralArchive/NewBCSCentralArchiveSingle";
+import SubjectWiseCentralArchive from "./Pages/CentralArchive/SubjectWiseCentralArchive";
+import SubjectWiseCentralArchiveSingle from "./Pages/CentralArchive/SubjectWiseCentralArchiveSingle";
+import TeacherCentralArchive from "./Pages/CentralArchive/TeacherCentralArchive";
+import TeacherCentralArchiveSingle from "./Pages/CentralArchive/TeacherCentralArchiveSingle";
+import ExperienceCentralArchive from "./Pages/CentralArchive/ExperienceCentralArchive";
+import ExperienceCentralArchiveSingle from "./Pages/CentralArchive/ExperienceCentralArchiveSingle";
+import GreadCentralArchive from "./Pages/CentralArchive/GreadCentralArchive";
+import GreadCentralArchiveSingle from "./Pages/CentralArchive/GreadCentralArchiveSingle";
 
 function App() {
   return (
@@ -276,7 +290,7 @@ function App() {
         <Route path="/subjectwise" element={<SubjectWise />} />
         <Route path="/searchquestion" element={<Search />} />
         <Route path="/centralArchive" element={<CentralArchive />} />
-        <Route path="/archive/:_id" element={<CenterlArchiveSingle />} />
+        {/* <Route path="/archive/:_id" element={<CenterlArchiveSingle />} /> */}
         <Route path="/centralfavorite" element={<CentralFavorite />} />
         <Route path="/centralresult" element={<CentralResult />} />
         <Route path="/centrul-result/:_id" element={<CenterlResultSingle />} />
@@ -384,6 +398,20 @@ function App() {
         <Route path="/addteacherResult/:_id" element={<TeacherResultSingle />} />
         <Route path="/addteacher/Merit" element={<TeacherMerit />} />
         <Route path="/addteacherMerit/:date" element={<TeacherMeritSingle />} />
+        <Route path="/centralArcive/bank" element={<BankCentralArcive />} />
+        <Route path="/centralArcive/bank/:_id" element={<BankCentralArchiveSingle />} />
+        <Route path="/centralArcive/Free-Weekly" element={<FreeWeeklyCentralArchive />} />
+        <Route path="/centralArcive/Free-Weekly/:_id" element={<FreeWeeklyCentralArchiveSingle />} />
+        <Route path="/centralArcive/BcsNew" element={<NewBCSCentralArchive />} />
+        <Route path="/centralArcive/BcsNew/:_id" element={<NewBCSCentralArchiveSingle />} />
+        <Route path="/centralArcive/SubjectWise" element={<SubjectWiseCentralArchive />} />
+        <Route path="/centralArcive/SubjectWise/:_id" element={<SubjectWiseCentralArchiveSingle />} />
+        <Route path="/centralArcive/Teacher" element={<TeacherCentralArchive />} />
+        <Route path="/centralArcive/Teacher/:_id" element={<TeacherCentralArchiveSingle />} />
+        <Route path="/centralArcive/Experience" element={<ExperienceCentralArchive />} />
+        <Route path="/centralArcive/Experience/:_id" element={<ExperienceCentralArchiveSingle />} />
+        <Route path="/centralArcive/Gread" element={<GreadCentralArchive />} />
+        <Route path="/centralArcive/Gread/:_id" element={<GreadCentralArchiveSingle />} />
       </Routes>
       <ToastContainer />
     </div>
