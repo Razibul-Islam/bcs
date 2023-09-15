@@ -179,6 +179,10 @@ import ExperienceCentralArchive from "./Pages/CentralArchive/ExperienceCentralAr
 import ExperienceCentralArchiveSingle from "./Pages/CentralArchive/ExperienceCentralArchiveSingle";
 import GreadCentralArchive from "./Pages/CentralArchive/GreadCentralArchive";
 import GreadCentralArchiveSingle from "./Pages/CentralArchive/GreadCentralArchiveSingle";
+import AddQuestionBCSPast from "./Dashboard/BCSPastQuestion/AddQuestionBCSPast";
+import AddQuestionJobSulation from "./Dashboard/JobSulationTopic/AddQuestionJobSulation";
+import AddQuestionPastJobs from "./Dashboard/PastJobsQuestion/AddQuestionPastJobs";
+import AddQuestionReadTopically from "./Dashboard/ReadTopicaly/AddQuestionReadTopically";
 
 function App() {
   return (
@@ -260,6 +264,7 @@ function App() {
           <Route path="/dashboard/teacherRecruitment" element={<TeacherTestModel />} />
           <Route path="/dashboard/teacherRecruitment/routine" element={<TeacherRoutineD />} />
           <Route path="/dashboard/teacherRecruitment/exam-list" element={<TeacherExamList />} />
+
         </Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -412,6 +417,10 @@ function App() {
         <Route path="/centralArcive/Experience/:_id" element={<ExperienceCentralArchiveSingle />} />
         <Route path="/centralArcive/Gread" element={<GreadCentralArchive />} />
         <Route path="/centralArcive/Gread/:_id" element={<GreadCentralArchiveSingle />} />
+        <Route path="/addQuestionBCSPast" element={<AddQuestionBCSPast />} />
+        <Route path="/addQuestionJobSolution" element={<AddQuestionJobSulation />} />
+        <Route path="/addQuestionPastQuestion" element={<AddQuestionPastJobs />} />
+        <Route path="/addQuestionReadTopically" element={<AddQuestionReadTopically />} />
       </Routes>
       <ToastContainer />
     </div>

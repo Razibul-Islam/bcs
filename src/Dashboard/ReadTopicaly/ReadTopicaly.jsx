@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 
 const ReadTopicaly = () => {
-    const [modal, setModal] = useState('hidden');
     const [ans, setAns] = useState('');
     const [modal2, setModal2] = useState('hidden');
     const [editQuestion, setEditQuestion] = useState({});
@@ -18,43 +17,39 @@ const ReadTopicaly = () => {
 
     const handleShowExplain = (id) => {
         const element = document.getElementById(id);
-        if (element.classList[0] === 'hidden') {
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
-        }
+        element.classList.toggle("hidden");
     };
 
 
 
-    const handleAddQuestion = (e) => {
-        e.preventDefault();
-        const subject = e.target.subject.value;
-        const topic = e.target.topic.value;
-        const subTopic = e.target.subTopic.value;
-        const question = e.target.question.value;
-        const opA = e.target.opA.value;
-        const opB = e.target.opB.value;
-        const opC = e.target.opC.value;
-        const opD = e.target.opD.value;
-        const explain = e.target.explain.value;
-        const question_id = 'readtopicaly101'
-        const data = { topic, subTopic, question, opA, opB, opC, opD, explain, ans, question_id, subject }
-        console.log(data);
-        fetch('http://localhost:5000/add-question', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('প্রশ্ন যোগ করা হয়েছে');
-                setModal('hidden');
-                e.target.reset();
-            })
-    };
+    // const handleAddQuestion = (e) => {
+    //     e.preventDefault();
+    //     const subject = e.target.subject.value;
+    //     const topic = e.target.topic.value;
+    //     const subTopic = e.target.subTopic.value;
+    //     const question = e.target.question.value;
+    //     const opA = e.target.opA.value;
+    //     const opB = e.target.opB.value;
+    //     const opC = e.target.opC.value;
+    //     const opD = e.target.opD.value;
+    //     const explain = e.target.explain.value;
+    //     const question_id = 'readtopicaly101'
+    //     const data = { topic, subTopic, question, opA, opB, opC, opD, explain, ans, question_id, subject }
+    //     console.log(data);
+    //     fetch('http://localhost:5000/add-question', {
+    //         method: "POST",
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             toast.success('প্রশ্ন যোগ করা হয়েছে');
+    //             setModal('hidden');
+    //             e.target.reset();
+    //         })
+    // };
 
 
     const filterByTopic = () => {
@@ -151,7 +146,7 @@ const ReadTopicaly = () => {
         <div className='p-5'>
             <h1 className='text-center my-5'>বিষয়ভিত্তিক পড়ুন</h1>
             <div className='flex justify-between items-center mt-10'>
-                <button onClick={() => setModal('')} className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</button>
+                <Link to="/addQuestionReadTopically" className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</Link>
                 <Link to='/dashboard/read-topic-add' className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Topic</Link>
                 <div className='flex gap-3'>
                     <button className='px-5 py-1 bg-slate-700 text-white rounded-3xl' onClick={handleAll}>All</button>
@@ -181,7 +176,10 @@ const ReadTopicaly = () => {
                                         <p className={`${'b' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>খ) {questions.opB}</p>
                                         <p className={`${'c' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>গ) {questions.opC}</p>
                                         <p className={`${'d' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ঘ) {questions.opD}</p>
-                                        <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>ব্যাখ্যা</button> <button onClick={() => handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button>
+                                        <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white'>ব্যাখ্যা</button>
+                                        <button onClick={() => handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'>
+                                            <DeleteIcon className='p-1' ></DeleteIcon>
+                                        </button>
                                         <button onClick={() => { handleGetEdit(questions) }} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'>
                                             <EditIcon className='p-1' ></EditIcon>
                                         </button>
@@ -198,12 +196,12 @@ const ReadTopicaly = () => {
 
 
             {/* modal  */}
-            <div class={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            {/* <div className={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>বিষয়ভিত্তিক প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleAddQuestion} className='my-5'>
@@ -255,15 +253,15 @@ const ReadTopicaly = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Upgrade Modal */}
-            <div class={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div className={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>জব সলিউশন টপিক ভিত্তিক প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleEditQuestion} className='my-5'>

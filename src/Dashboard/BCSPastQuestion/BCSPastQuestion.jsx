@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { Link } from 'react-router-dom';
 
 const BCSPastQuestion = () => {
-    const [modal, setModal] = useState('hidden');
     const [category, setCategory] = useState([])
-    const [modal2, setModal2] = useState('hidden');
+    const [modal, setModal] = useState('hidden');
     const [editQuestion, setEditQuestion] = useState({});
     const [ans, setAns] = useState('');
     const [question, setQuestion] = useState([])
@@ -16,41 +16,37 @@ const BCSPastQuestion = () => {
 
     const handleShowExplain = (id) => {
         const element = document.getElementById(id);
-        if (element.classList[0] === 'hidden') {
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
-        }
+        element.classList.toggle("hidden");
     };
 
 
 
-    const handleAddQuestion = (e) => {
-        e.preventDefault();
-        const question = e.target.question.value;
-        const category = e.target.category.value;
-        const opA = e.target.opA.value;
-        const opB = e.target.opB.value;
-        const opC = e.target.opC.value;
-        const opD = e.target.opD.value;
-        const explain = e.target.explain.value;
-        const question_id = 'pastbcsquestion101'
-        const data = { question, opA, opB, opC, opD, explain, ans, question_id, category }
-        console.log(data);
-        fetch('http://localhost:5000/add-question', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('প্রশ্ন যোগ করা হয়েছে');
-                setModal('hidden');
-                e.target.reset();
-            })
-    };
+    // const handleAddQuestion = (e) => {
+    //     e.preventDefault();
+    //     const question = e.target.question.value;
+    //     const category = e.target.category.value;
+    //     const opA = e.target.opA.value;
+    //     const opB = e.target.opB.value;
+    //     const opC = e.target.opC.value;
+    //     const opD = e.target.opD.value;
+    //     const explain = e.target.explain.value;
+    //     const question_id = 'pastbcsquestion101'
+    //     const data = { question, opA, opB, opC, opD, explain, ans, question_id, category }
+    //     console.log(data);
+    //     fetch('http://localhost:5000/add-question', {
+    //         method: "POST",
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             toast.success('প্রশ্ন যোগ করা হয়েছে');
+    //             setModal('hidden');
+    //             e.target.reset();
+    //         })
+    // };
 
 
 
@@ -77,13 +73,13 @@ const BCSPastQuestion = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('প্রশ্ন আপডেট করা হয়েছে');
-                setModal2("hidden")
+                setModal("hidden")
             })
     }
 
     const handleGetEdit = (questionGet) => {
         setEditQuestion(questionGet)
-        setModal2("")
+        setModal("")
     }
 
 
@@ -157,7 +153,7 @@ const BCSPastQuestion = () => {
         <div className='p-5'>
             <h1 className='text-center my-5'>বিগত বিগত বিসিএস</h1>
             <div className='flex justify-between items-center mt-10'>
-                <button onClick={() => setModal('')} className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</button>
+                <Link to="/addQuestionBCSPast" className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</Link>
                 <div className='flex gap-3'>
                     <input type="text" placeholder='প্রশ্ন খুঁজুন' className='border rounded-full px-5 py-2 focus:outline-none' />
                 </div>
@@ -182,7 +178,10 @@ const BCSPastQuestion = () => {
                                             <p className={`${'b' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>খ) {questions.opB}</p>
                                             <p className={`${'c' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>গ) {questions.opC}</p>
                                             <p className={`${'d' === questions.ans ? 'text-green-500 font-extrabold' : ''}`}>ঘ) {questions.opD}</p>
-                                            <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white '>ব্যাখ্যা</button> <button onClick={() => handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'><DeleteIcon className='p-1' ></DeleteIcon></button>
+                                            <button onClick={() => handleShowExplain(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-1 rounded-3xl shadow-2xl text-white '>ব্যাখ্যা</button>
+                                            <button onClick={() => handleDeleteQuestion(questions._id)} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'>
+                                                <DeleteIcon className='p-1' ></DeleteIcon>
+                                            </button>
                                             <button onClick={() => { handleGetEdit(questions) }} className='my-3 bg-slate-700 text-sm px-3 py-[2px] rounded-3xl shadow-2xl text-white'>
                                                 <EditIcon className='p-1' ></EditIcon>
                                             </button>
@@ -212,12 +211,12 @@ const BCSPastQuestion = () => {
 
 
             {/* modal  */}
-            <div class={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            {/* <div className={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>বিগত বিসিএস প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleAddQuestion} className='my-5'>
@@ -255,15 +254,15 @@ const BCSPastQuestion = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Upgrade Modal */}
-            <div class={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div className={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>বিগত বিগত বিসিএস প্রশ্ন আপডেট করুন </p>
                                     <form onSubmit={handleEditQuestion} className='my-5'>
@@ -293,7 +292,7 @@ const BCSPastQuestion = () => {
                                         <p>Note : লাইন আলাদা করতে ব্যাকের পর " {'<br />'} "  ব্যাবহার করুণ । </p>
                                         <textarea name="explain" placeholder='ব্যাখ্যা করুণ' defaultValue={editQuestion.explain} className='p-2 border  block focus:outline-none h-24 w-full'></textarea>
                                         <div className='flex justify-end items-center gap-5 mt-5'>
-                                            <label onClick={() => setModal2('hidden')} className='px-4 py-1 text-white uppercase rounded-sm bg-red-500 cursor-pointer'>Cancel</label>
+                                            <label onClick={() => setModal('hidden')} className='px-4 py-1 text-white uppercase rounded-sm bg-red-500 cursor-pointer'>Cancel</label>
                                             <button className='px-4 py-1 text-white uppercase rounded-sm bg-green-500'>Submit</button>
                                         </div>
                                     </form>

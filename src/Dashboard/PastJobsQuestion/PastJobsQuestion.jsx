@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { Link } from 'react-router-dom';
 
 const PastJobsQuestion = () => {
-    const [modal, setModal] = useState('hidden');
     const [ans, setAns] = useState('');
     const [question, setQuestion] = useState([]);
     const [category, setcategory] = useState([]);
@@ -15,39 +15,35 @@ const PastJobsQuestion = () => {
 
     const handleShowExplain = (id) => {
         const element = document.getElementById(id);
-        if (element.classList[0] === 'hidden') {
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
-        }
+        element.classList.toggle("hidden");
     };
 
-    const handleAddQuestion = (e) => {
-        e.preventDefault();
-        const category = e.target.category.value;
-        const question = e.target.question.value;
-        const opA = e.target.opA.value;
-        const opB = e.target.opB.value;
-        const opC = e.target.opC.value;
-        const opD = e.target.opD.value;
-        const explain = e.target.explain.value;
-        const question_id = 'pastQ101'
-        const data = { question, opA, opB, opC, opD, explain, ans, question_id, category }
-        console.log(data);
-        fetch('http://localhost:5000/add-question', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('প্রশ্ন যোগ করা হয়েছে');
-                setModal('hidden');
-                e.target.reset();
-            })
-    };
+    // const handleAddQuestion = (e) => {
+    //     e.preventDefault();
+    //     const category = e.target.category.value;
+    //     const question = e.target.question.value;
+    //     const opA = e.target.opA.value;
+    //     const opB = e.target.opB.value;
+    //     const opC = e.target.opC.value;
+    //     const opD = e.target.opD.value;
+    //     const explain = e.target.explain.value;
+    //     const question_id = 'pastQ101'
+    //     const data = { question, opA, opB, opC, opD, explain, ans, question_id, category }
+    //     console.log(data);
+    //     fetch('http://localhost:5000/add-question', {
+    //         method: "POST",
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             toast.success('প্রশ্ন যোগ করা হয়েছে');
+    //             setModal('hidden');
+    //             e.target.reset();
+    //         })
+    // };
 
     const handleEditQuestion = (e) => {
         e.preventDefault();
@@ -152,7 +148,7 @@ const PastJobsQuestion = () => {
         <div className='p-5'>
             <h1 className='text-center my-5'>বিগত জব সলিউশন</h1>
             <div className='flex justify-between items-center mt-10'>
-                <button onClick={() => setModal('')} className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</button>
+                <Link to="/addQuestionPastQuestion" className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</Link>
 
                 <div className='flex gap-3'>
                     <input type="text" placeholder='প্রশ্ন খুঁজুন' className='border rounded-full px-5 py-2 focus:outline-none' />
@@ -209,12 +205,12 @@ const PastJobsQuestion = () => {
 
 
             {/* modal  */}
-            <div class={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            {/* <div className={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>বিগত জব সলিউশন প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleAddQuestion} className='my-5'>
@@ -252,15 +248,15 @@ const PastJobsQuestion = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             
             {/* Upgrade Modal */}
-            <div class={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div className={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>জব সলিউশন টপিক ভিত্তিক প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleEditQuestion} className='my-5'>

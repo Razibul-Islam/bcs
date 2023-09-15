@@ -104,8 +104,8 @@ const JobSolutionExamList = () => {
 
 {/* deleted Modal */}
 
-<div class={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+<div className={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div className="fixed inset-0 z-10 overflow-y-auto flex items-center justify-center">
           <section className="flex h-[600px] items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <article className="relative h-full overflow-scroll transform  rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-[600px]">
@@ -169,8 +169,8 @@ const JobSolutionExamList = () => {
 
       {/* Viewed Modal */}
 
-      <div class={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+      <div className={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div className="fixed inset-0 z-10 overflow-y-auto flex items-center justify-center">
           <section className="flex h-[600px] items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <article className="relative h-full overflow-scroll transform  rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-[600px]">
@@ -234,8 +234,8 @@ const JobSolutionExamList = () => {
 
       {/* PDF Modal */}
 
-      <div class={`relative z-10 ${modal3}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+      <div className={`relative z-10 ${modal3}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
         <div className="fixed inset-0 z-10 overflow-y-auto flex items-center justify-center">
           <section className="flex h-[600px] items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <article className="relative h-full overflow-scroll transform  rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-[600px]">

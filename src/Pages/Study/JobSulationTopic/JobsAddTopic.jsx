@@ -176,13 +176,13 @@ const JobsAddTopic = () => {
 
             <div>
                 {/* modal 1  */}
-                <div class={`relative z-10 ${modalOne ? '' : 'hidden'}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className={`relative z-10 ${modalOne ? '' : 'hidden'}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-                    <div class="fixed inset-0 z-10 overflow-y-auto">
-                        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                <form onSubmit={addSubject} class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <div className="fixed inset-0 z-10 overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                <form onSubmit={addSubject} className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                     <input required name='subject' className='block w-full p-2 focus:outline-none border my-2' type="text" placeholder='Enter Subject Name ' />
                                     <input required name='order' className='block w-full p-2 focus:outline-none border my-2' type="text" placeholder='Enter Subject Order ' />
                                     <div className='mt-5'>
@@ -197,13 +197,13 @@ const JobsAddTopic = () => {
 
 
                 {/* modal 2 */}
-                <div class={`relative z-10 ${modalTwo ? '' : 'hidden'}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className={`relative z-10 ${modalTwo ? '' : 'hidden'}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-                    <div class="fixed inset-0 z-10 overflow-y-auto">
-                        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                <form onSubmit={addTopic} class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <div className="fixed inset-0 z-10 overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                <form onSubmit={addTopic} className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                     <select name="subject" className='block w-full p-2 focus:outline-none border my-2'>
                                         <option value="null">--select subject --</option>
                                         {
@@ -223,13 +223,13 @@ const JobsAddTopic = () => {
 
 
                 {/* modal 3 */}
-                <div class={`relative z-10 ${modalThree ? '' : 'hidden'}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className={`relative z-10 ${modalThree ? '' : 'hidden'}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-                    <div class="fixed inset-0 z-10 overflow-y-auto">
-                        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                <form onSubmit={addSubTopic} class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                    <div className="fixed inset-0 z-10 overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                                <form onSubmit={addSubTopic} className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                     <select name="subject" className='block w-full p-2 focus:outline-none border my-2'>
                                         <option value="null">--Select Subject --</option>
                                         {

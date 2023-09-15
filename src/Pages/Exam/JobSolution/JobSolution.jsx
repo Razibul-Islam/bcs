@@ -20,7 +20,7 @@ const JobSolution = () => {
   }, []);
   return (
     <div>
-      <h1 className='my-5 text-center '> ফ্রী পরীক্ষা</h1>
+      <h1 className='my-5 text-center '>জব সল্যুশন</h1>
       <div>
         <div>
           <div className="w-[300px]  h-[200px]  mx-auto mt-10 relative flex items-center justify-center">

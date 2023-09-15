@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 
 const JobSulationTopic = () => {
-    const [modal, setModal] = useState('hidden');
     const [modal2, setModal2] = useState('hidden');
     const [editQuestion, setEditQuestion] = useState({});
     const [ans, setAns] = useState('');
@@ -17,41 +16,37 @@ const JobSulationTopic = () => {
 
     const handleShowExplain = (id) => {
         const element = document.getElementById(id);
-        if (element.classList[0] === 'hidden') {
-            element.classList.remove('hidden');
-        } else {
-            element.classList.add('hidden');
-        }
+        element.classList.toggle("hidden");
     };
 
-    const handleAddQuestion = (e) => {
-        e.preventDefault();
-        const subject = e.target.subject.value;
-        const topic = e.target.topic.value;
-        const subTopic = e.target.subTopic.value;
-        const question = e.target.question.value;
-        const opA = e.target.opA.value;
-        const opB = e.target.opB.value;
-        const opC = e.target.opC.value;
-        const opD = e.target.opD.value;
-        const explain = e.target.explain.value;
-        const question_id = 'jst101'
-        const data = { topic, subTopic, question, opA, opB, opC, opD, explain, ans, question_id, subject }
-        console.log(data);
-        fetch('http://localhost:5000/add-question', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('প্রশ্ন যোগ করা হয়েছে');
-                // setModal('hidden');
-                // e.target.reset();
-            })
-    };
+    // const handleAddQuestion = (e) => {
+    //     e.preventDefault();
+    //     const subject = e.target.subject.value;
+    //     const topic = e.target.topic.value;
+    //     const subTopic = e.target.subTopic.value;
+    //     const question = e.target.question.value;
+    //     const opA = e.target.opA.value;
+    //     const opB = e.target.opB.value;
+    //     const opC = e.target.opC.value;
+    //     const opD = e.target.opD.value;
+    //     const explain = e.target.explain.value;
+    //     const question_id = 'jst101'
+    //     const data = { topic, subTopic, question, opA, opB, opC, opD, explain, ans, question_id, subject }
+    //     console.log(data);
+    //     fetch('http://localhost:5000/add-question', {
+    //         method: "POST",
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             toast.success('প্রশ্ন যোগ করা হয়েছে');
+    //             // setModal('hidden');
+    //             // e.target.reset();
+    //         })
+    // };
 
 
     const filterByTopic = () => {
@@ -122,7 +117,7 @@ const JobSulationTopic = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setQuestion(data))
-    }, [handleAddQuestion, handleDeleteQuestion, handleEditQuestion])
+    }, [handleDeleteQuestion, handleEditQuestion])
 
     useEffect(() => {
         const url = `http://localhost:5000/get-subject-read-jobs`;
@@ -147,7 +142,7 @@ const JobSulationTopic = () => {
         <div className='p-5'>
             <h1 className='text-center my-5'>জব সলিউশন টপিক ভিত্তিক</h1>
             <div className='flex justify-between items-center mt-10'>
-                <button onClick={() => setModal('')} className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</button>
+                <Link to="/addQuestionJobSolution" className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Question</Link>
                 <Link to='/dashboard/add-jobs-topic' className='px-5 py-1 bg-slate-700 text-white rounded-3xl'>Add Topic</Link>
                 <div className='flex gap-3'>
                     <button className='px-5 py-1 bg-slate-700 text-white rounded-3xl' onClick={handleAll}>All</button>
@@ -198,12 +193,12 @@ const JobSulationTopic = () => {
 
 
             {/* modal  */}
-            <div class={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            {/* <div className={`relative z-10 ${modal}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>জব সলিউশন টপিক ভিত্তিক প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleAddQuestion} className='my-5'>
@@ -254,15 +249,15 @@ const JobSulationTopic = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Upgrade Modal */}
-            <div class={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                <div class="fixed inset-0 z-10 overflow-y-auto">
-                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
-                            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div className={`relative z-10 ${modal2}`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                                 <div>
                                     <p className='flex justify-start items-center gap-4'>জব সলিউশন টপিক ভিত্তিক প্রশ্ন যোগ করুণ</p>
                                     <form onSubmit={handleEditQuestion} className='my-5'>
